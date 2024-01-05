@@ -38,9 +38,9 @@
       .goog-logo-link {
         display: none !important;
       }
-      .goog-te-gadget {
-        /* color: transparent !important */
-      }
+      /* .goog-te-gadget { */
+      /* color: transparent !important */
+      /* } */
       .VIpgJd-ZVi9od-l4eHX-hSRGPd {
         display: none;
       }
@@ -49,7 +49,7 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="google_translate_element"></div>
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -70,8 +70,12 @@
   ></script>
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        { pageLanguage: "en" },
+      google.translate.TranslateElement(
+        {
+          pageLanguage: "en",
+          includedLanguages:
+            "en,as,ar,bn,bho,	zh-CN,zh-TW,doi,fr,de,gu,hi,ja,kn,ml,mr,ne,or,pa,ru,sa,sd,si,es,ta,te,ur",
+        },
         "google_translate_element"
       );
     }

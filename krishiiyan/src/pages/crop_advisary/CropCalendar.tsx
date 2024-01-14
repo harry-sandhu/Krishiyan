@@ -104,7 +104,7 @@ const CropCalendar = () => {
               id="plantation-select"
               className="mobile:w-[80vw]"
               // sx={{ bgcolor: '#F3FFF1', boxShadow: '4px 4px 3px rgba(0,0,0,0.25)', borderRadius: '6px', textAlign: 'center', height: '2rem' }}
-              options={crops}
+              options={crops || []}
               autoHighlight
               getOptionLabel={(crops) => crops?.localName}
               renderInput={(params) => (

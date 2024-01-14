@@ -12,15 +12,18 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   const [popupData, setPopupData] = useState<any>(null);
 
   const hasPopupBeenShown = () => {
-    return localStorage.getItem("popupShown") === "true";
+    return sessionStorage.getItem("popupShown") === "true";
+  };
+  const hasButtonBeenClicked = () => {
+    return sessionStorage.getItem("buttonClicked") === "true";
   };
 
   const setPopupShown = () => {
-    localStorage.setItem("popupShown", "true");
+    sessionStorage.setItem("popupShown", "true");
   };
 
   const resetPopupShownOnUnload = () => {
-    localStorage.setItem("popupShown", "false");
+    sessionStorage.setItem("popupShown", "false");
   };
 
   function encodeURL(url: string): string {
@@ -28,7 +31,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   }
 
   useEffect(() => {
-    if (isOpen && !hasPopupBeenShown()) {
+    if (isOpen && (!hasPopupBeenShown() || hasButtonBeenClicked())) {
       axios
         .get(`${process.env.REACT_APP_BACKEND_URL}/popups`)
         .then((response) => {
@@ -42,7 +45,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (!hasPopupBeenShown() && popupData) {
+    if ((!hasPopupBeenShown() || hasButtonBeenClicked()) && popupData) {
       setPopupShown();
     }
   }, [popupData]);
@@ -104,7 +107,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
             {`@${popupData.price}/- per ton`}
           </h4>
           <h2 className="text-2xl font-medium">
-            {`Quantity: ${popupData.quantity} tons`}
+            {`Quantity: ${popupData.quantity} `}
           </h2>
           <h2 className="text-2xl font-semibold mt-6 mb-4 text-green-700">
             Quality Parameters

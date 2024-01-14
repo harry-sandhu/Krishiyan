@@ -12,12 +12,38 @@ const Header = (props: any) => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
   const [popupData, setPopupData] = useState<any>(null);
 
+  const hasPopupBeenShown = () => {
+    return sessionStorage.getItem("popupShown") === "true";
+  };
+
+  const hasButtonBeenClicked = () => {
+    return sessionStorage.getItem("buttonClicked") === "true";
+  };
+
+  // Function to set the popup as shown in local storage
+  const setPopupShown = () => {
+    sessionStorage.setItem("popupShown", "true");
+  };
+
+  const setButtonClicked = () => {
+    sessionStorage.setItem("buttonClicked", "true");
+  };
+
+  const resetButtonClickedOnUnload = () => {
+    sessionStorage.setItem("buttonClicked", "false");
+  };
+  const resetPopupShownOnUnload = () => {
+    sessionStorage.setItem("popupShown", "false");
+  };
+
   const openPopup = () => {
     setIsPopupOpen(true);
   };
 
   const closePopup = () => {
     setIsPopupOpen(false);
+    resetPopupShownOnUnload();
+    resetButtonClickedOnUnload(); // Set the popup as shown in local storage when closed
   };
   const navigate = useNavigate();
   let DealerName = localStorage.getItem("dealerName");
@@ -44,16 +70,20 @@ const Header = (props: any) => {
   };
 
   useEffect(() => {
-    console.log("effect being called");
-    axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}/popups`)
-      .then((response) => {
-        if (response.data.success) {
-          setPopupData(response.data.popups[0]);
-        } else {
-          console.log("Error while loading popup data");
-        }
-      });
+    // Check if the popup has been shown before
+    if (!hasPopupBeenShown()) {
+      // If not shown, fetch popup data and set the state to show the popup
+      axios
+        .get(`${process.env.REACT_APP_BACKEND_URL}/popups`)
+        .then((response) => {
+          if (response.data.success) {
+            setPopupData(response.data.popups[0]);
+            setIsPopupOpen(true);
+          } else {
+            console.log("Error while loading popup data");
+          }
+        });
+    }
   }, []);
 
   useEffect(() => {

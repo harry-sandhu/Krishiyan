@@ -4,6 +4,7 @@ import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
 import { toast } from "react-toastify";
 import * as Api from "../../Services/Api";
+import Popup from "../../Components/layouts/PopUp";
 
 interface MandiPricesProps {
   mandiPrices: string[]; // Define the type for 'mandiPrices'
@@ -27,6 +28,15 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
   const [selectedDistrict, setSelectedDistrict] = useState("");
   const [selectedCommodity, setSelectedCommodity] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
+
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
 
   useEffect(() => {
     const fetchFilterOptions = async () => {
@@ -90,6 +100,7 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
   return (
     <div>
       <Header title="Crop Advisory" subtitle="Market" />
+
       <section className="p-[1%] mt-5">
         <div
           className=" "

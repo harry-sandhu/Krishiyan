@@ -254,6 +254,7 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
           </tbody>
         </table>
       ) : null}
+      <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </div>
   );
 };

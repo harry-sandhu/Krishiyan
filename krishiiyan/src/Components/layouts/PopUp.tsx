@@ -12,18 +12,18 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
   const [popupData, setPopupData] = useState<any>(null);
 
   const hasPopupBeenShown = () => {
-    return sessionStorage.getItem("popupShown") === "true";
+    return localStorage.getItem("popupShown") === "true";
   };
   const hasButtonBeenClicked = () => {
-    return sessionStorage.getItem("buttonClicked") === "true";
+    return localStorage.getItem("buttonClicked") === "true";
   };
 
   const setPopupShown = () => {
-    sessionStorage.setItem("popupShown", "true");
+    localStorage.setItem("popupShown", "true");
   };
 
   const resetPopupShownOnUnload = () => {
-    sessionStorage.setItem("popupShown", "false");
+    localStorage.setItem("popupShown", "false");
   };
 
   function encodeURL(url: string): string {

@@ -128,22 +128,35 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
 
   return (
     <div>
-      <div className="visible  md:invisible  z-20 bg-[#C6EDC0] justify-end w-[100vw] ">
+      <div className="visible md:invisible z-20 bg-[#C6EDC0] justify-end w-[100vw]">
         <NestedDropdown menus={menus} />
       </div>
-      <div className="flex flex-row lg:flex-row  mobile:w-[50vw] mobile:h-max invisible md:visible z-0 h-screen">
+      <div
+        className="flex flex-row lg:flex-row mobile:w-[50vw] mobile:h-max hidden lg:flex z-0"
+        style={{
+          position: "fixed",
+          top: "0px",
+          left: "0px",
+          width: "18%",
+          height: "100vh",
+        }}
+      >
         <nav className="bg-[#C6EDC0] w-full lg:w-[9vw] xl:w-[45%] flex flex-col items-center h-full">
           <img
             src="Images/logo.png"
             alt="Ellipse"
             className="my-5 mx-auto lg:w-10 xl:w-20 mobile:px-6"
           />
-          <ul className="text-center text-sm flex flex-col lg:flex-col items-center gap-y-3 lg:gap-y-0">
+          <ul
+            className="text-start text-sm flex flex-col lg:flex-col items-start gap-y-3 lg:gap-y-0"
+            style={{ width: "100%" }}
+          >
             <li
               onClick={posClick}
-              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg ${
+              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg text-center ${
                 pos === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
               }`}
+              style={{ width: "100%", textAlign: "start" }}
             >
               Pos
             </li>
@@ -152,6 +165,7 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
               className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2  rounded-lg flex-col flex ${
                 crop === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
               }`}
+              style={{ width: "100%", textAlign: "start" }}
             >
               Crop Advisory
             </li>
@@ -160,6 +174,7 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
               className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg ${
                 farm === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
               }`}
+              style={{ width: "100%", textAlign: "start" }}
             >
               FRM
             </li>
@@ -168,6 +183,7 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
               className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg ${
                 manage === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
               }`}
+              style={{ width: "100%", textAlign: "start" }}
             >
               Management
             </li>
@@ -176,6 +192,7 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
               className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg ${
                 help === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
               }`}
+              style={{ width: "100%", textAlign: "start" }}
             >
               Help
             </li>

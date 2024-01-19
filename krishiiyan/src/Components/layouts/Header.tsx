@@ -9,40 +9,44 @@ import { extractCodeFromDriveLink } from "../../handleImageCode";
 import axios from "axios";
 
 const Header = (props: any) => {
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
+  const [isPopupOpen, setIsPopupOpen] = useState<boolean>(
+    localStorage.getItem("isPopupOpen") === "true"
+  );
   const [popupData, setPopupData] = useState<any>(null);
 
   const hasPopupBeenShown = () => {
-    return sessionStorage.getItem("popupShown") === "true";
+    return localStorage.getItem("popupShown") === "true";
   };
 
   const hasButtonBeenClicked = () => {
-    return sessionStorage.getItem("buttonClicked") === "true";
+    return localStorage.getItem("buttonClicked") === "true";
   };
 
   // Function to set the popup as shown in local storage
   const setPopupShown = () => {
-    sessionStorage.setItem("popupShown", "true");
+    localStorage.setItem("popupShown", "true");
   };
 
   const setButtonClicked = () => {
-    sessionStorage.setItem("buttonClicked", "true");
+    localStorage.setItem("buttonClicked", "true");
   };
 
   const resetButtonClickedOnUnload = () => {
-    sessionStorage.setItem("buttonClicked", "false");
+    localStorage.setItem("buttonClicked", "false");
   };
   const resetPopupShownOnUnload = () => {
-    sessionStorage.setItem("popupShown", "false");
+    localStorage.setItem("popupShown", "false");
   };
 
   const openPopup = () => {
     setIsPopupOpen(true);
+    localStorage.setItem("isPopupOpen", "true");
+    resetPopupShownOnUnload();
+    sessionStorage.setItem("buttonClicked", "true");
   };
 
   const closePopup = () => {
     setIsPopupOpen(false);
-    resetPopupShownOnUnload();
     resetButtonClickedOnUnload(); // Set the popup as shown in local storage when closed
   };
   const navigate = useNavigate();
@@ -71,7 +75,7 @@ const Header = (props: any) => {
 
   useEffect(() => {
     // Check if the popup has been shown before
-    if (!hasPopupBeenShown()) {
+    if (!hasPopupBeenShown() || hasButtonBeenClicked()) {
       // If not shown, fetch popup data and set the state to show the popup
       axios
         .get(`${process.env.REACT_APP_BACKEND_URL}/popups`)
@@ -79,6 +83,7 @@ const Header = (props: any) => {
           if (response.data.success) {
             setPopupData(response.data.popups[0]);
             setIsPopupOpen(true);
+            console.log("data is coming of pop up in header");
           } else {
             console.log("Error while loading popup data");
           }
@@ -125,7 +130,7 @@ const Header = (props: any) => {
 
   return (
     <header className="bg-[#F3FFF1] invisible md:visible w-full xl:h-[14vh] flex flex-col justify-between xl:flex-row items-center rounded-2xl shadow-md mobile:w-[65vw] mobile:absolute mobile:right-0 ">
-      <div className="text-[#13490A] ml-[20vw] text-center font-roboto font-black text-lg xl:text-base leading-7 mt-4 p-2">
+      <div className="text-[#13490A] ml-[30px]  text-start font-roboto font-black text-lg xl:text-base leading-7 mt-4 p-2">
         <h1>{props?.title}</h1>
         <h1>{props?.subtitle}</h1>
       </div>

@@ -2,10 +2,8 @@ import React from "react";
 import { extractCodeFromDriveLink } from "../../../handleImageCode";
 
 const BasalStep = (props: any) => {
-  if(Object.keys(props.cropDetails).length === 0){
-    return <>
-      Loading...
-    </>
+  if (Object.keys(props.cropDetails).length === 0) {
+    return <>Loading...</>;
   }
   return (
     <>
@@ -17,29 +15,32 @@ const BasalStep = (props: any) => {
         }}
       >
         <div>
-              <br/>
-              {
-                props?.cropDetails?.date
-              }
-              <br/>
-              <br/>
-              <br/>
+          <br />
+          {props?.cropDetails?.date}
+          <br />
+          <br />
+          <br />
           <div style={{ display: "Flex", justifyContent: "space-between" }}>
             <p>
               Name Of the Stage:
               <br />
-              {
-                props?.cropDetails?.name
-              }
+              {props?.cropDetails?.name}
             </p>
-        {
-                props?.cropDetails?.images.map((img:any , index : any)=>{
-                  return (
-                    <img src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(img)}`} style={{ marginTop: "20px" ,width:"200px", height:"200px", objectFit:"cover" }} />
-                  )
-                })
-              }
-        
+            {props?.cropDetails?.images.map((img: any, index: any) => {
+              return (
+                <img
+                  src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                    img
+                  )}`}
+                  style={{
+                    marginTop: "20px",
+                    width: "200px",
+                    height: "200px",
+                    objectFit: "cover",
+                  }}
+                />
+              );
+            })}
           </div>
 
           {/* <p>
@@ -56,22 +57,31 @@ const BasalStep = (props: any) => {
               textAlign: "left",
             }}
           >
-            <p>
-              Disease Infection: <br />
-              <ul>
-              {
-                props?.cropDetails?.disease.map((disease :any, i:number)=>{
-                  return (
-                    <li>{disease}</li>
-                  )
-                })
-              }
-              </ul>
-              {
-                props.cropDetails.disease_link !=="0" &&
-                    <img src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(props?.cropDetails?.disease_link)}`} style={{ marginTop: "20px" ,width:"200px", height:"200px", objectFit:"cover" }} />
-              }
-            </p>
+            {props.cropDetails.disease !== "0" && (
+              <p>
+                Disease Infection: <br />
+                <ul>
+                  {props?.cropDetails?.disease.map(
+                    (disease: any, i: number) => {
+                      return <li>{disease}</li>;
+                    }
+                  )}
+                </ul>
+                {props.cropDetails.disease_link !== "0" && (
+                  <img
+                    src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                      props?.cropDetails?.disease_link
+                    )}`}
+                    style={{
+                      marginTop: "20px",
+                      width: "200px",
+                      height: "200px",
+                      objectFit: "cover",
+                    }}
+                  />
+                )}
+              </p>
+            )}
             {/* <img
               style={{ width: "200px", height: "200px", marginRight: "20px" }}
               src={
@@ -89,51 +99,73 @@ const BasalStep = (props: any) => {
               textAlign: "left",
             }}
           ></div>
-          <p>
-            Pest Infestation: <br />
-            {props?.cropDetails?.pest}
-          </p>
-          {
-            props.cropDetails.pest_link !=="0" &&
-                    <img src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(props?.cropDetails?.pest_link)}`} style={{ marginTop: "20px" ,width:"200px", height:"200px", objectFit:"cover" }} />
-              }
+          {props.cropDetails.pest !== "0" && (
+            <p>
+              Pest Infestation: <br />
+              {props?.cropDetails?.pest}
+            </p>
+          )}
+          {props.cropDetails.pest_link !== "0" && (
+            <img
+              src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                props?.cropDetails?.pest_link
+              )}`}
+              style={{
+                marginTop: "20px",
+                width: "200px",
+                height: "200px",
+                objectFit: "cover",
+              }}
+            />
+          )}
           <br />
           <p>
             Fertilizer: <br />
             {props?.cropDetails?.Fertilizer.Dosage}
           </p>
-           {
-                props?.cropDetails?.Fertilizer.images.map((img:any , index : any)=>{
-                  return (
-                    <img src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(img)}`} style={{ marginTop: "20px" ,width:"200px", height:"200px", objectFit:"cover" }} />
-                  )
-                })
-              }
-        
+          {props?.cropDetails?.Fertilizer.images.map((img: any, index: any) => {
+            return (
+              <img
+                src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                  img
+                )}`}
+                style={{
+                  marginTop: "20px",
+                  width: "200px",
+                  height: "200px",
+                  objectFit: "cover",
+                }}
+              />
+            );
+          })}
+
           <br />
           <p>
-              Weed: <br />
-              <ul>
-              {
-                props?.cropDetails?.weed.map((disease :any, i:number)=>{
-                  return (
-                    <li>{disease}</li>
-                  )
-                })
-              }
-              </ul>
-              {
-                props.cropDetails.weed_link !=="0" &&
-                    <img src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(props?.cropDetails?.weed_link)}`} style={{ marginTop: "20px" ,width:"200px", height:"200px", objectFit:"cover" }} />
-              }
-            </p>
-            <br/>
-            <p>
-              Intercultutal operations: <br />
-              {
-                props?.cropDetails?.interculturalOperation
-              }
-            </p>
+            Weed: <br />
+            <ul>
+              {props?.cropDetails?.weed.map((disease: any, i: number) => {
+                return <li>{disease}</li>;
+              })}
+            </ul>
+            {props.cropDetails.weed_link !== "0" && (
+              <img
+                src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                  props?.cropDetails?.weed_link
+                )}`}
+                style={{
+                  marginTop: "20px",
+                  width: "200px",
+                  height: "200px",
+                  objectFit: "cover",
+                }}
+              />
+            )}
+          </p>
+          <br />
+          <p>
+            Intercultutal operations: <br />
+            {props?.cropDetails?.interculturalOperation}
+          </p>
           {/*
           <p>
             Weed Mangement: <br />

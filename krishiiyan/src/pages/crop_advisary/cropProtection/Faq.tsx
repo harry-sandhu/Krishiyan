@@ -9,17 +9,22 @@ const Faq = (props: any) => {
   const [data, setData] = useState(props.crop.faq);
   return (
     <div>
-          {
-      data.map((faq : FaqObject, index:number) => {
+      <hr className="my-3" style={{ borderColor: "#333" }} />
+      {data.map((faq: FaqObject, index: number) => {
         return (
-          <div className="text-start" key={index}>
-            <span className="font-extrabold text-start">Q{index + 1}. {faq.question}</span>
-            <br />
-            Answer : {faq.answer}
+          <div className="text-left rounded-lg shadow-md mb-6 p-3 " key={index}>
+            <span className="font-extrabold block text-lg text-blue-600 mb-2 break-all">
+              Q{index + 1}. {faq.question}
+            </span>
+            <p className="text-gray-700 break-all">{faq.answer}</p>
           </div>
+          // <div className="text-start" key={index}>
+          //   <span className="font-extrabold text-start">Q{index + 1}. {faq.question}</span>
+          //   <br />
+          //   Answer : {faq.answer}
+          // </div>
         );
-      })
-    }
+      })}
       {/* <div className="text-start">
         <span className="font-extrabold text-start">1. {data.value1.data}</span>
         <br />

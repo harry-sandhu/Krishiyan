@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 import OTPVerification from "../farmer/OTPVerification";
 
 let check = false;
-let check1 = false;
+let check1 = true;
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ const SignupPage = () => {
 
   let email1 = "";
   const validateEmail = async (email: string) => {
-    const validDomains = ["@gmail.com", "@krishiyan.com", "info@"];
+    const validDomains = ["@gmail.com", "@krishiyan.com", "info@", "@"];
 
     for (const domain of validDomains) {
       if (email.includes(domain)) {

@@ -16,7 +16,7 @@ let check1 = false;
 const LoginPage = () => {
   let email1 = "";
   const validateEmail = (email: string) => {
-    const validDomains = ["@gmail.com", "@krishiyan.com", "info@"];
+    const validDomains = ["@gmail.com", "@krishiyan.com", "info@", "@"];
 
     for (const domain of validDomains) {
       if (email.includes(domain)) {

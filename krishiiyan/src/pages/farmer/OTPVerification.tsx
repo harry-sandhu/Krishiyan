@@ -57,7 +57,7 @@ const OTPVerification = (props: any) => {
             }}
           >
             <Typography component="h1" variant="h5" sx={{}}>
-              Farmer Mobile OTP Verification
+              OTP Verification
             </Typography>
           </Box>
         </DialogTitle>

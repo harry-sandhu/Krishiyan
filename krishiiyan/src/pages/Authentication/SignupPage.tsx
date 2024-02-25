@@ -93,7 +93,7 @@ const SignupPage = () => {
 
   const handleEmailChange = (event: any) => {
     email1 = event.target.value;
-    console.log(email1);
+    console.log("handle change email", email1);
     check1 = false;
     validateEmail(email1);
   };
@@ -115,14 +115,14 @@ const SignupPage = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const handleOtpSubmit = async (event: any) => {
-    event.preventDefault();
-
+  const handleOtpSubmit = async () => {
+    console.log("email1 send otp", email1);
     console.log(Phone);
 
-    if (email1 != null && checkemail) {
+    if (email1 != null && email1.trim() !== "" && checkemail) {
       try {
+        await validateEmail(email1);
+
         const response = await fetch(
           `${process.env.REACT_APP_BACKEND_URL}/send-otp-email`,
           {
@@ -140,7 +140,8 @@ const SignupPage = () => {
           check = true;
           console.log("check after", check);
         } else {
-          console.log("Error sending SMS: froentend from else");
+          console.log("Error sending SMS: Frontend from else");
+          console.log("Error details:", await response.json());
         }
       } catch (error) {
         console.error("Error sending SMS:", error);
@@ -205,6 +206,18 @@ const SignupPage = () => {
             />
             <TextField
               className="p-2 rounded-xl border"
+              type="tel"
+              margin="normal"
+              required
+              fullWidth
+              name="phone"
+              label="Phone Number (e.g 9835717655)"
+              id="phone"
+              autoComplete="current-phone"
+              onChange={handleMobileChange}
+            />
+            <TextField
+              className="p-2 rounded-xl border"
               type="email"
               margin="normal"
               fullWidth
@@ -215,7 +228,8 @@ const SignupPage = () => {
               autoFocus
               onChange={handleEmailChange}
               inputProps={{
-                pattern: "^(\\w+@(gmail\\.com|info|krishiyan\\.com|contact))?$",
+                pattern:
+                  "^(\\w+@(gmail\\.com|info|krishiyan|@\\.com|contact))?$",
                 title:
                   "Please enter a valid email address with domains @gmail.com, @info, or @krishiyan.com",
               }}
@@ -236,23 +250,11 @@ const SignupPage = () => {
             />
             <p className="text-sm text-gray-500">{message}</p>
 
-            <TextField
-              className="p-2 rounded-xl border"
-              type="tel"
-              margin="normal"
-              required
-              fullWidth
-              name="phone"
-              label="Phone Number (e.g 9835717655)"
-              id="phone"
-              autoComplete="current-phone"
-              onChange={handleMobileChange}
-            />
             <Button
               className="bg-[#05AB2A] rounded-xl text-white py-2 hover:scale-105 duration-300 mt-5 w-full"
               fullWidth
               variant="contained"
-              onClick={handleOtpSubmit}
+              onClick={() => handleOtpSubmit()}
             >
               Send OTP
             </Button>

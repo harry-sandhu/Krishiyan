@@ -112,11 +112,11 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
             Quality Parameters
           </h2>
           <ul className="list-decimal pl-6 text-start text-2xl">
-            <li className="mb-1 text-2xl">{`Moisture: ${popupData.moisture}`}</li>
-            <li className="mb-1 text-2xl">{`Foreign matter: ${popupData.foreignMatter}`}</li>
-            <li className="mb-1 text-2xl">{`Fibre: ${popupData.fibre}`}</li>
-            <li className="mb-1 text-2xl">{`Debris: ${popupData.debris}`}</li>
-            <li className="mb-1 text-2xl">{`Protein: ${popupData.protein}`}</li>
+            <li className="mb-1 text-2xl">{` ${popupData.moisture}`}</li>
+            <li className="mb-1 text-2xl">{` ${popupData.foreignMatter}`}</li>
+            <li className="mb-1 text-2xl">{` ${popupData.fibre}`}</li>
+            <li className="mb-1 text-2xl">{` ${popupData.debris}`}</li>
+            <li className="mb-1 text-2xl">{` ${popupData.protein}`}</li>
           </ul>
           <p className="mt-6 text-gray-800">{popupData.description}</p>
           <button

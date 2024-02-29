@@ -7,13 +7,16 @@ function CropLibraryHandler() {
   const [loading, setLoading] = useState(true);
   const fetchAdminStatus = async () => {
     try {
-      const response = await fetch(process.env.REACT_APP_BACKEND_URL + "/check-admin", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem("authToken"),
-        },
-      });
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "/check-admin",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("authToken"),
+          },
+        }
+      );
 
       if (response.status === 200) {
         const data = await response.json();
@@ -30,18 +33,16 @@ function CropLibraryHandler() {
 
   useEffect(() => {
     fetchAdminStatus();
-  }, []); 
+  }, []);
 
   return (
     <div>
       {loading ? (
         <div>Loading....</div>
+      ) : isAdmin ? (
+        <CropLibraryAdmin />
       ) : (
-        isAdmin ? (
-          <CropLibraryAdmin />
-        ) : (
-          <CropLibrary />
-        )
+        <CropLibrary />
       )}
     </div>
   );

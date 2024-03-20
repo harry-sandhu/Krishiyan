@@ -52,6 +52,7 @@ import Contact from "./pages/Contact";
 import What from "./pages/What";
 import Login from "./pages/Login";
 import NewRegestrationAdmin from "./pages/crop_advisory_admin/NewRegestrationAdmin";
+import NewRegistrationAdmin from "./pages/farmer/NewRegistrationAdmin";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -208,7 +209,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"farm_purchase"} />
                 {/* <FPurchase /> */}
-                <Premium />
+                <NewRegestrationAdmin />
               </main>
             }
           />
@@ -218,7 +219,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"cultivation"} />
                 {/* <Cultivation /> */}
-                <Premium />
+                <Cultivation />
               </main>
             }
           />

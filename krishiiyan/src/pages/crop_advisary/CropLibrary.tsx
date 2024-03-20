@@ -14,10 +14,8 @@ import Hervest from "./cropProtection/Hervest";
 import Faq from "./cropProtection/Faq";
 import { extractCodeFromDriveLink } from "../../handleImageCode";
 import Popup from "../../Components/layouts/PopUp";
-import ImagesData from "./ImagesData";
 
 import DotSpinner from "../../Components/loader";
-import { keys } from "@material-ui/core/styles/createBreakpoints";
 
 const PlantationOptions = [
   {
@@ -51,10 +49,6 @@ const CropLibrary = () => {
   const [harvest, setHarvest] = useState(false);
   const [faq, setFaq] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(true);
-  const [imagesForSelectedCrop, setImagesForSelectedCrop] = useState<string[]>(
-    []
-  );
-  const [selectedCropData, setSelectedCropData] = useState<any>(null);
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -200,22 +194,6 @@ const CropLibrary = () => {
   const onSubmit = async () => {
     const res = await getcropName(localsName, scientficCrop);
     // await getcropName();
-    const selectedCropData = ImagesData.find(
-      (cropData) => cropData.crop === localsName
-    );
-    if (selectedCropData) {
-      if (
-        selectedCropData.crop === "Maize" ||
-        "Paddy" ||
-        "Groundnut" ||
-        "Soyabean"
-      ) {
-        const imagesForSelectedCrop: string[] = selectedCropData.images;
-        setSelectedCropData(selectedCropData);
-        setImagesForSelectedCrop(imagesForSelectedCrop);
-        console.log(imagesForSelectedCrop);
-      }
-    }
   };
 
   useEffect(() => {
@@ -399,21 +377,26 @@ const CropLibrary = () => {
                           marginRight: "20px",
                         }}
                       >
-                        {imagesForSelectedCrop.map(
-                          (data: any, index: number) => {
-                            return (
-                              <figure key={index}>
-                                <img
-                                  style={{ width: 250, height: 250 }}
-                                  src={data}
-                                />
-                                <figcaption style={{ fontSize: 25 }}>
-                                  {selectedCropData.name[index]}
-                                </figcaption>
-                              </figure>
-                            );
-                          }
-                        )}
+                        {obj.stages.map((stage: any, index: any) => {
+                          return (
+                            <figure>
+                              {stage.images.map((image: any, index: any) => {
+                                return (
+                                  <img
+                                    style={{ width: 250, height: 250 }}
+                                    src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                                      image
+                                    )}`}
+                                  />
+                                  // <img src={image}/>
+                                );
+                              })}
+                              <figcaption style={{ fontSize: 25 }}>
+                                {stage.name}
+                              </figcaption>
+                            </figure>
+                          );
+                        })}
                       </div>
 
                       <div

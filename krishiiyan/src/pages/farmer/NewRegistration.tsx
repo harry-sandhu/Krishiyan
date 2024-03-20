@@ -43,6 +43,7 @@ const PlantationType = [
 ];
 
 const NewRegistration = () => {
+  const dealer_mobile = "0000000000";
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState<any>();
@@ -57,6 +58,13 @@ const NewRegistration = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [checkphone, setCheckPhone] = useState(false);
+  const [crops, setCrops] = useState<any>();
+  const [selectedCropNames, setSelectedCropNames] = useState<string[]>([]);
+  const [selectedCrops, setSelectedCrops] = useState<any[]>([]);
+
+  useEffect(() => {
+    getCrops();
+  }, []);
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -66,11 +74,31 @@ const NewRegistration = () => {
     setIsPopupOpen(false);
   };
 
+  const getCrops = async () => {
+    const [err, res] = await Api.getCrops();
+
+    if (err) {
+      toast.error(err.data, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+    if (res) {
+      setCrops(res?.data);
+    }
+  };
+
   const [loading, setLoading] = useState(false);
 
   const onChangeName = (e: any) => {
     setName(e.target.value);
   };
+  const onChangeCrops = (event: React.SyntheticEvent, value: any) => {
+    setSelectedCrops(value);
+    // Extract crop names from the selected crops and store them in an array
+    const cropNames = value.map((crop: any) => crop.cropName);
+    setSelectedCropNames(cropNames);
+  };
+
   const onChangePhone = async (e: any) => {
     const Phone = e.target.value;
     setPhoneNumber(Phone);
@@ -174,6 +202,7 @@ const NewRegistration = () => {
       totalLandArea,
       dealer_farmer_relation,
       plantation_type,
+      dealer_mobile,
     };
 
     try {
@@ -403,6 +432,29 @@ const NewRegistration = () => {
             )}
           />
         </div>
+        <div className="grid grid-cols-[25%_34%] items-center mt-6 mb-5 mobile:flex mobile:flex-col">
+          <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
+            Crops
+          </label>
+          <Autocomplete
+            multiple
+            id="crops-select"
+            options={crops || []}
+            getOptionLabel={(option) => option.cropName}
+            onChange={onChangeCrops}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Select Crops"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: "new-password",
+                }}
+              />
+            )}
+          />
+        </div>
+
         <div className="grid grid-cols-[38%_27%] w-[80%] lg:w-[88%] xl:w-[78%] 2xl:w-[65%]">
           <div className=""></div>
           <button

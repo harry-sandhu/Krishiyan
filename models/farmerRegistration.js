@@ -24,7 +24,7 @@ const registrationSchema = new mongoose.Schema({
 
   plantation_type: {
     type: String,
-    enum: ["Organic", "In Organic", "Both"],
+
     default: "NON-ORGANIC",
   },
   dealer_mobile: {

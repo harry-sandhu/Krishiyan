@@ -16,7 +16,7 @@ router.post("/register", async (req, res) => {
       dealer_farmer_relation,
       plantation_type,
       dealer_mobile,
-      crops, // Add this line to retrieve the crops array from the request body
+      crops,
     } = req.body;
 
     const registration = new Registration({
@@ -83,7 +83,7 @@ router.get("/check-farmer/:mobile", async (req, res) => {
 });
 
 // Get all farmers
-app.get("/farmers", async (req, res) => {
+router.get("/farmers", async (req, res) => {
   try {
     const farmers = await Registration.find();
     res.json(farmers);
@@ -93,7 +93,7 @@ app.get("/farmers", async (req, res) => {
 });
 
 // Get farmers by dealer mobile
-app.get("/farmers/:dealer_mobile", async (req, res) => {
+router.get("/farmers/:dealer_mobile", async (req, res) => {
   try {
     const farmers = await Registration.find({
       dealer_mobile: req.params.dealer_mobile,

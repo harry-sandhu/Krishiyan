@@ -83,7 +83,13 @@ const NewRegistration = () => {
       });
     }
     if (res) {
-      setCrops(res?.data);
+      console.log(res);
+      const cropLocalNames = res.data.map(
+        (crop: { localName: any }) => crop.localName
+      );
+      console.log(cropLocalNames);
+      setCrops(cropLocalNames);
+      console.log("crops ", crops);
     }
   };
 
@@ -191,6 +197,7 @@ const NewRegistration = () => {
     getLoc();
   }, [zip]);
   const registerfarer = async () => {
+    console.log("regisrer function neterd");
     const registrationData = {
       name,
       mobile: phoneNumber,
@@ -203,9 +210,11 @@ const NewRegistration = () => {
       dealer_farmer_relation,
       plantation_type,
       dealer_mobile,
+      crops: selectedCropNames,
     };
 
     try {
+      console.log("entered response of new registration");
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/farmers/register`,
         {
@@ -440,7 +449,7 @@ const NewRegistration = () => {
             multiple
             id="crops-select"
             options={crops || []}
-            getOptionLabel={(option) => option.cropName}
+            getOptionLabel={(option) => option}
             onChange={onChangeCrops}
             renderInput={(params) => (
               <TextField

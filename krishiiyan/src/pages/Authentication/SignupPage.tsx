@@ -183,15 +183,16 @@ const SignupPage = () => {
   };
   return (
     <section className="bg-gray-50 min-h-screen flex items-center justify-center">
-      <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+      <div className="bg-gray-100 flex flex-col md:flex-row rounded-2xl shadow-lg max-w-3xl p-5 items-center">
+        {/* Image Container for Mobile */}
+        <div className="md:hidden w-1/4">
+          <img className="rounded-lg" src="Images/logo.png" alt="Ellipse" />
+        </div>
+
+        {/* Form Container */}
         <div className="md:w-1/2 px-8 md:px-16">
           <h2 className="font-bold text-2xl text-[#002D74]">Sign Up</h2>
-
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            className="flex flex-col gap-4"
-          >
+          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
             <TextField
               className="p-2 mt-8 rounded-xl border"
               type="text"
@@ -228,10 +229,8 @@ const SignupPage = () => {
               autoFocus
               onChange={handleEmailChange}
               inputProps={{
-                pattern:
-                  "^(\\w+@(gmail\\.com|info|krishiyan|@\\.com|contact))?$",
-                title:
-                  "Please enter a valid email address with domains @gmail.com, @info, or @krishiyan.com",
+                pattern: "^(\\w+@(gmail\\.com|info|krishiyan|@\\.com|contact))?$",
+                title: "Please enter a valid email address with domains @gmail.com, @info, or @krishiyan.com",
               }}
             />
             <TextField
@@ -284,7 +283,8 @@ const SignupPage = () => {
           </form>
         </div>
 
-        <div className="md:block hidden w-1/2">
+        {/* Image Container for Desktop */}
+        <div className="hidden md:block md:w-1/2">
           <img className="rounded-2xl" src="Images/logo.png" alt="Ellipse" />
         </div>
       </div>

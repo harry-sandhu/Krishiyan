@@ -12,6 +12,8 @@ import { useNavigate } from "react-router-dom";
 import { log } from "console";
 import OTPVerification from "./OTPVerification";
 import Popup from "../../Components/layouts/PopUp";
+import './NewRegistration.css';
+import whatsappimg from '../../assets/Images/whatsapp.png'
 
 const PlantationOptions = [
   {
@@ -43,7 +45,6 @@ const PlantationType = [
 ];
 
 const NewRegistration = () => {
-  const dealer_mobile = "0000000000";
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState<any>();
@@ -58,13 +59,6 @@ const NewRegistration = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [checkphone, setCheckPhone] = useState(false);
-  const [crops, setCrops] = useState<any>();
-  const [selectedCropNames, setSelectedCropNames] = useState<string[]>([]);
-  const [selectedCrops, setSelectedCrops] = useState<any[]>([]);
-
-  useEffect(() => {
-    getCrops();
-  }, []);
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -74,37 +68,11 @@ const NewRegistration = () => {
     setIsPopupOpen(false);
   };
 
-  const getCrops = async () => {
-    const [err, res] = await Api.getCrops();
-
-    if (err) {
-      toast.error(err.data, {
-        position: toast.POSITION.TOP_RIGHT,
-      });
-    }
-    if (res) {
-      console.log(res);
-      const cropLocalNames = res.data.map(
-        (crop: { localName: any }) => crop.localName
-      );
-      console.log(cropLocalNames);
-      setCrops(cropLocalNames);
-      console.log("crops ", crops);
-    }
-  };
-
   const [loading, setLoading] = useState(false);
 
   const onChangeName = (e: any) => {
     setName(e.target.value);
   };
-  const onChangeCrops = (event: React.SyntheticEvent, value: any) => {
-    setSelectedCrops(value);
-    // Extract crop names from the selected crops and store them in an array
-    const cropNames = value.map((crop: any) => crop.cropName);
-    setSelectedCropNames(cropNames);
-  };
-
   const onChangePhone = async (e: any) => {
     const Phone = e.target.value;
     setPhoneNumber(Phone);
@@ -197,7 +165,6 @@ const NewRegistration = () => {
     getLoc();
   }, [zip]);
   const registerfarer = async () => {
-    console.log("regisrer function neterd");
     const registrationData = {
       name,
       mobile: phoneNumber,
@@ -209,12 +176,9 @@ const NewRegistration = () => {
       totalLandArea,
       dealer_farmer_relation,
       plantation_type,
-      dealer_mobile,
-      crops: selectedCropNames,
     };
 
     try {
-      console.log("entered response of new registration");
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/farmers/register`,
         {
@@ -306,181 +270,137 @@ const NewRegistration = () => {
   return (
     <div>
       <Header title="Farmer" subtitle="New Registration" />
-      <section className="mobile:pt-[42rem]">
-        <div className="grid grid-cols-[25%_34%] items-center mt-6 mb-5 mobile:flex mobile:flex-col">
-          <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-            Name
-          </label>
-          <input
-            type="text"
-            className="bg-[#F3FFF1] h-8 w-80 shadow-[4px_4px_4px_rgba(0,0,0,0.25)] rounded-md pl-3"
-            onChange={onChangeName}
-          ></input>
-        </div>
-        <div className="grid grid-cols-[50%_50%] gap-x-16 mobile:flex mobile:flex-col">
-          <div className=" grid grid-cols-[50%_34%] items-center mobile:flex mobile:flex-col">
-            <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-              Mobile Number
-            </label>
+      <div><h1 id="newfar-reg-heading">New Farmer Registration</h1></div>
+      <div className="form-container">
+        <form onSubmit={onSubmitHandler}>
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
             <input
+              id="name"
               type="text"
-              className="bg-[#F3FFF1] h-8 w-80 shadow-[4px_4px_4px_rgba(0,0,0,0.25)] rounded-md pl-3"
-              value={phoneNumber}
-              onChange={onChangePhone}
-            ></input>
-            {/* <div className="ml-50">
-            <button
-            onClick={verifyMobile}
-            type="submit"
-            className="bg-[#05AB2A] text-[#F3FFF1] w-[8vw] h-8  mt-3 shadow-[0px_4px_3px_rgba(0,0,0,0.25)] rounded text-sm font-thin"
-          >
-            Verify mobile
-          </button>
-            </div> */}
-          </div>
-          <div className="grid grid-cols-[35%_5%] justify-items-end items-center">
-            <label className="text-[#13490A] font-roboto font-extrabold text-sm mx-10 ">
-              Whatsapp
-            </label>
-            <Checkbox
-              checked={mobileIsWhatsapp}
-              onChange={onChangeIsWhatsapp}
-              inputProps={{ "aria-label": "controlled" }}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
-        </div>
-        <img src="Images/Line18.png" className="my-5" alt="line" />
-        <div className="grid grid-cols-[25%_26%] mobile:flex mobile:flex-col">
-          <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-            Address
-          </label>
-          <div>
-            <div className="w-73 mt-2">
-              <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-                Pincode
+          <div className="form-group">
+            <label htmlFor="mobileNumber">Mobile Number</label>
+            <input
+              id="mobileNumber"
+              type="text"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+            />
+          </div>
+          <div className="whatsapp-form-group">
+            <Checkbox
+              id="whatsapp"
+              checked={mobileIsWhatsapp}
+              onChange={(e) => setMobileIsWhatsapp(e.target.checked)}
+              inputProps={{ "aria-label": "controlled" }}
+            />
+            {/* <img src={whatsappimg} alt="whatsappimg" id="whatsappimg" /> */}
+            <label htmlFor="whatsapp" id="whatsapplabel">Whatsapp</label>
+          </div>
+          <div className="form-group">
+            <label htmlFor="address">Address</label>
+            <div>
+              <div className="form-group">
+                <label htmlFor="zip" id="pincode">Pincode</label>
                 <input
-                  onChange={onChangeZip}
-                  className="bg-[#F3FFF1] h-8 w-80 shadow-[4px_4px_4px_rgba(0,0,0,0.25)] rounded-md pl-3"
-                ></input>
-              </label>
-            </div>
-            <div className="flex w-73 mt-2 gap-2">
-              <Input label="State" value={state} disabled />{" "}
-              {loading ? <Loader /> : null}
-            </div>
-            <div className="flex w-73 mt-2 gap-2">
-              <Input label="City" value={city} disabled />{" "}
-              {loading ? <Loader /> : null}
-            </div>
-            <div className="w-73 mt-2">
-              <Input label="Area" onChange={onChangeStreet} />
+                  id="zip"
+                  type="text"
+                  value={zip}
+                  onChange={(e) => setZip(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="state" id="state">State</label>
+                <input
+                  id="state"
+                  type="text"
+                  value={state}
+                  disabled
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="city" id="city">City</label>
+                <input
+                  id="city"
+                  type="text"
+                  value={city}
+                  disabled
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="street" id="area">Area</label>
+                <input
+                  id="street"
+                  type="text"
+                  value={street}
+                  onChange={(e) => setStreet(e.target.value)}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="totalLandArea">Total Farm Area (Acre)</label>
+                <input
+                  id="totalLandArea"
+                  type="text"
+                  value={totalLandArea}
+                  onChange={(e) => setTotalLandArea(e.target.value)}
+                />
+              </div>
             </div>
           </div>
-        </div>
+          <div className="form-group">
+            <label htmlFor="dealerFarmerRel" className="dealerFarmer">Dealer Farmer Relationship</label>
+            <Autocomplete
+              id="dealerFarmerRel"
+              options={PlantationOption}
+              getOptionLabel={(option) => option.label}
+              renderInput={(params) => (
+                <TextField
 
-        <div className="grid grid-cols-[25%_34%] items-center mt-6 mb-5 mobile:flex mobile:flex-col">
-          <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-            Total Farm Area(Acre)
-          </label>
-          <input
-            type="text"
-            className="bg-[#F3FFF1] h-8 w-80 shadow-[4px_4px_4px_rgba(0,0,0,0.25)] rounded-md pl-3"
-            onChange={onChangeTotalLandArea}
-          ></input>
-        </div>
+                  {...params}
+                  label="Choose Dealer Farmer Relation"
+                  className="textFarmer"
+                />
+              )}
+              onChange={(event, value) => {
+                if (value) {
+                  setDealer_farmer_relation(value.label);
+                }
+              }}
+            />
 
-        <div className="grid grid-cols-[25%_34%] items-center mt-6 mb-5 mobile:flex mobile:flex-col">
-          <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-            Dealer Farmer Relationship
-          </label>
-          <Autocomplete
-            onChange={onChangeDealerFarmerRel}
-            id="plantation-select"
-            sx={{ width: 340 }}
-            options={PlantationOption}
-            autoHighlight
-            getOptionLabel={(option) => option.label}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Choose Dealer Farmer Relation"
-                inputProps={{
-                  ...params.inputProps,
-                  autoComplete: "new-password",
-                }}
-              />
-            )}
-          />
-          {/* <input
-            type="text"
-            className="bg-[#F3FFF1] h-8 w-80 shadow-[4px_4px_4px_rgba(0,0,0,0.25)] rounded-md"
-            onChange={onChangeDealerFarmerRel}
-          ></input> */}
-        </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="plantationType">Type</label>
+            <Autocomplete
+              id="plantationType"
+              options={PlantationOptions}
+              getOptionLabel={(option) => option.value}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Choose Type"
+                />
+              )}
+              onChange={(event, value) => {
+                if (value) {
+                  setPlantation_type(value.value);
+                }
+              }}
+            />
 
-        <div className="grid grid-cols-[25%_34%] items-center mt-6 mb-5 mobile:flex mobile:flex-col">
-          <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-            Type
-          </label>
-          <Autocomplete
-            onChange={onChangePlantationType}
-            id="plantation-select"
-            sx={{ width: 340 }}
-            options={PlantationOptions}
-            autoHighlight
-            getOptionLabel={(option) => option.value}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Choose Type"
-                inputProps={{
-                  ...params.inputProps,
-                  autoComplete: "new-password",
-                }}
-              />
-            )}
-          />
-        </div>
-        <div className="grid grid-cols-[25%_34%] items-center mt-6 mb-5 mobile:flex mobile:flex-col">
-          <label className="text-[#13490A] font-roboto text-center font-extrabold text-sm mx-5">
-            Crops
-          </label>
-          <Autocomplete
-            multiple
-            id="crops-select"
-            options={crops || []}
-            getOptionLabel={(option) => option}
-            onChange={onChangeCrops}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Select Crops"
-                inputProps={{
-                  ...params.inputProps,
-                  autoComplete: "new-password",
-                }}
-              />
-            )}
-          />
-        </div>
-
-        <div className="grid grid-cols-[38%_27%] w-[80%] lg:w-[88%] xl:w-[78%] 2xl:w-[65%]">
-          <div className=""></div>
-          <button
-            onClick={onSubmitHandler}
-            type="submit"
-            className="bg-[#05AB2A] text-[#F3FFF1] w-[8vw] h-8  mt-3 shadow-[0px_4px_3px_rgba(0,0,0,0.25)] rounded text-sm font-thin mobile:w-max"
-          >
-            Submit
-          </button>
-        </div>
-      </section>
-      <OTPVerification
-        open={open}
-        handleClose={handleClose}
-        Phone={phoneNumber}
-      />
-      <Popup isOpen={isPopupOpen} onClose={closePopup} />
+          </div>
+          <div className="form-group">
+            <input
+              type="submit"
+              value="Submit"
+            />
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

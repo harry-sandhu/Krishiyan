@@ -674,45 +674,40 @@ const Menu = (props: any) => {
               <ul className="text-start text-[18px] flex flex-col items-center mt-[60%]">
                 <li
                   onClick={onClickSale}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    sale === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${sale === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Sale
                 </li>
                 <li
                   onClick={onClickInventory}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    inventory === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${inventory === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   Inventory
                 </li>
                 <li
                   onClick={onClickReport}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    report === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${report === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Report
                 </li>
                 <li
                   onClick={onClickPurchase}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    purchase === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${purchase === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Product
                 </li>
                 <li
                   onClick={onClickAccounting}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    accounting === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${accounting === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   Sales Statement
                 </li>
@@ -727,47 +722,42 @@ const Menu = (props: any) => {
               <ul className="text-start text-[18px] flex flex-col items-center mt-[75%]">
                 <li
                   onClick={onClickProduction}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    production === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${production === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   Crop Library
                 </li>
                 <li
                   onClick={onClickCalendar}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    calendar === true
-                      ? "bg-[#526D4E] mix-blend-hard-light px-1"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${calendar === true
+                    ? "bg-[#526D4E] mix-blend-hard-light px-1"
+                    : ""
+                    }`}
                 >
                   Crop Calendar
                 </li>
                 <li
                   onClick={onClickHealth}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    health === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${health === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Crop Health
                 </li>
                 <li
                   onClick={onClickCalculator}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    calculator === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${calculator === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   FertiCal
                 </li>
                 <li
                   onClick={onClickMarket}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${
-                    market === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg ${market === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Mandi Prices
                 </li>
@@ -782,59 +772,53 @@ const Menu = (props: any) => {
               <ul className="text-start text-[18px] flex flex-col items-center mt-[55%]">
                 <li
                   onClick={onClickDashboard}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    dashboard === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${dashboard === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   Dashboard
                 </li>
-                <li
+                {/* <li
                   onClick={onClickFarmPurchase}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    farmPurchase === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${farmPurchase === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   Purchase
                 </li>
                 <li
                   onClick={onClickCultivation}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    cultivation === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${cultivation === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   Cultivation
                 </li>
                 <li
                   onClick={onClickCredit}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg  text-start ${
-                    credit === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg  text-start ${credit === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Credit
                 </li>
                 <li
                   onClick={onClickSupport}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    support === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${support === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Support
-                </li>
+                </li> */}
                 <li
                   onClick={onClickNewRegistration}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    newRegistration === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${newRegistration === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
-                  New Registration
+                  Farmer Registration
                 </li>
               </ul>
             </>
@@ -848,11 +832,10 @@ const Menu = (props: any) => {
               <ul className="text-start text-[18px] flex flex-col items-center mt-[55%]">
                 <li
                   onClick={onClickManageAccounting}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    newRegistration === true
-                      ? "bg-[#526D4E] mix-blend-hard-light"
-                      : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${newRegistration === true
+                    ? "bg-[#526D4E] mix-blend-hard-light"
+                    : ""
+                    }`}
                 >
                   Manage Accounting
                 </li>
@@ -868,25 +851,22 @@ const Menu = (props: any) => {
               <ul className="text-start text-[18px] flex flex-col items-center mt-[99%]">
                 <li
                   onClick={onClickProblem}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    problem === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${problem === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Problem
                 </li>
                 <li
                   onClick={onClickExpert}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    expert === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${expert === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Expert
                 </li>
                 <li
                   onClick={onClickGuide}
-                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${
-                    guide === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                  }`}
+                  className={`text-[#13490A] w-full font-semibold font-roboto text-[18px] cursor-pointer my-1 px-0.5 py-2 rounded-lg text-start ${guide === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                    }`}
                 >
                   Guide
                 </li>

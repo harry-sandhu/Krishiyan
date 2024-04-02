@@ -12,18 +12,17 @@ import { useNavigate } from "react-router-dom";
 import { log } from "console";
 import OTPVerification from "./OTPVerification";
 import Popup from "../../Components/layouts/PopUp";
-import './NewRegistration.css';
-import whatsappimg from '../../assets/Images/whatsapp.png'
+import "./NewRegistration.css";
 
 const PlantationOptions = [
   {
-    value: "ORGANIC",
+    value: "Organic",
   },
   {
     value: "In Organic",
   },
   {
-    value: "BOTH",
+    value: "Both",
   },
 ];
 const PlantationOption = [
@@ -45,6 +44,7 @@ const PlantationType = [
 ];
 
 const NewRegistration = () => {
+  const dealer_mobile = "0000000000";
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState<any>();
@@ -59,6 +59,13 @@ const NewRegistration = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(true);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [checkphone, setCheckPhone] = useState(false);
+  const [crops, setCrops] = useState<any>();
+  const [selectedCropNames, setSelectedCropNames] = useState<string[]>([]);
+  const [selectedCrops, setSelectedCrops] = useState<any[]>([]);
+
+  useEffect(() => {
+    getCrops();
+  }, []);
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -68,11 +75,37 @@ const NewRegistration = () => {
     setIsPopupOpen(false);
   };
 
+  const getCrops = async () => {
+    const [err, res] = await Api.getCrops();
+
+    if (err) {
+      toast.error(err.data, {
+        position: toast.POSITION.TOP_RIGHT,
+      });
+    }
+    if (res) {
+      console.log(res);
+      const cropLocalNames = res.data.map(
+        (crop: { localName: any }) => crop.localName
+      );
+      console.log(cropLocalNames);
+      setCrops(cropLocalNames);
+      console.log("crops ", crops);
+    }
+  };
+
   const [loading, setLoading] = useState(false);
 
   const onChangeName = (e: any) => {
     setName(e.target.value);
   };
+  const onChangeCrops = (event: React.SyntheticEvent, value: any) => {
+    setSelectedCrops(value);
+    // Extract crop names from the selected crops and store them in an array
+    const cropNames = value.map((crop: any) => crop.cropName);
+    setSelectedCropNames(cropNames);
+  };
+
   const onChangePhone = async (e: any) => {
     const Phone = e.target.value;
     setPhoneNumber(Phone);
@@ -165,6 +198,7 @@ const NewRegistration = () => {
     getLoc();
   }, [zip]);
   const registerfarer = async () => {
+    console.log("regisrer function neterd");
     const registrationData = {
       name,
       mobile: phoneNumber,
@@ -176,9 +210,12 @@ const NewRegistration = () => {
       totalLandArea,
       dealer_farmer_relation,
       plantation_type,
+      dealer_mobile,
+      crops: selectedCropNames,
     };
 
     try {
+      console.log("entered response of new registration");
       const response = await fetch(
         `${process.env.REACT_APP_BACKEND_URL}/farmers/register`,
         {
@@ -270,137 +307,131 @@ const NewRegistration = () => {
   return (
     <div>
       <Header title="Farmer" subtitle="New Registration" />
-      <div><h1 id="newfar-reg-heading">New Farmer Registration</h1></div>
-      <div className="form-container">
-        <form onSubmit={onSubmitHandler}>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
+      <h2 className="regheading">New Farmer Registration</h2>
+      <section className="form-group">
+        <div>
+          <label>Name</label>
+          <input type="text" onChange={onChangeName}></input>
+        </div>
+        <div>
+          <div>
+            <label>Mobile Number</label>
             <input
-              id="name"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+              value={phoneNumber}
+              onChange={onChangePhone}
+            ></input>
           </div>
-          <div className="form-group">
-            <label htmlFor="mobileNumber">Mobile Number</label>
-            <input
-              id="mobileNumber"
-              type="text"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-            />
-          </div>
-          <div className="whatsapp-form-group">
+          <div className="whatsappdiv">
             <Checkbox
-              id="whatsapp"
               checked={mobileIsWhatsapp}
-              onChange={(e) => setMobileIsWhatsapp(e.target.checked)}
+              onChange={onChangeIsWhatsapp}
               inputProps={{ "aria-label": "controlled" }}
             />
-            {/* <img src={whatsappimg} alt="whatsappimg" id="whatsappimg" /> */}
-            <label htmlFor="whatsapp" id="whatsapplabel">Whatsapp</label>
+            <span style={{ fontWeight: "bolder" }}>Whatsapp</span>
           </div>
-          <div className="form-group">
-            <label htmlFor="address">Address</label>
+        </div>
+        <div className="addressbar">
+          <label>Address</label>
+          <div>
             <div>
-              <div className="form-group">
-                <label htmlFor="zip" id="pincode">Pincode</label>
-                <input
-                  id="zip"
-                  type="text"
-                  value={zip}
-                  onChange={(e) => setZip(e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="state" id="state">State</label>
-                <input
-                  id="state"
-                  type="text"
-                  value={state}
-                  disabled
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="city" id="city">City</label>
-                <input
-                  id="city"
-                  type="text"
-                  value={city}
-                  disabled
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="street" id="area">Area</label>
-                <input
-                  id="street"
-                  type="text"
-                  value={street}
-                  onChange={(e) => setStreet(e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="totalLandArea">Total Farm Area (Acre)</label>
-                <input
-                  id="totalLandArea"
-                  type="text"
-                  value={totalLandArea}
-                  onChange={(e) => setTotalLandArea(e.target.value)}
-                />
-              </div>
+              <label className="pincodelabel">
+                <input onChange={onChangeZip} placeholder="Pincode"></input>
+              </label>
+            </div>
+            <div>
+              <Input label="State" value={state} disabled />{" "}
+              {loading ? <Loader /> : null}
+            </div>
+            <div>
+              <Input label="City" value={city} disabled />{" "}
+              {loading ? <Loader /> : null}
+            </div>
+            <div>
+              <Input label="Area" onChange={onChangeStreet} />
             </div>
           </div>
-          <div className="form-group">
-            <label htmlFor="dealerFarmerRel" className="dealerFarmer">Dealer Farmer Relationship</label>
-            <Autocomplete
-              id="dealerFarmerRel"
-              options={PlantationOption}
-              getOptionLabel={(option) => option.label}
-              renderInput={(params) => (
-                <TextField
+        </div>
 
-                  {...params}
-                  label="Choose Dealer Farmer Relation"
-                  className="textFarmer"
-                />
-              )}
-              onChange={(event, value) => {
-                if (value) {
-                  setDealer_farmer_relation(value.label);
-                }
-              }}
-            />
+        <div>
+          <label>Total Farm Area(Acre)</label>
+          <input type="number" onChange={onChangeTotalLandArea}></input>
+        </div>
 
-          </div>
-          <div className="form-group">
-            <label htmlFor="plantationType">Type</label>
-            <Autocomplete
-              id="plantationType"
-              options={PlantationOptions}
-              getOptionLabel={(option) => option.value}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Choose Type"
-                />
-              )}
-              onChange={(event, value) => {
-                if (value) {
-                  setPlantation_type(value.value);
-                }
-              }}
-            />
+        <div className="dealerfarmer">
+          <label className="dealerlabel">Dealer Farmer Relationship</label>
+          <Autocomplete
+            onChange={onChangeDealerFarmerRel}
+            id="plantation-select"
+            options={PlantationOption}
+            autoHighlight
+            getOptionLabel={(option) => option.label}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Choose Relationship"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: "new-password",
+                }}
+              />
+            )}
+          />
+        </div>
+        <div>
+          <label>Type</label>
+          <Autocomplete
+            onChange={onChangePlantationType}
+            id="plantation-select"
+            options={PlantationOptions}
+            autoHighlight
+            getOptionLabel={(option) => option.value}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Choose Type"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: "new-password",
+                }}
+              />
+            )}
+          />
+        </div>
+        <div>
+          <label>Crops</label>
+          <Autocomplete
+            multiple
+            id="crops-select"
+            options={crops || []}
+            getOptionLabel={(option) => option}
+            onChange={onChangeCrops}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Select Crops"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: "new-password",
+                }}
+              />
+            )}
+          />
+        </div>
 
-          </div>
-          <div className="form-group">
-            <input
-              type="submit"
-              value="Submit"
-            />
-          </div>
-        </form>
-      </div>
+        <div>
+          <div></div>
+          <button onClick={onSubmitHandler} type="submit">
+            Submit
+          </button>
+        </div>
+      </section>
+      <OTPVerification
+        open={open}
+        handleClose={handleClose}
+        Phone={phoneNumber}
+      />
+      <Popup isOpen={isPopupOpen} onClose={closePopup} />
     </div>
   );
 };

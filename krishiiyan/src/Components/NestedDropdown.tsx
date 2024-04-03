@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import CropCalendar from "../pages/crop_advisary/CropCalendar";
 import CropHealth from "../pages/farmer/CropHealth";
 import CropLibrary from "../pages/crop_advisary/CropLibrary";
+import Button from "@mui/material/Button";
+import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
+
 type NestedDropdownProps = {
   menus: Array<{ title: string; submenus: string[] }>;
 };
@@ -16,6 +19,12 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
 
   const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/home");
+    window.location.reload();
   };
 
   const handleSubmenuClick = (submenu: string) => {
@@ -98,6 +107,7 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
         navigate(`/guide`);
         break;
     }
+    // setIsOpen(false)
   };
 
   const handleButtonClick = () => {
@@ -161,6 +171,19 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
           )}
         </button>
         <img src="Images/logoname.png" alt="Ellipse" className="w-[30%]" />
+        <Button
+          variant="contained"
+          onClick={logout}
+          sx={{ backgroundColor: "#05AB2A" }}
+        >
+          <Icon
+            icon="material-symbols:logout"
+            height={30}
+            width={30}
+            // color="red"
+          />
+        </Button>
+
         {isOpen && (
           <div
             ref={(node) => (dropdownRef.current = node)}

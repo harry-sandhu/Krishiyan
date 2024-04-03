@@ -91,10 +91,10 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
     setHelp(true);
   };
   const menus = [
-    {
-      title: "Pos",
-      submenus: ["Sale", "Inventory", "Reports", "Product", "Sales Statement"],
-    },
+    // {
+    //   title: "Pos",
+    //   submenus: ["Sale", "Inventory", "Reports", "Product", "Sales Statement"],
+    // },
     {
       title: "Crop Advisory",
       submenus: [
@@ -109,21 +109,21 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
       title: "FRM",
       submenus: [
         "Dashboard",
-        "Purchase",
-        "Cultivation",
-        "Credit",
-        "support",
+        // "Purchase",
+        // "Cultivation",
+        // "Credit",
+        // "support",
         "New Registration",
       ],
     },
-    {
-      title: "Management",
-      submenus: ["Manage Accounting"],
-    },
-    {
-      title: "Help",
-      submenus: ["Problem", "Expert", "Guide"],
-    },
+    // {
+    //   title: "Management",
+    //   submenus: ["Manage Accounting"],
+    // },
+    // {
+    //   title: "Help",
+    //   submenus: ["Problem", "Expert", "Guide"],
+    // },
   ];
 
   return (

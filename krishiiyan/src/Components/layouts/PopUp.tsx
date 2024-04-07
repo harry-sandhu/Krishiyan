@@ -98,7 +98,7 @@ const Popup: React.FC<PopupProps> = ({ isOpen, onClose }) => {
             {popupData.title}
           </h2>
 
-          <ImageComponent base64ImageString={base64ImageString} />
+          <img src={"Images/Soyabean.jpg"}></img>
 
           <h4 className="text-3xl font-bold text-green-400 underline ">
             {`@${popupData.price}/- per ton`}

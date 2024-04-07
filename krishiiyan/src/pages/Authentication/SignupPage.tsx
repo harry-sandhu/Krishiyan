@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import zxcvbn from "zxcvbn";
+import Autocomplete from "@mui/material/Autocomplete";
 
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -29,6 +30,15 @@ const SignupPage = () => {
   const [message, setMessage] = useState("");
   const [checkemail, setCheckEmail] = useState(false);
   let Phone = 0;
+  const nameSuggestions = [
+    { name: "FPO/FPC (Farmer Producer Organisation/Farmer Producer Company)" },
+    { name: "PACS (Primary Agriculture Credit Society)" },
+    { name: "Co-operatives" },
+    { name: "FIG (Farmer Interest Group)" },
+    { name: "Individual Proprietors" },
+    { name: "Agri Input Dealers" },
+    { name: "Others - fill others" },
+  ];
 
   let email1 = "";
   const validateEmail = async (email: string) => {
@@ -192,18 +202,28 @@ const SignupPage = () => {
         {/* Form Container */}
         <div className="md:w-1/2 px-8 md:px-16">
           <h2 className="font-bold text-2xl text-[#002D74]">Sign Up</h2>
-          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-            <TextField
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            className="flex flex-col gap-4"
+          >
+            <Autocomplete
               className="p-2 mt-8 rounded-xl border"
-              type="text"
-              margin="normal"
-              required
-              fullWidth
-              id="name"
-              label="Name"
-              name="name"
-              autoComplete="email"
-              autoFocus
+              options={nameSuggestions}
+              getOptionLabel={(option) => option.name}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="name"
+                  label="Name"
+                  name="Name of the Organization"
+                  autoComplete="name"
+                  autoFocus
+                />
+              )}
             />
             <TextField
               className="p-2 rounded-xl border"
@@ -229,8 +249,10 @@ const SignupPage = () => {
               autoFocus
               onChange={handleEmailChange}
               inputProps={{
-                pattern: "^(\\w+@(gmail\\.com|info|krishiyan|@\\.com|contact))?$",
-                title: "Please enter a valid email address with domains @gmail.com, @info, or @krishiyan.com",
+                pattern:
+                  "^(\\w+@(gmail\\.com|info|krishiyan|@\\.com|contact))?$",
+                title:
+                  "Please enter a valid email address with domains @gmail.com, @info, or @krishiyan.com",
               }}
             />
             <TextField

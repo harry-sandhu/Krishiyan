@@ -289,9 +289,9 @@ const CropHealth = () => {
                             return (
                               <img
                                 style={{ width: 250, height: 250 }}
-                                src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                                src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                                   image
-                                )}`}
+                                )}&sz=w1000`}
                               />
                             );
                           })}

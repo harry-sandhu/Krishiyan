@@ -58,12 +58,18 @@ const PestManagement = (props: any) => {
                 <td className="border-r border-black font-thin ">
                   {/* <img src={table.Value1.images.image1} />
                   <img src={table.Value1.images.image2} /> */}
+                  {/*   <img
+                                    style={{ width: 250, height: 250 }}
+                                    src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
+                                      image
+                                    )}&sz=w1000`}
+                                  />*/}
                   {item.images.map((image: any) => {
                     return (
                       <img
-                        src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                        src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                           image
-                        )}`}
+                        )}&sz=w1000`}
                         style={{
                           marginTop: "20px",
                           width: "200px",

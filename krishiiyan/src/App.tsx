@@ -53,6 +53,10 @@ import What from "./pages/What";
 import Login from "./pages/Login";
 import NewRegestrationAdmin from "./pages/crop_advisory_admin/NewRegestrationAdmin";
 import NewRegistrationAdmin from "./pages/farmer/NewRegistrationAdmin";
+import AccountSettings from "./Components/layouts/AccountSettings";
+import Fponational from "./Components/Fponational";
+import Fporegister from "./Components/Fporegister";
+import Announcement from "./pages/Announcement";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -63,6 +67,9 @@ function App() {
   return (
     <div className="App font-roboto box-border m-0 p-0">
       <Routes>
+        <Route path="/announcement" element={<Announcement />} />
+        <Route path="/FPOnational" element={<Fponational />} />
+        <Route path="/fporegister" element={<Fporegister />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/tech" element={<OurTech />} />
@@ -293,6 +300,15 @@ function App() {
             }
           />
         </Route>
+        <Route
+          path="/account-settings"
+          element={
+            <main className="h-screen w-screen grid grid-cols-[18%_82%]">
+              <SideNav menu={""} submenu={""} />
+              <AccountSettings />
+            </main>
+          }
+        ></Route>
       </Routes>
     </div>
   );

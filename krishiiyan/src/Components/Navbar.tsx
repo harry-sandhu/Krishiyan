@@ -63,6 +63,7 @@ const Navbar: React.FC = () => {
           { path: "/tech", name: "Our Technology" },
           { path: "/blog", name: "Blog" },
           { path: "/contact", name: "Contact Us" },
+          { path: "/announcement", name: "Annoucements📢" },
           { path: "/login", name: "Login" },
         ].map((link) => (
           <Link

@@ -91,10 +91,10 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
     setHelp(true);
   };
   const menus = [
-    // {
-    //   title: "Pos",
-    //   submenus: ["Sale", "Inventory", "Reports", "Product", "Sales Statement"],
-    // },
+    {
+      title: "Pos",
+      submenus: ["Sale", "Inventory", "Reports", "Product", "Sales Statement"],
+    },
     {
       title: "Crop Advisory",
       submenus: [
@@ -116,14 +116,14 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
         "New Registration",
       ],
     },
-    // {
-    //   title: "Management",
-    //   submenus: ["Manage Accounting"],
-    // },
-    // {
-    //   title: "Help",
-    //   submenus: ["Problem", "Expert", "Guide"],
-    // },
+    {
+      title: "Management",
+      submenus: ["Manage Accounting"],
+    },
+    {
+      title: "Help",
+      submenus: ["Problem", "Expert", "Guide"],
+    },
   ];
 
   return (
@@ -151,7 +151,7 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
             className="text-start text-sm flex flex-col lg:flex-col items-start gap-y-3 lg:gap-y-0"
             style={{ width: "100%" }}
           >
-            {/* <li
+            <li
               onClick={posClick}
               className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg text-center ${
                 pos === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
@@ -159,19 +159,21 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
               style={{ width: "100%", textAlign: "start" }}
             >
               Pos
-            </li> */}
+            </li>
             <li
               onClick={cropClick}
-              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2  rounded-lg flex-col flex ${crop === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                }`}
+              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2  rounded-lg flex-col flex ${
+                crop === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+              }`}
               style={{ width: "100%", textAlign: "start" }}
             >
               Crop Advisory
             </li>
             <li
               onClick={farmClick}
-              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg ${farm === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-                }`}
+              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg ${
+                farm === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+              }`}
               style={{ width: "100%", textAlign: "start" }}
             >
               FRM

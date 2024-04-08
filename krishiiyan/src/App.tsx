@@ -90,7 +90,7 @@ function App() {
                 <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                   <SideNavHandler />
                   {/*<Sale />*/}
-                  <CropLibraryHandler />
+                  <Premium />
                 </main>
               </>
             }

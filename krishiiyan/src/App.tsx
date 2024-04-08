@@ -90,7 +90,7 @@ function App() {
                 <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                   <SideNavHandler />
                   {/*<Sale />*/}
-                  <Premium />
+                  <Sale />
                 </main>
               </>
             }
@@ -111,7 +111,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"product-batches"} />
                 {/* <ProductBatches /> */}
-                <Premium />
+                <ProductBatches />
               </main>
             }
           />
@@ -121,7 +121,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"report"} />
                 {/* <Report /> */}
-                <Premium />
+                <Report />
               </main>
             }
           />
@@ -131,7 +131,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"purchase"} />
                 {/* <Purchase /> */}
-                <Premium />
+                <Purchase />
               </main>
             }
           />
@@ -141,7 +141,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"accounting"} />
                 {/* <Accounting /> */}
-                <Premium />
+                <Accounting />
               </main>
             }
           />
@@ -187,7 +187,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"fertical"} />
                 {/* <FertiCal /> */}
-                <NewRegestrationAdmin />
+                <FertiCal />
               </main>
             }
           />

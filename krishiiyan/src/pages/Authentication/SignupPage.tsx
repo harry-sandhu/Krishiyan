@@ -37,7 +37,7 @@ const SignupPage = () => {
     { name: "FIG (Farmer Interest Group)" },
     { name: "Individual Proprietors" },
     { name: "Agri Input Dealers" },
-    { name: "Others - fill others" },
+    { name: "Others" },
   ];
 
   let email1 = "";
@@ -208,7 +208,7 @@ const SignupPage = () => {
             className="flex flex-col gap-4"
           >
             <Autocomplete
-              className="p-2 mt-8 rounded-xl border"
+              className="p-2 mt-6 rounded-xl border"
               options={nameSuggestions}
               getOptionLabel={(option) => option.name}
               renderInput={(params) => (
@@ -218,12 +218,24 @@ const SignupPage = () => {
                   required
                   fullWidth
                   id="name"
-                  label="Name"
+                  label="Type of the Organization"
                   name="Name of the Organization"
                   autoComplete="name"
                   autoFocus
                 />
               )}
+            />
+            <TextField
+              className="p-2  rounded-xl border"
+              type="text"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Name of Organization"
+              name="name"
+              autoComplete="email"
+              autoFocus
             />
             <TextField
               className="p-2 rounded-xl border"

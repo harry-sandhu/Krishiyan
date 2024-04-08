@@ -180,7 +180,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"fertical"} />
                 {/* <FertiCal /> */}
-                <Premium />
+                <NewRegestrationAdmin />
               </main>
             }
           />
@@ -199,7 +199,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"dashboard"} />
                 {/* <Dashboard /> */}
-                <Premium />
+                <Dashboard />
               </main>
             }
           />

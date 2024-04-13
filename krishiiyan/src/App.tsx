@@ -121,7 +121,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"report"} />
                 {/* <Report /> */}
-                <Report />
+                <NewRegestrationAdmin />
               </main>
             }
           />
@@ -131,7 +131,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"purchase"} />
                 {/* <Purchase /> */}
-                <Purchase />
+                <NewRegistrationAdmin />
               </main>
             }
           />

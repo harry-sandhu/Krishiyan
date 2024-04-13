@@ -305,6 +305,9 @@ const Fporegister: React.FC = () => {
       toast.success("Congrats, Registration successfull", {
         position: toast.POSITION.TOP_RIGHT,
       });
+      // Reload the current page
+      window.location.reload();
+
       console.log(response.data);
     } catch (error) {
       toast.error("Registration Failed, try again", {
@@ -454,7 +457,6 @@ const Fporegister: React.FC = () => {
                 id="annualProduction"
                 label="Annual production output (in tonnes)"
                 variant="outlined"
-                required
                 onChange={handleAnnualProductionChange}
               />
             </Grid>
@@ -464,7 +466,6 @@ const Fporegister: React.FC = () => {
                 id="annualRevenue"
                 label="Annual revenue generated (FY 2023-24 in INR)"
                 variant="outlined"
-                required
                 onChange={handleAnnualRevenueChange}
               />
             </Grid>
@@ -474,7 +475,6 @@ const Fporegister: React.FC = () => {
                 id="percentageGrowthProduction"
                 label="Percentage growth in production in Last Years"
                 variant="outlined"
-                required
                 onChange={handlePercentageGrowthProductionChange}
               />
             </Grid>
@@ -484,7 +484,6 @@ const Fporegister: React.FC = () => {
                 id="percentageGrowthRevenue"
                 label="Percentage growth in Revenue in Last Years"
                 variant="outlined"
-                required
                 onChange={handlePercentageGrowthRevenueChange}
               />
             </Grid>

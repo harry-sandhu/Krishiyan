@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import fpoimg from "../assets/Images/FPOimg.png";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Fporegister: React.FC = () => {
   const [otherReason, setOtherReason] = useState("");
@@ -251,9 +252,10 @@ const Fporegister: React.FC = () => {
     event.preventDefault(); // Prevent default form submission behavior
 
     try {
+      console.log("enterd try block");
       // Make HTTP POST request to store form data
       const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/api/store-data`,
+        `${process.env.REACT_APP_BACKEND_URL}/store-data`,
         {
           reasons,
           conferenceAttended,
@@ -299,9 +301,15 @@ const Fporegister: React.FC = () => {
           },
         }
       );
-
+      console.log("regestered");
+      toast.success("Congrats, Registration successfull", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       console.log(response.data);
     } catch (error) {
+      toast.error("Registration Failed, try again", {
+        position: toast.POSITION.TOP_RIGHT,
+      });
       console.error("Error submitting form:", error);
     }
   };
@@ -981,6 +989,7 @@ const Fporegister: React.FC = () => {
                 marginTop: "20px",
                 backgroundColor: "rgb(132 204 22)",
               }}
+              onClick={handleSubmit}
             >
               Submit
             </Button>

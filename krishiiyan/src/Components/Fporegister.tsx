@@ -214,10 +214,10 @@ const Fporegister: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const { name, checked } = event.target;
-    if (checked && Object.values(challenges).filter(Boolean).length >= 3) {
-      alert("You can select up to 3 challenges.");
-      return;
-    }
+    // if (checked && Object.values(challenges).filter(Boolean).length >= 3) {
+    //   alert("You can select up to 3 challenges.");
+    //   return;
+    // }
     setChallenges({ ...challenges, [name]: checked });
   };
 
@@ -318,8 +318,8 @@ const Fporegister: React.FC = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className="container mx-auto">
+      <div className="text-left">
         <img src="Images/logoname.png" alt="Logo" className="h-12 sm:h-16" />
         <div className="rounded-xl overflow-hidden">
           <img src={fpoimg} alt="loading..." />

@@ -11,6 +11,7 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
+  Autocomplete,
 } from "@mui/material";
 import fpoimg from "../assets/Images/FPOimg.png";
 import axios from "axios";
@@ -28,14 +29,19 @@ const Fporegister: React.FC = () => {
   });
   const [conferenceAttended, setConferenceAttended] = useState("");
   const [conferenceDetails, setConferenceDetails] = useState("");
-  const [supportNeeded, setSupportNeeded] = useState({
-    capacityBuilding: false,
-    accessToFinance: false,
-    marketLinkages: false,
-    technicalAssistance: false,
-    others: false,
-  });
-  const [othersSupport, setOthersSupport] = useState("");
+
+  const supportNeeded = [
+    "CapacityBuilding",
+    "AccessToFinance",
+    "MarketLinkages",
+    "TechnicalAssistance",
+    "Others",
+  ];
+
+  const [selectedSupport, setSelectedSupport] = useState<string[]>([]);
+  const onChangeSupport = (event: any, newValue: string[]) => {
+    setSelectedSupport(newValue);
+  };
 
   const [fullName, setFullName] = useState("");
   const [position, setPosition] = useState("");
@@ -144,39 +150,53 @@ const Fporegister: React.FC = () => {
     setPercentageGrowthRevenue(event.target.value);
   };
 
-  const [distributionChannels, setDistributionChannels] = useState({
-    localMarkets: false,
-    supermarkets: false,
-    exports: false,
-    exhibitions: false,
-    directCustomers: false,
-    amazonFlipkart: false,
-    ownWebsiteSelling: false,
-  });
+  const distributionChannels = [
+    "LocalMarkets",
+    "Supermarkets",
+    "Exports",
+    "Exhibitions",
+    "DirectCustomers",
+    "AmazonFlipkart",
+    "OwnWebsiteSelling",
+  ];
+
+  const [selectedDistribution, setSelectedDistribution] = useState<string[]>(
+    []
+  );
+
+  const onChangeDistribution = (event: any, newValues: string[]) => {
+    setSelectedDistribution(newValues);
+  };
 
   const [innovations, setInnovations] = useState("");
   const [partnerships, setPartnerships] = useState("");
   const [successStories, setSuccessStories] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
 
-  const [challenges, setChallenges] = useState({
-    weakFinancials: false,
-    lackProfessionalManagement: false,
-    inadequateAccessToCredit: false,
-    lackRiskMitigationMechanisms: false,
-    inadequateAccessToMarket: false,
-    inadequateAccessToInfrastructure: false,
-    lackTechnicalSkills: false,
-    difficultiesInMarketingProduce: false,
-    poorCapitalizationAndFundingScope: false,
-    accessToFinanceInputsAndTechnology: false,
-    increasedCompetitionFromExistingPrivateCompanies: false,
-    lackOfSelfSustainability: false,
-    lackOfAdministrativeControls: false,
-    lackOfProfessionalExpertise: false,
-    lowInvolvementOfTheMembers: false,
-    others: false,
-  });
+  const challenges = [
+    "Weak financials",
+    "Lack of professional management",
+    "Inadequate access to credit",
+    "Lack risk mitigation mechanisms",
+    "Inadequate access to market",
+    "Inadequate access to infrastructure",
+    "Lack technical skills",
+    "Difficulties in marketing produce",
+    "Poor capitalization and funding scope",
+    "Access to finance inputs and technology",
+    "Increased competition from existing private companies",
+    "Lack of self sustainability",
+    "Lack of administrative controls",
+    "Lack of professional expertise",
+    "Low involvement of the members",
+    "Others",
+  ];
+
+  const [selectedChallenges, setSelectedChallenges] = useState<string[]>([]);
+
+  const onChangeChallenges = (event: any, newValue: string[]) => {
+    setSelectedChallenges(newValue);
+  };
 
   const [othersText, setOthersText] = useState("");
 
@@ -210,103 +230,70 @@ const Fporegister: React.FC = () => {
     setConferenceDetails(event.target.value);
   };
 
-  const handleChallengeChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const { name, checked } = event.target;
-    // if (checked && Object.values(challenges).filter(Boolean).length >= 3) {
-    //   alert("You can select up to 3 challenges.");
-    //   return;
-    // }
-    setChallenges({ ...challenges, [name]: checked });
-  };
-
-  const handleOthersChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setOthersText(event.target.value); // Correctly update the new state for "Others" text input
-  };
-
-  const handleSupportChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = event.target;
-    setSupportNeeded({ ...supportNeeded, [name]: checked });
-    if (name === "others") {
-      setOthersSupport(checked ? "" : othersSupport);
-    }
-  };
-
-  const handleOthersSupportChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setOthersSupport(event.target.value);
-  };
-
-  const handleDistributionChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setDistributionChannels({
-      ...distributionChannels,
-      [event.target.name]: event.target.checked,
-    });
-  };
-
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevent default form submission behavior
 
     try {
-      console.log("enterd try block");
+      console.log("entered try block");
+
+      // Prepare the request body data based on the model
+      const formData = {
+        // Personal Information
+        fullName: fullName,
+        position: position,
+        experience: experience,
+
+        // FPO Information
+        fpoName: fpoName,
+        fpoLocation: fpoLocation,
+        state: state,
+        contactNumber: contactNumber,
+        emailAddress: emailAddress,
+        activeFarmerMembers: activeFarmerMembers,
+        primaryProducts: primaryProducts,
+        operationalDuration: operationalDuration,
+        annualProduction: annualProduction,
+        annualRevenue: annualRevenue,
+        percentageGrowthProduction: percentageGrowthProduction,
+        percentageGrowthRevenue: percentageGrowthRevenue,
+
+        // Distribution Channels
+        distributionChannels,
+
+        // FPO Needs
+        selectedSupport: supportNeeded,
+
+        // Challenges Faced
+        selectedChallenges: challenges,
+
+        // Reasons for Attending Conference
+        reasons,
+        otherReason: otherReason ? otherReason : "", // Handle empty "other" reason
+
+        // Conference Attendance
+        conferenceAttended,
+        conferenceDetails: conferenceDetails ? conferenceDetails : "", // Handle empty conference details
+
+        // Additional Information
+        innovations,
+        partnerships,
+        successStories,
+        additionalInfo,
+      };
+
       // Make HTTP POST request to store form data
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/store-data`,
-        {
-          reasons,
-          conferenceAttended,
-          conferenceDetails,
-          supportNeeded,
-          fullName,
-          position,
-          experience,
-          fpoName,
-          fpoLocation,
-          state,
-          contactNumber,
-          emailAddress,
-          activeFarmerMembers,
-          primaryProducts,
-          operationalDuration,
-          annualProduction,
-          annualRevenue,
-          percentageGrowthProduction,
-          percentageGrowthRevenue,
-          distributionChannels,
-          innovations,
-          partnerships,
-          successStories,
-          additionalInfo,
-          challenges,
-          fporegister: {
-            fullName,
-            position,
-            experience,
-            fpoName,
-            fpoLocation,
-            state,
-            contactNumber,
-            emailAddress,
-            activeFarmerMembers,
-            primaryProducts,
-            operationalDuration,
-            annualProduction,
-            annualRevenue,
-            percentageGrowthProduction,
-            percentageGrowthRevenue,
-          },
-        }
+        formData
       );
-      console.log("regestered");
-      toast.success("Congrats, Registration successfull", {
+
+      console.log("registered");
+      toast.success("Congrats, Registration successful", {
         position: toast.POSITION.TOP_RIGHT,
       });
-      // Reload the current page
-      window.location.reload();
+
+      // Reload the current page (optional)
+      // window.location.reload();
 
       console.log(response.data);
     } catch (error) {
@@ -316,7 +303,6 @@ const Fporegister: React.FC = () => {
       console.error("Error submitting form:", error);
     }
   };
-
   return (
     <div className="container mx-auto">
       <div className="text-left">
@@ -591,408 +577,137 @@ const Fporegister: React.FC = () => {
             What are the three main challenges faced by you in managing the
             FPOs?
           </Typography>
-          <div className="flex flex-col">
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.weakFinancials}
-                  onChange={handleChallengeChange}
-                  name="weakFinancials"
-                />
-              }
-              label="Weak financials"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.lackProfessionalManagement}
-                  onChange={handleChallengeChange}
-                  name="lackProfessionalManagement"
-                />
-              }
-              label="Lack of professional management"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.inadequateAccessToCredit}
-                  onChange={handleChallengeChange}
-                  name="inadequateAccessToCredit"
-                />
-              }
-              label="Inadequate access to credit"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.lackRiskMitigationMechanisms}
-                  onChange={handleChallengeChange}
-                  name="LackOfRiskMitigationMechanisms"
-                />
-              }
-              label="Lack of risk mitigation mechanisms"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.inadequateAccessToMarket}
-                  onChange={handleChallengeChange}
-                  name="InadequateAccessToMarket"
-                />
-              }
-              label="Inadequate access to market"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.inadequateAccessToInfrastructure}
-                  onChange={handleChallengeChange}
-                  name="InadequateAccessToInfrastructure"
-                />
-              }
-              label="Inadequate access to infrastructure"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.lackTechnicalSkills}
-                  onChange={handleChallengeChange}
-                  name="LackOfTechnicalSkills "
-                />
-              }
-              label="Lack of technical skills "
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.difficultiesInMarketingProduce}
-                  onChange={handleChallengeChange}
-                  name="Difficulties InMarketingProduce"
-                />
-              }
-              label="Difficulties in marketing produce"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.poorCapitalizationAndFundingScope}
-                  onChange={handleChallengeChange}
-                  name="PoorCapitalizationAndFundingScope"
-                />
-              }
-              label="Poor capitalization and funding scope"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.difficultiesInMarketingProduce}
-                  onChange={handleChallengeChange}
-                  name="Difficulties InMarketingProduce"
-                />
-              }
-              label="Difficulties in marketing produce"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.accessToFinanceInputsAndTechnology}
-                  onChange={handleChallengeChange}
-                  name="AccessToFinanceInputsAndTechnology"
-                />
-              }
-              label="Access to finance, inputs, and technology"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={
-                    challenges.increasedCompetitionFromExistingPrivateCompanies
-                  }
-                  onChange={handleChallengeChange}
-                  name="IncreasedCompetitionFromExistingPrivateCompanies"
-                />
-              }
-              label="Increased competition from existing private companies"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.lackOfSelfSustainability}
-                  onChange={handleChallengeChange}
-                  name="LackOfSelfSustainability"
-                />
-              }
-              label="Lack of self-sustainability"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.lackOfAdministrativeControls}
-                  onChange={handleChallengeChange}
-                  name="LackOfAdministrativeControls"
-                />
-              }
-              label="Lack of administrative controls"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.lackOfProfessionalExpertise}
-                  onChange={handleChallengeChange}
-                  name="LackOfProfessionalExpertise"
-                />
-              }
-              label="Lack of professional expertise"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.lowInvolvementOfTheMembers}
-                  onChange={handleChallengeChange}
-                  name="LowInvolvementOfTheMembers"
-                />
-              }
-              label="Low involvement of the members"
-            />
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={challenges.others}
-                  onChange={handleChallengeChange}
-                  name="others"
-                />
-              }
-              label="Others, Please specify:"
-            />
-            {challenges.others && (
+          <Autocomplete
+            multiple
+            id="challenges-select"
+            options={challenges}
+            getOptionLabel={(option) => option}
+            onChange={onChangeChallenges}
+            renderInput={(params) => (
               <TextField
-                fullWidth
-                value={othersText} // Use the new state for "Others" text input
-                onChange={handleOthersChange}
-                placeholder="Please specify the other challenge"
+                {...params}
+                label="Select Challenges"
+                inputProps={{
+                  ...params.inputProps,
+                  autoComplete: "new-password",
+                }}
               />
             )}
+          />
+          <Typography variant="h4" className="font-bold text-left text-xl p-5">
+            What specific support or resources do you feel your FPO needs to
+            overcome these challenges?
+          </Typography>
+          <div className="flex flex-col">
+            <Autocomplete
+              multiple
+              id="support-select"
+              options={supportNeeded}
+              getOptionLabel={(option) => option}
+              onChange={onChangeSupport}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Select Supports needed"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password",
+                  }}
+                />
+              )}
+            />
 
             <Typography
               variant="h4"
               className="font-bold text-left text-xl p-5"
             >
-              What specific support or resources do you feel your FPO needs to
-              overcome these challenges?
+              Market Reach and Distribution: Select the Types of distribution
+              channels utilized for marketing the products
             </Typography>
             <div className="flex flex-col">
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={supportNeeded.capacityBuilding}
-                    onChange={handleSupportChange}
-                    name="capacityBuilding"
+              <Autocomplete
+                multiple
+                id="distribution-select"
+                options={distributionChannels}
+                getOptionLabel={(option) => option}
+                onChange={onChangeDistribution}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Select Distribution Channels"
+                    inputProps={{
+                      ...params.inputProps,
+                      autoComplete: "new-password",
+                    }}
                   />
-                }
-                label="Capacity building"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={supportNeeded.accessToFinance}
-                    onChange={handleSupportChange}
-                    name="AccessToFinance"
-                  />
-                }
-                label="Access to finance"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={supportNeeded.marketLinkages}
-                    onChange={handleSupportChange}
-                    name="MarketLinkages"
-                  />
-                }
-                label="Market linkages"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={supportNeeded.technicalAssistance}
-                    onChange={handleSupportChange}
-                    name="TechnicalAssistance"
-                  />
-                }
-                label="Technical assistance"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={supportNeeded.others}
-                    onChange={handleSupportChange}
-                    name="others"
-                  />
-                }
-                label="Others, please specify:"
-              />
-              {supportNeeded.others && (
-                <TextField
-                  fullWidth
-                  value={othersSupport}
-                  onChange={handleOthersSupportChange}
-                  placeholder="Please specify the support needed"
-                />
-              )}
-              <Typography
-                variant="h4"
-                className="font-bold text-left text-xl p-5"
-              >
-                Market Reach and Distribution: Select the Types of distribution
-                channels utilized for marketing the products
-              </Typography>
-              <div className="flex flex-col">
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={distributionChannels.localMarkets}
-                      onChange={handleDistributionChange}
-                      name="localMarkets"
-                    />
-                  }
-                  label="Local markets"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={distributionChannels.supermarkets}
-                      onChange={handleDistributionChange}
-                      name="SuperMarkets"
-                    />
-                  }
-                  label="Supermarkets"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={distributionChannels.exports}
-                      onChange={handleDistributionChange}
-                      name="Exports"
-                    />
-                  }
-                  label="Exports"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={distributionChannels.exhibitions}
-                      onChange={handleDistributionChange}
-                      name="Exhibitions"
-                    />
-                  }
-                  label="Exhibitions"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={distributionChannels.directCustomers}
-                      onChange={handleDistributionChange}
-                      name="DirectCustomers"
-                    />
-                  }
-                  label="Direct Customers"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={distributionChannels.amazonFlipkart}
-                      onChange={handleDistributionChange}
-                      name="AmazonFlipkart"
-                    />
-                  }
-                  label="Amazon/Flipkart"
-                />
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      checked={distributionChannels.ownWebsiteSelling}
-                      onChange={handleDistributionChange}
-                      name="OwnWebsiteSelling"
-                    />
-                  }
-                  label="Own website selling"
-                />
-              </div>
-              <Typography
-                variant="h4"
-                className="font-bold text-left text-xl p-5"
-              >
-                Innovations and Initiatives: What innovative
-                practices/Developmental projects adopted by the FPO:
-              </Typography>
-              <TextField
-                fullWidth
-                multiline
-                rows={4}
-                value={innovations}
-                onChange={(event) => setInnovations(event.target.value)}
-                placeholder="Please describe the innovations and initiatives"
+                )}
               />
             </div>
             <Typography
               variant="h4"
               className="font-bold text-left text-xl p-5"
             >
-              Name any partnerships or collaborations the FPO has with
-              government agencies, NGOs, or other stakeholders:
+              Innovations and Initiatives: What innovative
+              practices/Developmental projects adopted by the FPO:
             </Typography>
             <TextField
               fullWidth
               multiline
               rows={4}
-              value={partnerships}
-              onChange={(event) => setPartnerships(event.target.value)}
-              placeholder="Please describe the partnerships or collaborations"
+              value={innovations}
+              onChange={(event) => setInnovations(event.target.value)}
+              placeholder="Please describe the innovations and initiatives"
             />
-            <Typography
-              variant="h4"
-              className="font-bold text-left text-xl p-5"
-            >
-              Describe any notable success stories or achievements of the FPO:{" "}
-            </Typography>
-            <TextField
-              fullWidth
-              multiline
-              rows={4}
-              value={successStories}
-              onChange={(event) => setSuccessStories(event.target.value)}
-              placeholder="Please describe the success stories or achievements "
-            />
-            <Typography
-              variant="h4"
-              className="font-bold text-left text-xl p-5"
-            >
-              Provide any additional information or comments or expectation in
-              the conference you deem relevant:
-            </Typography>
-            <TextField
-              fullWidth
-              multiline
-              rows={4}
-              value={additionalInfo}
-              onChange={(event) => setAdditionalInfo(event.target.value)}
-              placeholder="Please describe the Additional Information"
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              className="submit-button"
-              style={{
-                width: "20%",
-                marginTop: "20px",
-                backgroundColor: "rgb(132 204 22)",
-              }}
-              onClick={handleSubmit}
-            >
-              Submit
-            </Button>
           </div>
+          <Typography variant="h4" className="font-bold text-left text-xl p-5">
+            Name any partnerships or collaborations the FPO has with government
+            agencies, NGOs, or other stakeholders:
+          </Typography>
+          <TextField
+            fullWidth
+            multiline
+            rows={4}
+            value={partnerships}
+            onChange={(event) => setPartnerships(event.target.value)}
+            placeholder="Please describe the partnerships or collaborations"
+          />
+          <Typography variant="h4" className="font-bold text-left text-xl p-5">
+            Describe any notable success stories or achievements of the FPO:{" "}
+          </Typography>
+          <TextField
+            fullWidth
+            multiline
+            rows={4}
+            value={successStories}
+            onChange={(event) => setSuccessStories(event.target.value)}
+            placeholder="Please describe the success stories or achievements "
+          />
+          <Typography variant="h4" className="font-bold text-left text-xl p-5">
+            Provide any additional information or comments or expectation in the
+            conference you deem relevant:
+          </Typography>
+          <TextField
+            fullWidth
+            multiline
+            rows={4}
+            value={additionalInfo}
+            onChange={(event) => setAdditionalInfo(event.target.value)}
+            placeholder="Please describe the Additional Information"
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className="submit-button"
+            style={{
+              width: "20%",
+              marginTop: "20px",
+              backgroundColor: "rgb(132 204 22)",
+            }}
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
         </form>
       </Container>
     </div>

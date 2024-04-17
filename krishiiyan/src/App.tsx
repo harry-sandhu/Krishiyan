@@ -57,6 +57,8 @@ import AccountSettings from "./Components/layouts/AccountSettings";
 import Fponational from "./Components/Fponational";
 import Fporegister from "./Components/Fporegister";
 import Announcement from "./pages/Announcement";
+import Ferticalnew from "./pages/crop_advisary/Ferticalnew";
+import PageSelector from "./pages/crop_advisary/ferticalselector";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -187,7 +189,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"fertical"} />
                 {/* <FertiCal /> */}
-                <FertiCal />
+                <PageSelector />
               </main>
             }
           />

@@ -292,8 +292,8 @@ const Fporegister: React.FC = () => {
         position: toast.POSITION.TOP_RIGHT,
       });
 
-      // Reload the current page (optional)
-      // window.location.reload();
+      // Reload the current page
+      window.location.reload();
 
       console.log(response.data);
     } catch (error) {

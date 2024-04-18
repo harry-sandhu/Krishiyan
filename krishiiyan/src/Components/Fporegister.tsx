@@ -31,10 +31,10 @@ const Fporegister: React.FC = () => {
   const [conferenceDetails, setConferenceDetails] = useState("");
 
   const supportNeeded = [
-    "CapacityBuilding",
-    "AccessToFinance",
-    "MarketLinkages",
-    "TechnicalAssistance",
+    "Capacity Building",
+    "Access To Finance",
+    "Market Linkages",
+    "Technical Assistance",
     "Others",
   ];
 
@@ -151,13 +151,13 @@ const Fporegister: React.FC = () => {
   };
 
   const distributionChannels = [
-    "LocalMarkets",
-    "Supermarkets",
+    "Local markets",
+    "Super markets",
     "Exports",
     "Exhibitions",
-    "DirectCustomers",
-    "AmazonFlipkart",
-    "OwnWebsiteSelling",
+    "Direct Customers",
+    "Amazon/Flipkart",
+    "Own Website Selling",
   ];
 
   const [selectedDistribution, setSelectedDistribution] = useState<string[]>(
@@ -318,7 +318,7 @@ const Fporegister: React.FC = () => {
         <form>
           {/* Personal Information about the participant */}
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            Personal Information about the participant:
+            1.Personal Information about the participant:
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={4}>
@@ -354,7 +354,7 @@ const Fporegister: React.FC = () => {
             </Grid>
           </Grid>
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            FPO details
+            2.FPO details
           </Typography>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6} md={4}>
@@ -453,6 +453,7 @@ const Fporegister: React.FC = () => {
                 label="Annual revenue generated (FY 2023-24 in INR)"
                 variant="outlined"
                 onChange={handleAnnualRevenueChange}
+                required
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -477,7 +478,7 @@ const Fporegister: React.FC = () => {
 
           {/* Conference Participation Reasons */}
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            Reasons for Participation:
+            3.Reasons for Participation:*
           </Typography>
           <div className="text-left">
             <FormControlLabel
@@ -550,7 +551,7 @@ const Fporegister: React.FC = () => {
             )}
           </div>
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            Have you attended any conferences before?
+            4.Have you attended any conferences before?*
           </Typography>
           <FormControl component="fieldset">
             <RadioGroup
@@ -560,6 +561,7 @@ const Fporegister: React.FC = () => {
               value={conferenceAttended}
               onChange={handleConferenceAttendedChange}
               className="text-left"
+              aria-required
             >
               <FormControlLabel value="yes" control={<Radio />} label="Yes" />
               <FormControlLabel value="no" control={<Radio />} label="No" />
@@ -574,8 +576,8 @@ const Fporegister: React.FC = () => {
             />
           )}
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            What are the three main challenges faced by you in managing the
-            FPOs?
+            5.What are the three main challenges faced by you in managing the
+            FPOs?*
           </Typography>
           <Autocomplete
             multiple
@@ -583,6 +585,7 @@ const Fporegister: React.FC = () => {
             options={challenges}
             getOptionLabel={(option) => option}
             onChange={onChangeChallenges}
+            aria-required
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -595,7 +598,7 @@ const Fporegister: React.FC = () => {
             )}
           />
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            What specific support or resources do you feel your FPO needs to
+            6.What specific support or resources do you feel your FPO needs to
             overcome these challenges?
           </Typography>
           <div className="flex flex-col">
@@ -621,7 +624,7 @@ const Fporegister: React.FC = () => {
               variant="h4"
               className="font-bold text-left text-xl p-5"
             >
-              Market Reach and Distribution: Select the Types of distribution
+              7.Market Reach and Distribution: Select the Types of distribution
               channels utilized for marketing the products
             </Typography>
             <div className="flex flex-col">
@@ -647,7 +650,7 @@ const Fporegister: React.FC = () => {
               variant="h4"
               className="font-bold text-left text-xl p-5"
             >
-              Innovations and Initiatives: What innovative
+              8.Innovations and Initiatives: What innovative
               practices/Developmental projects adopted by the FPO:
             </Typography>
             <TextField
@@ -660,8 +663,8 @@ const Fporegister: React.FC = () => {
             />
           </div>
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            Name any partnerships or collaborations the FPO has with government
-            agencies, NGOs, or other stakeholders:
+            9.Name any partnerships or collaborations the FPO has with
+            government agencies, NGOs, or other stakeholders:
           </Typography>
           <TextField
             fullWidth
@@ -672,7 +675,7 @@ const Fporegister: React.FC = () => {
             placeholder="Please describe the partnerships or collaborations"
           />
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            Describe any notable success stories or achievements of the FPO:{" "}
+            10.Describe any notable success stories or achievements of the FPO:{" "}
           </Typography>
           <TextField
             fullWidth
@@ -683,8 +686,8 @@ const Fporegister: React.FC = () => {
             placeholder="Please describe the success stories or achievements "
           />
           <Typography variant="h4" className="font-bold text-left text-xl p-5">
-            Provide any additional information or comments or expectation in the
-            conference you deem relevant:
+            11.Provide any additional information or comments or expectation in
+            the conference you deem relevant:
           </Typography>
           <TextField
             fullWidth

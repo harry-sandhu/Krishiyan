@@ -51,21 +51,16 @@ function Fponational() {
             <h3>Date: 13-14 July, 2024 </h3>
             <h3 className="inline-block">Venue: Patna, Bihar</h3>
           </div>
-          <div className="bg-blue-gray-50 p-10 rounded-xl w-full md:w-30">
-            <Button
-              style={{ backgroundColor: "rgb(132 204 22)", color: "white" }}
-              onClick={handleregisterclick}
-            >
-              Click to Register
-            </Button>
-          </div>
+          {/* <div className='bg-blue-gray-50 p-10 rounded-xl w-full md:w-30'>
+                        <Button style={{ backgroundColor: "rgb(132 204 22)", color: "white" }} onClick={handleregisterclick}>Click to Register</Button>
+                    </div> */}
         </div>
 
         <div className="flex flex-col sm:flex-row xl:m-5 border-spacing-5 gap-5 ">
           <div className="w-full sm:w-1/2 bg-blue-gray-50 rounded-xl p-2">
             <h3 className="text-left text-3xl m-2">About the Conference:</h3>
             <p className="text-justify p-2">
-              <span className="ml-5">
+              <span className="">
                 Join us for an enriching and empowering experience at the Farmer
                 Producer Organization (FPO) Conference organized by Sahakar
                 Bharati. This conference aims to bring together farmers,
@@ -78,7 +73,7 @@ function Fponational() {
           <div className="w-full sm:w-1/2 bg-blue-gray-50 rounded-xl p-2">
             <h3 className="text-left text-3xl">Our Objectives:</h3>
             <p className="text-justify p-2">
-              <span className="ml-5">
+              <span className="">
                 Facilitate knowledge exchange and networking opportunities among
                 farmers and FPOs. Showcase success stories and case studies of
                 FPOs driving rural transformation. Discuss policy frameworks and
@@ -96,7 +91,7 @@ function Fponational() {
         >
           <h4 className="text-3xl font-extrabold pb-5 ">Why to Attend?</h4>
           <div className="bg-gray-400/50 rounded-xl">
-            <ul className="text-justify list-disc pl-10 pb-5 pr-5">
+            <ul className="text-justify list-disc pl-10 p-5">
               <li>
                 Gain insights into the latest trends and developments in the
                 agricultural sector.
@@ -136,9 +131,6 @@ function Fponational() {
             <li>Agricultural cooperatives and self-help groups</li>
             <li>Government representatives and policymakers</li>
             <li>Agribusinesses, NGOs, and development agencies</li>
-            <li>
-              Researchers, academics, and students passionate about agriculture
-            </li>
           </ul>
         </div>
       </div>
@@ -162,8 +154,21 @@ function Fponational() {
             <h3 className="text-xl font-bold mb-3">Contact Us</h3>
             <p className="text-justify">
               For inquiries and assistance regarding the conference, feel free
-              to reach out to us at.... We look forward to welcoming you to this
-              transformative event!
+              to reach out to us at{" "}
+              <a
+                href="tel:+91 7066744494"
+                className="hover:underline font-bold"
+              >
+                +917066744494
+              </a>{" "}
+              /{" "}
+              <a
+                href="mailto:info@krishiyan.com"
+                className="hover:underline font-bold"
+              >
+                info@krishiyan.com
+              </a>
+              . We look forward to welcoming you to this transformative event!
             </p>
           </div>
 
@@ -183,4 +188,5 @@ function Fponational() {
     </>
   );
 }
+
 export default Fponational;

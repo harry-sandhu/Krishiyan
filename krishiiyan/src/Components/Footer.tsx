@@ -66,7 +66,7 @@ const Footer = () => {
 
           <div className="flex items-center mb-4">
             <FaMapMarkerAlt className="mr-4 h-8 w-8 text-green-500" />
-            <p className="font-bold">
+            <p className="font-bold text-left mx-3">
               WetAcre Sustainable Solutions LLP, CrAdLE, Village Bhat,
               Gandhinagar, Gujarat, 382428- India
             </p>
@@ -109,7 +109,8 @@ const Footer = () => {
       {/* Copyright */}
       <hr className="my-8" />
       <div className="text-center">
-        © {new Date().getFullYear()} All rights reserved
+        © {new Date().getFullYear()} WetAcre Sustainable Solutions LLP. All
+        rights reserved
       </div>
     </footer>
   );

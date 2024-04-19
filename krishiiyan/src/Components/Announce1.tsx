@@ -1,9 +1,12 @@
-import React from "react";
+import { useEffect } from "react";
 import img from "../assets/Images/FPOimg.png";
 import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 function Announce1() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
 
   function handleclick() {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TextField,
   Checkbox,
@@ -18,6 +18,9 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Fporegister: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [otherReason, setOtherReason] = useState("");
   const [reasons, setReasons] = useState({
     insights: false,
@@ -304,7 +307,7 @@ const Fporegister: React.FC = () => {
     }
   };
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto my-page">
       <div className="text-left">
         <img src="Images/logoname.png" alt="Logo" className="h-12 sm:h-16" />
         <div className="rounded-xl overflow-hidden">

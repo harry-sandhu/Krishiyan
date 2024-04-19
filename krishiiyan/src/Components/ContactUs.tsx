@@ -26,16 +26,16 @@ const ContactUs = () => {
     <>
       <section className="flex items-center justify-between p-10 space-x-12">
         {/* ... Contact Information ... */}
-        <div className="w-1/2 space-y-6">
-          <h1 className="text-3xl font-bold">Contact Information</h1>
-
+        {/* <div className="w-1/2 space-y-16 xl:mt-[-150px]"> */}
+        {/* <h1 className="text-3xl font-bold">Contact Information</h1> */}
+        {/* 
           <div className="flex items-center space-x-4">
             <FiMail className="text-2xl" />
             <a
-              href="mailto:wetacre0@gmail.com"
-              className="hover:underline font-bold"
+              href="mailto:info@krishiyan.com"
+              className="hover:underline font-bold sm:p-2"
             >
-              wetacre0@gmail.com
+              info@krishiyan.com
             </a>
           </div>
 
@@ -60,18 +60,18 @@ const ContactUs = () => {
             </div>
           </div>
 
-          <div className="flex items-start space-x-4">
+          <div className="flex items-start space-x-4 font-bold">
             <FiMapPin className="text-2xl mt-1" />
-            <address>
+            <address className="xl:text-left">
               WetAcre Sustainable Solutions LLP CrAdLE, Entrepreneurship
               Development Institute of India, Village Bhat, via Airport Indira
               Bridge, Gandhinagar, Gujarat, 382428- India
             </address>
           </div>
-        </div>
+        </div> */}
 
         {/* Contact Form */}
-        <div className="w-1/2 space-y-6">
+        <div className="w-1/2 space-y-6 mx-auto">
           <h1 className="text-3xl font-bold">Write to Us</h1>
           <h2 className="text-xl font-medium">We'd love to hear from you!</h2>
 
@@ -111,11 +111,11 @@ const ContactUs = () => {
             onClick={handleSubmit}
             className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600"
           >
-            Send Massage
+            Send Message
           </button>
         </div>
       </section>
-      <div className="w-full h-[600px] ml-3">
+      {/* <div className="w-full h-[600px] ml-3">
         <iframe
           title="Google Map"
           width="90%"
@@ -123,7 +123,7 @@ const ContactUs = () => {
           src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d28247.726883461957!2d72.628989!3d23.114339!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfffee43459262ff%3A0x3b639b2cb36a5284!2sWetAcre%20Sustainable%20Solutions%20LLP!5e1!3m2!1sen!2sin!4v1694600354942!5m2!1sen!2sin"
           allowFullScreen
         ></iframe>
-      </div>
+      </div> */}
     </>
   );
 };

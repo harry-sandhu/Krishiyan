@@ -7,6 +7,7 @@ import TechCard2 from "../Components/TechCard2";
 import TechCard3 from "../Components/TechCard3";
 import Footer from "../Components/Footer";
 import Preloader from "../Components/Preloader";
+import TechCard4 from "../Components/TechCard4";
 
 const OurTech = () => {
   return (
@@ -16,6 +17,7 @@ const OurTech = () => {
       <TechBanner />
 
       <TechCard2 />
+      {/* <TechCard4 /> */}
       <TechCard3 />
       <TechCard1 />
       <TechCard />

@@ -28,9 +28,8 @@ const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className={`flex flex-col md:flex-row items-center justify-between p-4 md:p-10 bg-[#3ac13a85] ${
-        isVisible ? "fade-in" : ""
-      }`}
+      className={`flex flex-col md:flex-row items-center justify-between p-4 md:p-10 bg-[#3ac13a85] ${isVisible ? "fade-in" : ""
+        }`}
     >
       <div className="mb-4 md:mb-0 md:w-1/2 text-center">
         <h1 className="text-2xl md:text-[2.5rem] font-bold mb-2">

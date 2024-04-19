@@ -5,6 +5,7 @@ import What1 from "../Components/What1";
 import Footer from "../Components/Footer";
 import What2 from "../Components/What2";
 import Hero3 from "../Components/Hero3";
+import What0 from "../Components/What0";
 
 const What = () => {
   return (
@@ -12,6 +13,7 @@ const What = () => {
       <Preloader />
       <Navbar />
       <What1 />
+      <What0 />
       <What2 />
       <Hero3 />
       <Footer />

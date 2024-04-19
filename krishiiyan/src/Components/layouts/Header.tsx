@@ -13,6 +13,9 @@ const Header = (props: any) => {
     localStorage.getItem("isPopupOpen") === "true"
   );
   const [popupData, setPopupData] = useState<any>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  let DealerName = localStorage.getItem("dealerName");
 
   const hasPopupBeenShown = () => {
     return localStorage.getItem("popupShown") === "true";
@@ -22,7 +25,6 @@ const Header = (props: any) => {
     return localStorage.getItem("buttonClicked") === "true";
   };
 
-  // Function to set the popup as shown in local storage
   const setPopupShown = () => {
     localStorage.setItem("popupShown", "true");
   };
@@ -34,6 +36,7 @@ const Header = (props: any) => {
   const resetButtonClickedOnUnload = () => {
     localStorage.setItem("buttonClicked", "false");
   };
+
   const resetPopupShownOnUnload = () => {
     localStorage.setItem("popupShown", "false");
   };
@@ -47,10 +50,9 @@ const Header = (props: any) => {
 
   const closePopup = () => {
     setIsPopupOpen(false);
-    resetButtonClickedOnUnload(); // Set the popup as shown in local storage when closed
+    resetButtonClickedOnUnload();
   };
-  const navigate = useNavigate();
-  let DealerName = localStorage.getItem("dealerName");
+
   const logout = () => {
     localStorage.removeItem("authToken");
     navigate("/home");
@@ -62,58 +64,41 @@ const Header = (props: any) => {
   );
 
   const handleLanguageChange = (language: string) => {
-    console.log(language);
     localStorage.setItem("selectedLanguage", language);
-    console.log(
-      "heacder laocl thing",
-      localStorage.getItem("selectedLanguage")
-    );
-
-    // Handle language change logic here
     setSelectedLanguage(language);
   };
 
   useEffect(() => {
-    // Check if the popup has been shown before
     if (!hasPopupBeenShown() || hasButtonBeenClicked()) {
-      // If not shown, fetch popup data and set the state to show the popup
       axios
         .get(`${process.env.REACT_APP_BACKEND_URL}/popups`)
         .then((response) => {
           if (response.data.success) {
             setPopupData(response.data.popups[0]);
             setIsPopupOpen(true);
-            console.log("data is coming of pop up in header");
-          } else {
-            console.log("Error while loading popup data");
           }
         });
     }
   }, []);
 
   useEffect(() => {
-    // Check if the Google Translate script has already been loaded
     if (!document.getElementById("google-translate-script")) {
-      // Load the Google Translate script dynamically
       const script = document.createElement("script");
       script.src =
         "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       script.async = true;
-      script.id = "google-translate-script"; // Set a unique ID for the script
+      script.id = "google-translate-script";
       document.head.appendChild(script);
 
-      // Cleanup script on component unmount
       return () => {
         document.head.removeChild(script);
       };
     }
   }, []);
 
-  // Function to initialize Google Translate element
   function googleTranslateElementInit() {
-    // Explicitly define the 'google' property on the window object
     interface WindowWithGoogle extends Window {
-      google: any; // Adjust the type as needed
+      google: any;
     }
 
     const windowWithGoogle = window as unknown as WindowWithGoogle;
@@ -122,15 +107,24 @@ const Header = (props: any) => {
       {
         pageLanguage: "en",
         includedLanguages:
-          "en,as,ar,bn,bho,	zh-CN,zh-TW,doi,fr,de,gu,hi,ja,kn,ml,mr,ne,or,pa,ru,sa,sd,si,es,ta,te,ur",
+          "en,as,ar,bn,bho,zh-CN,zh-TW,doi,fr,de,gu,hi,ja,kn,ml,mr,ne,or,pa,ru,sa,sd,si,es,ta,te,ur",
       },
       "google_translate_element"
     );
   }
 
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  const navigateToAccountSettings = () => {
+    navigate("/account-settings");
+    setDropdownOpen(false);
+  };
+
   return (
     <header className="bg-[#F3FFF1] invisible md:visible w-full xl:h-[14vh] flex flex-col justify-between xl:flex-row items-center rounded-2xl shadow-md mobile:w-[65vw] mobile:absolute mobile:right-0 ">
-      <div className="text-[#13490A] ml-[30px]  text-start font-roboto font-black text-lg xl:text-base leading-7 mt-4 p-2">
+      <div className="text-[#13490A] ml-[30px] text-start font-roboto font-black text-lg xl:text-base leading-7 mt-4 p-2">
         <h1>{props?.title}</h1>
         <h1>{props?.subtitle}</h1>
       </div>
@@ -139,48 +133,53 @@ const Header = (props: any) => {
       </div>
       <div id="google_translate_element"></div>
       <div className="flex items-center justify-center xl:justify-end font-roboto p-2">
-        <div className="flex items-center gap-3  mobile:flex-col">
+        <div className="relative"> {/* Wrapper for avatar and dropdown */}
           <Avatar
             alt="Remy Sharp"
             src="Images\farmer.jpeg"
             sx={{ width: 56, height: 56 }}
+            onClick={toggleDropdown}
           />
-          <div className="text-[#000000] font-normal text-xs xl:text-sm">
-            {DealerName}
-          </div>
-          <Button
-            variant="contained"
-            onClick={logout}
-            sx={{ backgroundColor: "#05AB2A" }}
-          >
-            <Icon
-              icon="material-symbols:logout"
-              height={30}
-              width={30}
-              // color="red"
-            />
-          </Button>
-          <button
-            className="mt-4 px-4 py-2  border-4 border-blue-600  hover:border-blue-400 bg-blue-600  rounded hover:bg-blue-200 animate-bounce"
-            onClick={openPopup}
-          >
-            <div className="flex flex-row">
-              <img
-                src={
-                  popupData?.image
-                    ? `https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
-                        popupData.image
-                      )}`
-                    : "Images/Chat.png"
-                }
-                alt="WhatsApp"
-                className="w-8 h-8 "
-              />
-              <p className="text-white text-2xl text-bold"> Today's Deal</p>
+          {dropdownOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md">
+              <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                <button
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem"
+                  onClick={navigateToAccountSettings}
+                >
+                  Account Settings
+                </button>
+                <button
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+              </div>
             </div>
-          </button>
+          )}
         </div>
-        <Popup isOpen={isPopupOpen} onClose={closePopup} />
+        <button
+          className="mt-4 px-4 py-2 border-4 border-blue-600 hover:border-blue-400 bg-blue-600 rounded hover:bg-blue-200 animate-bounce"
+          onClick={openPopup}
+        >
+          <div className="flex flex-row">
+            <img
+              src={
+                popupData?.image
+                  ? `https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                    popupData.image
+                  )}`
+                  : "Images/Chat.png"
+              }
+              alt="WhatsApp"
+              className="w-8 h-8 "
+            />
+            <p className="text-white text-2xl text-bold"> Today's Deal</p>
+          </div>
+        </button>
       </div>
     </header>
   );

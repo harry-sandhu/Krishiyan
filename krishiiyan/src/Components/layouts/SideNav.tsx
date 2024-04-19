@@ -109,10 +109,10 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
       title: "FRM",
       submenus: [
         "Dashboard",
-        "Purchase",
-        "Cultivation",
-        "Credit",
-        "support",
+        // "Purchase",
+        // "Cultivation",
+        // "Credit",
+        // "support",
         "New Registration",
       ],
     },
@@ -151,15 +151,14 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
             className="text-start text-sm flex flex-col lg:flex-col items-start gap-y-3 lg:gap-y-0"
             style={{ width: "100%" }}
           >
-            {/* <li
+            <li
               onClick={posClick}
-              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg text-center ${
-                pos === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
-              }`}
+              className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg text-center ${pos === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
+                }`}
               style={{ width: "100%", textAlign: "start" }}
             >
               Pos
-            </li> */}
+            </li>
             <li
               onClick={cropClick}
               className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2  rounded-lg flex-col flex ${crop === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
@@ -176,7 +175,7 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
             >
               FRM
             </li>
-            {/* <li
+            <li
               onClick={manageClick}
               className={`text-[#13490A] font-semibold font-roboto text-[16px] cursor-pointer px-4 py-2 rounded-lg ${manage === true ? "bg-[#526D4E] mix-blend-hard-light" : ""
                 }`}
@@ -191,7 +190,7 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
               style={{ width: "100%", textAlign: "start" }}
             >
               Help
-            </li> */}
+            </li>
           </ul>
         </nav>
         <Menu

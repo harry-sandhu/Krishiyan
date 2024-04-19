@@ -1,0 +1,58 @@
+.account-settings-component * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.account-settings-component .accountsetting {
+    border: 2px solid #05AB2A;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #F3FFF1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account-settings-component .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.account-settings-component #nameoforgan,
+.account-settings-component input[type="text"],
+.account-settings-component input[type="number"],
+.account-settings-component input[type="email"],
+.account-settings-component select,
+.account-settings-component textarea {
+    border: 0.5px solid lightgrey;
+    padding: 5px;
+    flex-grow: 1;
+    background-color: #fff;
+}
+
+.account-settings-component button[type="submit"],
+.account-settings-component button[type="button"] {
+    background-color: #05AB2A;
+    color: #F3FFF1;
+    cursor: pointer;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+}
+
+.account-settings-component button[type="submit"]:hover,
+.account-settings-component button[type="button"]:hover {
+    background-color: #04801e;
+}
+
+.account-settings-component .profile-pic-update {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}

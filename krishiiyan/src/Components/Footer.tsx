@@ -11,7 +11,7 @@ const Footer = () => {
           <img
             src="Images/logoname.png"
             alt="Company Logo"
-            className="w-[150px] sm:w-[200px] h-[62px] sm:h-[82px] mb-4"
+            className="w-[150px] sm:w-[200px] h-[62px] sm:h-[82px] mb-4 mt-[-20px] mx-10"
           />
           <p className="mb-4">WetAcre Sustainable Solutions</p>
           <a
@@ -24,8 +24,8 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold mb-8 ">Quick Links</h2>
-          <ul className="space-y-4 text-lg">
+          <h2 className="text-xl sm:text-2xl font-bold mb-8 mr-7">Quick Links</h2>
+          <ul className="space-y-4 text-lg text-left mx-20">
             <li>
               <Link to="/" className="hover:underline">
                 Home
@@ -62,11 +62,11 @@ const Footer = () => {
         {/* Get in Touch */}
 
         <div>
-          <h2 className="text-xl sm:text-2xl font-bold mb-8">Get in Touch</h2>
+          <h2 className="text-xl sm:text-2xl font-bold mb-8 mr-24">Get in Touch</h2>
 
           <div className="flex items-center mb-4">
             <FaMapMarkerAlt className="mr-4 h-8 w-8 text-green-500" />
-            <p className="font-bold">
+            <p className="font-bold text-left mx-3">
               WetAcre Sustainable Solutions LLP, CrAdLE, Village Bhat,
               Gandhinagar, Gujarat, 382428- India
             </p>
@@ -81,19 +81,20 @@ const Footer = () => {
               info@krishiyan.com
             </a>
           </div>
+
           <div className="flex items-center ">
             <FaPhone className="mr-4 h-6 w-6 text-green-500" />
-            <a
-              href="tel:+91 8055850995"
-              className="hover:underline mb-4 font-bold"
-            >
-              Call : +91 80558 50995
+            <a href="tel:+91 7066744494" className="hover:underline mb-4 font-bold">
+              Call : +91 70667 44494
             </a>
           </div>
           <div className="flex items-center ">
             <FaPhone className="mr-4 h-6 w-6 text-green-500" />
-            <a href="tel:+91 7066744494" className="hover:underline font-bold">
-              Call : +91 70667 44494
+            <a
+              href="tel:+91 8055850995"
+              className="hover:underline  font-bold"
+            >
+              Call : +91 80558 50995
             </a>
           </div>
         </div>
@@ -109,7 +110,7 @@ const Footer = () => {
       {/* Copyright */}
       <hr className="my-8" />
       <div className="text-center">
-        © {new Date().getFullYear()} All rights reserved
+        © {new Date().getFullYear()} WetAcre Sustainable Solutions LLP. All rights reserved
       </div>
     </footer>
   );

@@ -18,7 +18,7 @@ const TechCard3 = () => {
             <img src="Images/our-technology.png" alt="Background" className="absolute inset-0 w-full h-full object-cover opacity-50" />
             <div className="text-center pt-12 pb-12">
                 <div className="container mx-auto">
-                    <span className="text-4xl font-semibold mb-4 font-bold">KrishiYan Features</span>
+                    <span className="text-4xl font-semibold mb-4">Additional Features for Additional Benefits</span>
                     <div className="flex items-center py-2.5">
                         <div className="md:w-full bg-black bg-opacity-100 rounded-lg p-6">
                             <ul className="text-left text-white pl-4">

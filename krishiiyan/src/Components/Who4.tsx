@@ -27,7 +27,7 @@ const Who4 = () => {
                     <div key={idx} className="relative p-8 border rounded-lg hover:shadow-lg transition-all duration-300">
                         <span className="absolute top-[10%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[6rem] font-bold text-gray-600 opacity-30">{item.number}</span>
                         <img src={item.icon} alt={`Icon ${idx + 1}`} className="w-20 h-20 object-cover rounded mx-auto" />
-                        
+
                         <p className="mt-4 font-semibold">{item.description1}</p>
                         <p>{item.description2}</p>
                     </div>

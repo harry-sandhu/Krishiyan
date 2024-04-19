@@ -1,11 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import CropCalendar from "../pages/crop_advisary/CropCalendar";
 import CropHealth from "../pages/farmer/CropHealth";
 import CropLibrary from "../pages/crop_advisary/CropLibrary";
+import Button from "@mui/material/Button";
+import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
+import { log } from "console";
+
 type NestedDropdownProps = {
   menus: Array<{ title: string; submenus: string[] }>;
 };
+
+
 
 const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +22,12 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
 
   const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/home");
+    window.location.reload();
   };
 
   const handleSubmenuClick = (submenu: string) => {
@@ -98,6 +110,7 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
         navigate(`/guide`);
         break;
     }
+    setIsOpen(false)
   };
 
   const handleButtonClick = () => {
@@ -113,12 +126,15 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
     }
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, []);
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleOutsideClick);
+  //   if (isOpen == true) {
+  //     document.removeEventListener("mousedown", handleOutsideClick);
+  //   }
+  // }, [isOpen]);
+
+  console.log(isOpen);
+
 
   return (
     <div className="relative ">
@@ -149,7 +165,7 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
               stroke="currentColor"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(true)}
             >
               <path
                 strokeLinecap="round"
@@ -161,10 +177,23 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
           )}
         </button>
         <img src="Images/logoname.png" alt="Ellipse" className="w-[30%]" />
+        <Button
+          variant="contained"
+          onClick={logout}
+          sx={{ backgroundColor: "#05AB2A" }}
+        >
+          <Icon
+            icon="material-symbols:logout"
+            height={30}
+            width={30}
+          // color="red"
+          />
+        </Button>
+
         {isOpen && (
           <div
             ref={(node) => (dropdownRef.current = node)}
-            className="absolute mt-2 left-0 bg-white border border-gray-300 rounded-lg shadow-md z-10 w-[100vw]"
+            className="absolute mt-2 left-0 bg-white border border-gray-300 rounded-lg shadow-md w-[100vw]"
             style={{ marginTop: "55px" }}
           >
             <div className="p-4">
@@ -173,11 +202,10 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
                   <li
                     key={index}
                     onClick={() => handleMenuClick(menu.title)}
-                    className={`cursor-pointer ${
-                      selectedMenu === menu.title
-                        ? "text-[#311a8f] mix-blend-hard-light underline border-black"
-                        : "text-[#13490A]"
-                    } mt-3 font-bold`}
+                    className={`cursor-pointer ${selectedMenu === menu.title
+                      ? "text-[#311a8f] mix-blend-hard-light  underline border-black"
+                      : "text-[#13490A]"
+                      } mt-3 font-bold`}
                   >
                     {menu.title}
                   </li>
@@ -192,11 +220,10 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
                       <li
                         key={index}
                         onClick={() => handleSubmenuClick(submenu)}
-                        className={`cursor-pointer ${
-                          selectedSubmenu === submenu
-                            ? "text-[#526D4E] mix-blend-hard-light"
-                            : "text-[#13490A]"
-                        } text-start`}
+                        className={`cursor-pointer ${selectedSubmenu === submenu
+                          ? "text-[#526D4E]  mix-blend-hard-light"
+                          : "text-[#13490A]"
+                          } text-start`}
                       >
                         {submenu}
                       </li>

@@ -52,7 +52,7 @@ function AdminPanel() {
               <>
                 <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                   <SideNav menu={"pos"} submenu={"sale"} />
-                  <Sale />
+                  {/* <Sale /> */}
                 </main>
               </>
             }

@@ -384,11 +384,14 @@ const CropLibrary = () => {
                                 return (
                                   <img
                                     style={{ width: 250, height: 250 }}
-                                    src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                                    src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                                       image
-                                    )}`}
+                                    )}&sz=w1000`}
                                   />
-                                  // <img src={image}/>
+                                  //   <img src="https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
+                                  //    image
+                                  //  )}&sz=w1000" alt="None"/>
+                                  //https://drive.google.com/thumbnail?id=1ChoFOHFT5sVm3-73HwyEZaEGHm59FK3p&sz=w1000
                                 );
                               })}
                               <figcaption style={{ fontSize: 25 }}>

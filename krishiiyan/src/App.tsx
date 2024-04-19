@@ -53,10 +53,10 @@ import What from "./pages/What";
 import Login from "./pages/Login";
 import NewRegestrationAdmin from "./pages/crop_advisory_admin/NewRegestrationAdmin";
 import NewRegistrationAdmin from "./pages/farmer/NewRegistrationAdmin";
-import AccountSettings from "./Components/layouts/AccountSettings";
 import Announcement from "./pages/Announcement";
 import Fponational from "./Components/Fponational";
 import Fporegister from "./Components/Fporegister";
+import PageSelector from "./pages/crop_advisary/ferticalselector";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -67,6 +67,9 @@ function App() {
   return (
     <div className="App font-roboto box-border m-0 p-0">
       <Routes>
+        <Route path="/announcement" element={<Announcement />} />
+        <Route path="/FPOnational" element={<Fponational />} />
+        <Route path="/fporegister" element={<Fporegister />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/tech" element={<OurTech />} />
@@ -89,7 +92,7 @@ function App() {
                 <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                   <SideNavHandler />
                   {/*<Sale />*/}
-                  <CropLibraryHandler />
+                  <Sale />
                 </main>
               </>
             }
@@ -110,7 +113,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"product-batches"} />
                 {/* <ProductBatches /> */}
-                <Premium />
+                <ProductBatches />
               </main>
             }
           />
@@ -120,7 +123,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"report"} />
                 {/* <Report /> */}
-                <Premium />
+                <NewRegestrationAdmin />
               </main>
             }
           />
@@ -130,7 +133,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"purchase"} />
                 {/* <Purchase /> */}
-                <Premium />
+                <NewRegistrationAdmin />
               </main>
             }
           />
@@ -140,7 +143,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"accounting"} />
                 {/* <Accounting /> */}
-                <Premium />
+                <Accounting />
               </main>
             }
           />
@@ -186,7 +189,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"fertical"} />
                 {/* <FertiCal /> */}
-                <Premium />
+                <PageSelector />
               </main>
             }
           />
@@ -205,7 +208,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"dashboard"} />
                 {/* <Dashboard /> */}
-                <Premium />
+                <Dashboard />
               </main>
             }
           />
@@ -298,15 +301,6 @@ function App() {
               </main>
             }
           />
-        </Route>
-        <Route
-          path="/account-settings"
-          element={
-            <main className="h-screen w-screen grid grid-cols-[18%_82%]">
-              <SideNav menu={""} submenu={""} />
-              <AccountSettings />
-            </main>
-          }>
         </Route>
       </Routes>
     </div>

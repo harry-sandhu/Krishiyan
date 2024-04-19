@@ -31,9 +31,9 @@ const Hervest = (props: any) => {
                 data.images.map((image: any, index: any) => {
                   return (
                     <img
-                      src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                      src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                         image
-                      )}`}
+                      )}&sz=w1000`}
                       style={{
                         marginTop: "20px",
                         width: "200px",

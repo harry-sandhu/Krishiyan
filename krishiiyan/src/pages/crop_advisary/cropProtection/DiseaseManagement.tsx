@@ -64,9 +64,9 @@ const DiseaseManagement = (props: any) => {
                     item.images.map((image: any) => {
                       return (
                         <img
-                          src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                          src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                             image
-                          )}`}
+                          )}&sz=w1000`}
                           style={{
                             marginTop: "20px",
                             width: "200px",

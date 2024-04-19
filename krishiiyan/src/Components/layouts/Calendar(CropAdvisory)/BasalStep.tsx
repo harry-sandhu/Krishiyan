@@ -29,9 +29,9 @@ const BasalStep = (props: any) => {
             {props?.cropDetails?.images.map((img: any, index: any) => {
               return (
                 <img
-                  src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                  src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                     img
-                  )}`}
+                  )}&sz=w1000`}
                   style={{
                     marginTop: "20px",
                     width: "200px",
@@ -69,9 +69,9 @@ const BasalStep = (props: any) => {
                 </ul>
                 {props.cropDetails.disease_link !== "0" && (
                   <img
-                    src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                    src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                       props?.cropDetails?.disease_link
-                    )}`}
+                    )}sz=w1000`}
                     style={{
                       marginTop: "20px",
                       width: "200px",
@@ -107,9 +107,9 @@ const BasalStep = (props: any) => {
           )}
           {props.cropDetails.pest_link !== "0" && (
             <img
-              src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+              src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                 props?.cropDetails?.pest_link
-              )}`}
+              )}sz=w1000`}
               style={{
                 marginTop: "20px",
                 width: "200px",
@@ -126,9 +126,9 @@ const BasalStep = (props: any) => {
           {props?.cropDetails?.Fertilizer.images.map((img: any, index: any) => {
             return (
               <img
-                src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                   img
-                )}`}
+                )}sz=w1000`}
                 style={{
                   marginTop: "20px",
                   width: "200px",
@@ -149,9 +149,9 @@ const BasalStep = (props: any) => {
             </ul>
             {props.cropDetails.weed_link !== "0" && (
               <img
-                src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                   props?.cropDetails?.weed_link
-                )}`}
+                )}sz=w1000`}
                 style={{
                   marginTop: "20px",
                   width: "200px",

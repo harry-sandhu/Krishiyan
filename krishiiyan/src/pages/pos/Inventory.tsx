@@ -76,9 +76,6 @@ let headers = [
   { label: "Email", key: "email" },
 ];
 
-
-
-
 const Inventory = () => {
   const navigate = useNavigate();
   const [productTemplate, setProductTemplate] = useState<any>();
@@ -92,7 +89,6 @@ const Inventory = () => {
 
   const fileName = "Krishiyan-Product-Template(Admin)";
   let excelData = productTemplate?.ProductTemplate!;
-
 
   //Add bulk product model
   const [open, setOpen] = useState(false);
@@ -349,9 +345,10 @@ const Inventory = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {dataFiltered?.length > 0 &&
+                  {dataFiltered &&
+                    dataFiltered?.length > 0 &&
                     dataFiltered
-                      .filter((obj: any) => obj.category === selectedProduct)
+                      // .filter((obj: any) => obj.category === selectedProduct)
                       .map((row: any) => (
                         <TableRow
                           key={row._id}

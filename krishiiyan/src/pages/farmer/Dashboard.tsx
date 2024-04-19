@@ -5,7 +5,7 @@ import moment from "moment";
 import { toast } from "react-toastify";
 import Loader from "../../Components/themes/Loader";
 import { Box } from "@mui/material";
-
+import axios from "axios";
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -18,6 +18,67 @@ const Dashboard = () => {
   const [tableSize, setTableSize] = useState(5);
 
   const [farmerOrders, setFarmerOrders] = useState<any>();
+
+  const [phoneNumbers, setPhoneNumbers] = useState([]);
+  const [selectedPhoneNumber, setSelectedPhoneNumber] = useState(null);
+  const [details, setDetails] = useState<{
+    name: string;
+    mobile: string;
+    state: string;
+    city: string;
+    zip: string;
+    id: string;
+    street: string;
+    mobileIsWhatsapp: string;
+    totalLandArea: string;
+    dealer_farmer_relation: string;
+    plantation_type: string;
+  }>({
+    name: "",
+    mobile: "",
+    state: "",
+    city: "",
+    zip: "",
+    id: "",
+    street: "",
+    mobileIsWhatsapp: "",
+    totalLandArea: "",
+    dealer_farmer_relation: "",
+    plantation_type: "",
+  });
+  const [phone, setPhone] = useState([]);
+
+  useEffect(() => {
+    // Fetch phone numbers
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/farmers/phone-numbers`)
+      .then((response) => {
+        const mobiles = response.data;
+
+        const phoneNumbersArray = mobiles.map(
+          (phoneNumber: { mobile: any }) => phoneNumber.mobile
+        );
+        setPhone(phoneNumbersArray);
+        console.log("Phone numbers: got phone numbers array", mobiles);
+      });
+  }, []);
+
+  const handlePhoneNumberChange = (e: { target: { value: any } }) => {
+    const phoneNumber = e.target.value;
+    setSelectedPhoneNumber(phoneNumber);
+    // Fetch details for the selected phone number
+    axios
+      .get(
+        `${process.env.REACT_APP_BACKEND_URL}/farmers/phoneNumbers/${phoneNumber}`
+      )
+      .then((response) => {
+        setDetails(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching details:", error);
+        console.log("Error fetching details in the front end:", error);
+      });
+  };
 
   const onChangeInput = (e: any) => {
     setFarmerID(e.target.value);
@@ -123,10 +184,8 @@ const Dashboard = () => {
               Farmer Mobile Number
             </label>
             <input
-              onChange={onChangeInput}
-              // value={farmerID}
-              type="text"
-              value={farmerID}
+              onChange={handlePhoneNumberChange}
+              value={selectedPhoneNumber || ""}
               className="bg-[#F3FFF1] h-8 lg:w-[86%] xl:w-[90%] lg:ml-2 xl:ml-[1%] shadow-[4px_4px_4px_rgba(0,0,0,0.25)] rounded-md pr-3 pl-3"
             />
             {loading ? (
@@ -310,8 +369,6 @@ const Dashboard = () => {
                       </tbody>
                     </table>
                   )}
-
-            
                 </div>
 
                 <div className="flex lg:gap-x-[5%] xl:gap-x-[5%] w-full ">

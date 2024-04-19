@@ -31,41 +31,42 @@ const WeedManagementT = (props: any) => {
           </tr>
         </thead>
         <tbody>
-          { table.length >0 &&table.map((item: any, index: any) => {
-            if(!item.category) return null;
-            return (
-              <tr className="h-10 border-b border-black">
-                <td className="border-r border-black font-thin  pl-2 pr-2 text-xl">
-                  {index + 1}
-                </td>
-                <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
-                  {item.category}
-                </td>
-                <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
-                  {item.name}
-                </td>
-                {/* <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
+          {table.length > 0 &&
+            table.map((item: any, index: any) => {
+              if (!item.category) return null;
+              return (
+                <tr className="h-10 border-b border-black">
+                  <td className="border-r border-black font-thin  pl-2 pr-2 text-xl">
+                    {index + 1}
+                  </td>
+                  <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
+                    {item.category}
+                  </td>
+                  <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
+                    {item.name}
+                  </td>
+                  {/* <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
                   {item.scientificName}
                 </td> */}
-                <td className="border-r border-black font-thin m">
-                  <img
-                    src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
-                      item.image
-                    )}`}
-                    style={{
-                      marginTop: "20px",
-                      width: "200px",
-                      height: "200px",
-                      objectFit: "cover",
-                    }}
-                  />
-                </td>
-                <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
-                  {item.solutions}
-                </td>
-              </tr>
-            );
-          })}
+                  <td className="border-r border-black font-thin m">
+                    <img
+                      src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
+                        item.image
+                      )}&sz=w1000`}
+                      style={{
+                        marginTop: "20px",
+                        width: "200px",
+                        height: "200px",
+                        objectFit: "cover",
+                      }}
+                    />
+                  </td>
+                  <td className="border-r border-black font-thin text-start pl-2 pr-2 text-xl">
+                    {item.solutions}
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     </>

@@ -5,7 +5,6 @@ import CropLibrary from "../pages/crop_advisary/CropLibrary";
 import Button from "@mui/material/Button";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
-import { log } from "console";
 
 type NestedDropdownProps = {
   menus: Array<{ title: string; submenus: string[] }>;
@@ -110,7 +109,7 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
         navigate(`/guide`);
         break;
     }
-    setIsOpen(false)
+    // setIsOpen(false)
   };
 
   const handleButtonClick = () => {

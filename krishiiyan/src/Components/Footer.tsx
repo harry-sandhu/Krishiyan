@@ -110,7 +110,8 @@ const Footer = () => {
       {/* Copyright */}
       <hr className="my-8" />
       <div className="text-center">
-        © {new Date().getFullYear()} WetAcre Sustainable Solutions LLP. All rights reserved
+        © {new Date().getFullYear()} WetAcre Sustainable Solutions LLP. All
+        rights reserved
       </div>
     </footer>
   );

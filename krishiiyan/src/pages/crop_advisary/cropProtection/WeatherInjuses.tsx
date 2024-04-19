@@ -33,9 +33,9 @@ const WeatherInjuses = (props: any) => {
                 <td>
                   {item && item.image ? (
                     <img
-                      src={`https://drive.google.com/uc?export=view&id=${extractCodeFromDriveLink(
+                      src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                         item.image
-                      )}`}
+                      )}&sz=w1000`}
                       style={{
                         marginTop: "20px",
                         width: "200px",

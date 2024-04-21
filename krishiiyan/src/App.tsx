@@ -53,11 +53,9 @@ import What from "./pages/What";
 import Login from "./pages/Login";
 import NewRegestrationAdmin from "./pages/crop_advisory_admin/NewRegestrationAdmin";
 import NewRegistrationAdmin from "./pages/farmer/NewRegistrationAdmin";
-import AccountSettings from "./Components/layouts/AccountSettings";
+import Announcement from "./pages/Announcement";
 import Fponational from "./Components/Fponational";
 import Fporegister from "./Components/Fporegister";
-import Announcement from "./pages/Announcement";
-import Ferticalnew from "./pages/crop_advisary/Ferticalnew";
 import PageSelector from "./pages/crop_advisary/ferticalselector";
 
 const AuthGuard = () => {
@@ -78,8 +76,10 @@ function App() {
         <Route path="/who" element={<Who />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/what" element={<What />} />
+        <Route path="/announcement" element={<Announcement />} />
         <Route path="/login" element={<LoginPage />} />
-
+        <Route path="/FPOnational" element={<Fponational />} />
+        <Route path="/fporegister" element={<Fporegister />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/Password-reset" element={<ForgotPasswordLink />} />
@@ -302,15 +302,6 @@ function App() {
             }
           />
         </Route>
-        <Route
-          path="/account-settings"
-          element={
-            <main className="h-screen w-screen grid grid-cols-[18%_82%]">
-              <SideNav menu={""} submenu={""} />
-              <AccountSettings />
-            </main>
-          }
-        ></Route>
       </Routes>
     </div>
   );

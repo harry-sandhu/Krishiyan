@@ -30,9 +30,8 @@ const Hero2 = () => {
   return (
     <section
       ref={hero2Ref}
-      className={`flex flex-col md:flex-row items-center justify-between p-4 md:p-10 bg-[#d8ffd885] ${
-        isVisible ? "fade-in" : ""
-      }`}
+      className={`flex flex-col md:flex-row items-center justify-between p-4 md:p-10 bg-[#d8ffd885] ${isVisible ? "fade-in" : ""
+        }`}
     >
       <div className="mb-4 md:mb-0 w-full md:w-[47%]">
         <img
@@ -42,7 +41,17 @@ const Hero2 = () => {
         />
       </div>
 
-      <div className="w-full md:w-1/2 text-center md:text-left">
+
+
+      <div className="w-full md:w-1/2 text-center md:text-left mx-auto">
+        <div>
+          <ul>
+            <li className="text-2xl p-5 font-semibold text-justify text-gray-700">Krishiyan empowers farmers by providing them with access to market information, quality assessment tools, and training resources. </li>
+            <li className="text-2xl p-5 font-semibold text-justify text-gray-700">By equipping farmers with knowledge and resources, Krishiyan enables them to maximize their productivity, improve the quality of their produce, and achieve fair prices for their crops.</li>
+          </ul>
+        </div>
+
+        {/* 
         <h1 className="text-xl md:text-[1.75rem] font-semibold mb-0">
           Advanced platform for supply chain management in
         </h1>
@@ -75,7 +84,7 @@ const Hero2 = () => {
             <MdCheckCircle className="text-blue-500" />
             <span>Help in easy setting up an Agri Input business.</span>
           </li>
-        </ul>
+        </ul> */}
 
         <div className="space-x-2 px-4 md:px-6 py-2 mt-8 md:mt-12 ml-0 md:ml-64">
           <LearnMoreButton />

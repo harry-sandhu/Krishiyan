@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <nav className="sticky top-0 bg-white p-4 sm:p-6 flex justify-between items-center transition-all duration-500 z-50 shadow-md">
+    <nav className="container-fluid sticky top-0 bg-white p-4 sm:p-6 flex justify-between items-center transition-all duration-500 z-50 shadow-md">
       <Link to="/">
         <img src="Images/logoname.png" alt="Logo" className="h-12 sm:h-16" />
       </Link>
@@ -53,9 +53,8 @@ const Navbar: React.FC = () => {
 
       {/* Navigation links */}
       <div
-        className={`sm:flex space-x-0 sm:space-x-4 mt-4 sm:mt-0 ${
-          isOpen ? "block" : "hidden"
-        } bg-white sm:bg-transparent p-4 sm:p-0 rounded shadow sm:shadow-none`}
+        className={`sm:flex space-x-0 sm:space-x-4 mt-4 sm:mt-0 ${isOpen ? "block" : "hidden"
+          } bg-white sm:bg-transparent p-4 sm:p-0 rounded shadow sm:shadow-none`}
       >
         {[
           { path: "/who", name: "Who are we?" },
@@ -65,15 +64,15 @@ const Navbar: React.FC = () => {
           { path: "/contact", name: "Contact Us" },
           { path: "/announcement", name: "Annoucements📢" },
           { path: "/login", name: "Login" },
+
         ].map((link) => (
           <Link
             key={link.path}
             to={link.path}
-            className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${
-              location.pathname === link.path
-                ? "border-b-2 border-green-500"
-                : ""
-            } font-semibold`}
+            className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${location.pathname === link.path
+              ? "border-b-2 border-green-500"
+              : ""
+              } font-semibold`}
           >
             {link.name}
           </Link>

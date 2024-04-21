@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import moment from "moment";
+import NestedDropdown from "../../Components/NestedDropdown";
 
 const PlantationOptions = [
   {
@@ -27,6 +28,8 @@ const CropCalendar = () => {
   const [dateOfSowing, setDateOfSowing] = useState<any>("");
   const [cropDetails, setCropDetails] = useState<any>();
   const [loading, setLoading] = useState(false);
+  // const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus })
+
   const [isPopupOpen, setIsPopupOpen] = useState(true);
 
   const onChangePlantationType = (e: any, value: any) => {
@@ -64,10 +67,10 @@ const CropCalendar = () => {
   const getCropStages = async () => {
     const CropData = await fetch(
       process.env.REACT_APP_BACKEND_URL +
-        "/cropCalendar/stage/" +
-        localsName +
-        "/" +
-        dateOfSowing,
+      "/cropCalendar/stage/" +
+      localsName +
+      "/" +
+      dateOfSowing,
       {
         method: "GET",
         headers: {

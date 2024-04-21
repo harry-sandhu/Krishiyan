@@ -1,36 +1,41 @@
+import farmer from '../assets/Images/ourbeneficiaries.png'
+import dealer from '../assets/Images/ourprocure.png'
+import industry from '../assets/Images/ourindustry.png'
+
 const TechCard = () => {
     const features = [
         {
             number: '01',
-            title: 'Our end users',
+            title: 'Our Beneficiaries',
             description: 'We deliver our valuable services to farmers for proper cultivation practices and Market linkage.',
-            items: ['Farmers']
+            items: [farmer]
         },
         {
             number: '02',
-            title: 'Our Valuable Customers',
-            description: 'We nurture the agri-input dealers and FPOs for giving scientific crop advisory to their farmer customers.',
-            items: ['Input dealers FPOs']
+            title: 'Our Procurement Partners',
+            description: 'We nurture agri-input dealers and FPOs with smart tools to assist farmers from seed to market.',
+            items: [dealer]
         },
         {
             number: '03',
-            title: 'Our Partners',
-            description: 'We deliver quality farm produces to small food processing units, supermarkets and other food industry.',
-            items: ['Food processing units']
+            title: 'Our Industry Partners',
+            description: 'We assure quality and consistent supply to our Industry partners.',
+            items: [industry]
         },
     ];
 
     return (
-        <section className="pt-12 pb-12 bg-gray-100">
+        <section className="pt-12 pb-12 bg-gray-100 mt-[-200px] relative">
+            <h1 className="mb-20 font-extrabold text-4xl">Our Valuable Stakeholders</h1>
             <div className="container mx-auto px-4 sm:px-8">
-                <div className="flex flex-wrap -mx-4">
+                <div className="flex flex-wrap -mx-4 ">
                     {features.map((feature, index) => (
-                        <div key={index} className="w-full sm:w-1/2 md:w-1/3 px-4 mb-8">
-                            <div className="relative border-r border-gray-200 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-                                <div className="w-24 h-24 rounded-full relative bg-white shadow-md mx-auto -mt-16">
-                                    <div className="flex items-center justify-center w-24 h-24 rounded-full">
+                        <div key={index} className="w-full sm:w-1/2 md:w-1/3 px-4 mb-8 ">
+                            <div className="relative border-r border-gray-200 p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                                <div className="w-24 h-24 relative bg-white shadow-md mx-auto -mt-16">
+                                    <div className="flex items-center justify-center w-24 h-24">
                                         {feature.items.map((item, idx) => (
-                                            <h1 className='text-xl font-semibold' key={idx}>{item}</h1>
+                                            <img className='text-xl font-semibold' src={item} key={idx} />
                                         ))}
                                     </div>
                                 </div>

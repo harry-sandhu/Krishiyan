@@ -57,6 +57,7 @@ import Announcement from "./pages/Announcement";
 import Fponational from "./Components/Fponational";
 import Fporegister from "./Components/Fporegister";
 import PageSelector from "./pages/crop_advisary/ferticalselector";
+import ShowData from "./Components/ShowData";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -83,6 +84,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/Password-reset" element={<ForgotPasswordLink />} />
+        <Route path="/showFPOData" element={<ShowData />} />
         {/* <Route path="/login" element={<LoginPage />} /> */}
         <Route path="/" element={<AuthGuard />}>
           <Route

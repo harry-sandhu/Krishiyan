@@ -168,6 +168,24 @@ router.get("/check-dealer/:email", async (req, res) => {
   }
 });
 
+// Check Dealer API by Email
+router.get("/check-dealer/:name", async (req, res) => {
+  const email = req.params.name;
+
+  try {
+    const dealer = await Dealer.findOne({ name });
+
+    if (dealer) {
+      res.json({ exists: true, dealer });
+    } else {
+      res.json({ exists: false });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 //forgot - password
 
 router.post("/reset-password", async (req, res) => {

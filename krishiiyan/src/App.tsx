@@ -208,7 +208,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"dashboard"} />
                 {/* <Dashboard /> */}
-                <Dashboard />
+                <NewRegistrationAdmin />
               </main>
             }
           />

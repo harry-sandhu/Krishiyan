@@ -56,6 +56,7 @@ const LoginPage = () => {
       console.log(res);
       localStorage.setItem("authToken", res?.data?.token);
       localStorage.setItem("dealerName", res?.data?.oldUser?.name);
+      localStorage.setItem("dealermobile", res?.data?.oldUser?.mobile);
       navigate("/");
       toast.success("Login Success !", {
         position: toast.POSITION.TOP_RIGHT,
@@ -92,7 +93,8 @@ const LoginPage = () => {
                 autoFocus
                 onChange={handleEmailChange}
                 inputProps={{
-                  pattern: "^(\\w+@(gmail\\.com|info|krishiyan\\.com|contact))?$",
+                  pattern:
+                    "^(\\w+@(gmail\\.com|info|krishiyan\\.com|contact))?$",
                   title:
                     "Please enter a valid email address with domains @gmail.com, @info, or @krishiyan.com",
                 }}
@@ -143,7 +145,9 @@ const LoginPage = () => {
               <div className="inline-flex items-center justify-center w-full">
                 <hr className="w-64 h-1 my-8 bg-gray-200 border-0 rounded dark:bg-gray-700" />
                 <div className="absolute px-4 -translate-x-1/2 bg-white left-1/2 dark:bg-gray-900">
-                  <h2 className="w-4 h-4 text-gray-700 dark:text-gray-300">OR</h2>
+                  <h2 className="w-4 h-4 text-gray-700 dark:text-gray-300">
+                    OR
+                  </h2>
                 </div>
               </div>
 

@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Header from "../../Components/layouts/Header";
+import * as XLSX from 'xlsx';
+import { GiFarmTractor } from "react-icons/gi";
+import { FaCity } from "react-icons/fa";
+import { RiUserLocationFill } from "react-icons/ri";
+import { GiWheat } from "react-icons/gi";
+import { FiPhoneCall } from "react-icons/fi";
+import { MdFileDownload } from "react-icons/md";
+
 
 interface Crop {
   cropName: string;
@@ -119,136 +127,166 @@ const FarmersList: React.FC = () => {
     .filter(handleSearch)
     .sort(handleSort);
 
+  const handleDownload = () => {
+    const ws = XLSX.utils.json_to_sheet(filteredAndSortedFarmers);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Farmers Data");
+    XLSX.writeFile(wb, "farmers_data.xlsx");
+  };
+
+
   return (
     <>
-      <div className="container mx-auto my-8">
+      <div>
         <Header title="Farmer Relationship Management" subtitle="Dashboard" />
-        <h1 className="text-2xl font-bold mb-4">Farmers Data</h1>
+        <h1 className="text-4xl font-extrabold mb-4 text-green-700 mt-20 xl:mt-5 p-5 rounded-lg">Farmers Data</h1>
+        <div className="ml-8">
+          <div className="xl:flex xl:space-x-[600px]">
+            <div>
+              {/* Search Bar */}
+              <div className="xl:flex items-center mb-4">
+                <label htmlFor="searchField" className="mr-2 text-green-600 font-bold text-lg">
+                  Search by:
+                </label>
+                <select
+                  id="searchField"
+                  value={searchField || ""}
+                  onChange={(e) => {
+                    setSearchField(e.target.value);
+                    setSearchQuery(""); // Reset search query when search field changes
+                  }}
+                  className="border border-gray-300 rounded px-2 py-1 mr-2"
+                >
+                  <option value="" disabled>
+                    Select Field
+                  </option>
+                  <option value="name">Name</option>
+                  {/* <option value="state">State</option> */}
+                  <option value="city">City</option>
+                  <option value="mobile">Mobile</option>
+                  {/* <option value="zip">Zip</option>
+                  <option value="street">Street</option>
+                  <option value="mobileIsWhatsapp">Mobile Is WhatsApp</option> */}
+                  <option value="totalLandArea">Total Land Area</option>
+                  {/* <option value="dealer_farmer_relation">
+                    Dealer-Farmer Relation
+                  </option> */}
+                  <option value="plantation_type">Plantation Type</option>
+                  {/* <option value="dealer_mobile">Dealer Mobile</option> */}
+                  <option value="crops">Crops</option>
+                </select>
+                <select
+                  id="searchQuery"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="border border-gray-300 rounded px-2 py-1"
+                >
+                  <option value="">Select an option</option>
+                  {searchOptions.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-        {/* Search Bar */}
-        <div className="flex items-center mb-4">
-          <label htmlFor="searchField" className="mr-2">
-            Search by:
-          </label>
-          <select
-            id="searchField"
-            value={searchField || ""}
-            onChange={(e) => {
-              setSearchField(e.target.value);
-              setSearchQuery(""); // Reset search query when search field changes
-            }}
-            className="border border-gray-300 rounded px-2 py-1 mr-2"
-          >
-            <option value="" disabled>
-              Select Field
-            </option>
-            <option value="name">Name</option>
-            <option value="state">State</option>
-            <option value="city">City</option>
-            <option value="mobile">Mobile</option>
-            <option value="zip">Zip</option>
-            <option value="street">Street</option>
-            <option value="mobileIsWhatsapp">Mobile Is WhatsApp</option>
-            <option value="totalLandArea">Total Land Area</option>
-            <option value="dealer_farmer_relation">
-              Dealer-Farmer Relation
-            </option>
-            <option value="plantation_type">Plantation Type</option>
-            <option value="dealer_mobile">Dealer Mobile</option>
-            <option value="crops">Crops</option>
-          </select>
-          <select
-            id="searchQuery"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-gray-300 rounded px-2 py-1"
-          >
-            <option value="">Select an option</option>
-            {searchOptions.map((option, index) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        {/* Sorting Options */}
-        <div className="flex items-center mb-4">
-          <label htmlFor="sortField" className="mr-2">
-            Sort by:
-          </label>
-          <select
-            id="sortField"
-            value={sortField || ""}
-            onChange={(e) => setSortField(e.target.value)}
-            className="border border-gray-300 rounded px-2 py-1 mr-2"
-          >
-            <option value="" disabled>
-              Select Field
-            </option>
-            <option value="name">Name</option>
-            <option value="state">State</option>
-            <option value="city">City</option>
-            <option value="mobile">Mobile</option>
-            <option value="zip">Zip</option>
-            <option value="street">Street</option>
-            <option value="mobileIsWhatsapp">Mobile Is WhatsApp</option>
-            <option value="totalLandArea">Total Land Area</option>
-            <option value="dealer_farmer_relation">
-              Dealer-Farmer Relation
-            </option>
-            <option value="plantation_type">Plantation Type</option>
-            <option value="dealer_mobile">Dealer Mobile</option>
-            <option value="crops">Crops</option>
-          </select>
-          <select
-            id="sortOrder"
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value)}
-            className="border border-gray-300 rounded px-2 py-1"
-          >
-            <option value="asc">Ascending</option>
-            <option value="desc">Descending</option>
-          </select>
-        </div>
-
-        {/* Farmers List */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg-grid-cols-4 gap-4">
-          {filteredAndSortedFarmers.map((farmer, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-4">
-              <p className="text-xl font-semibold mb-2">{farmer.name}</p>
-              <p className="text-gray-600 mb-2">Mobile: {farmer.mobile}</p>
-              <p className="text-gray-600 mb-2">State: {farmer.state}</p>
-              <p className="text-gray-600 mb-2">City: {farmer.city}</p>
-              <p className="text-gray-600 mb-2">Zip: {farmer.zip}</p>
-              <p className="text-gray-600 mb-2">Street: {farmer.street}</p>
-              <p className="text-gray-600 mb-2">
-                Mobile Is WhatsApp: {farmer.mobileIsWhatsapp ? "Yes" : "No"}
-              </p>
-              <p className="text-gray-600 mb-2">
-                Total Land Area: {farmer.totalLandArea}
-              </p>
-              <p className="text-gray-600 mb-2">
-                Dealer-Farmer Relation: {farmer.dealer_farmer_relation}
-              </p>
-              <p className="text-gray-600 mb-2">
-                Plantation Type: {farmer.plantation_type}
-              </p>
-              <p className="text-gray-600 mb-2">
-                Dealer Mobile: {farmer.dealer_mobile}
-              </p>
-              <p className="text-gray-600 mb-2">Crops:</p>
-              <ul className="list-disc pl-4">
-                {farmer.crops.length > 0 ? (
-                  farmer.crops.map((crop, i) => (
-                    <li key={i}>{crop.cropName}</li>
-                  ))
-                ) : (
-                  <p className="text-gray-600 mb-2">No crops available</p>
-                )}
-              </ul>
+              {/* Sorting Options */}
+              <div className="xl:flex items-center mb-4">
+                <label htmlFor="sortField" className="mr-2 text-green-600 font-bold text-lg">
+                  Sort by:
+                </label>
+                <select
+                  id="sortField"
+                  value={sortField || ""}
+                  onChange={(e) => setSortField(e.target.value)}
+                  className="border border-gray-300 rounded px-2 py-1 mr-2"
+                >
+                  <option value="" disabled>
+                    Select Field
+                  </option>
+                  <option value="name">Name</option>
+                  {/* <option value="state">State</option> */}
+                  <option value="city">City</option>
+                  <option value="mobile">Mobile</option>
+                  {/* <option value="zip">Zip</option>
+                  <option value="street">Street</option>
+                  <option value="mobileIsWhatsapp">Mobile Is WhatsApp</option> */}
+                  <option value="totalLandArea">Total Land Area</option>
+                  {/* <option value="dealer_farmer_relation">
+                    Dealer-Farmer Relation
+                  </option> */}
+                  <option value="plantation_type">Plantation Type</option>
+                  {/* <option value="dealer_mobile">Dealer Mobile</option> */}
+                  <option value="crops">Crops</option>
+                </select>
+                <select
+                  id="sortOrder"
+                  value={sortOrder}
+                  onChange={(e) => setSortOrder(e.target.value)}
+                  className="border border-gray-300 rounded px-2 py-1"
+                >
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
+                </select>
+              </div>
             </div>
-          ))}
+            <div className="bg-white rounded-lg p-4">
+              {/* Farmer data display */}
+              <button
+                className="bg-green-500 hover:bg-green-800 hover:text-white font-bold py-2 px-4 rounded text-lg"
+                onClick={handleDownload}
+              >
+                <MdFileDownload className="inline m-1 text-xl" />
+                Download Farmer Data
+              </button>
+            </div>
+          </div>
+          {/* Farmers List */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg-grid-cols-4 gap-4 xl:mt-10">
+            {filteredAndSortedFarmers.map((farmer, index) => (
+              <div key={index} className="bg-green-100 rounded-lg shadow-md p-4">
+                <p className="text-xl uppercase tracking-widest bg-green-700 p-5 rounded-lg text-white">{farmer.name}</p>
+                <div className="flex items-center p-2">
+                  <RiUserLocationFill className="text-4xl text-black" />
+                  <span className="text-black font-bold mb-2 pl-5"> {farmer.city}</span>
+                </div>
+                <div className="flex justify-evenly">
+                  <div className="flex items-center p-2">
+                    <GiFarmTractor className="text-4xl" />
+                    <p className="text-black font-bold mb-2 pl-5">
+                      {farmer.totalLandArea} Acres
+                    </p>
+                  </div>
+                  <div className="flex items-center p-2">
+                    <GiWheat className="text-4xl" />
+                    <p className=" mb-2 pl-5 font-bold">
+                      {farmer.plantation_type}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center p-2">
+                  <FiPhoneCall className="text-2xl" />
+                  <p className=" mb-2 pl-5 font-bold">
+                    {farmer.mobile}
+                  </p>
+                </div>
+                <div className="bg-blue-gray-200 p-5 rounded-lg">
+                  <p className=" mb-2">
+                    <span className="font-bold">Crops:</span></p>
+                  <ul className="list-disc pl-4">
+                    {farmer.crops.length > 0 ? (
+                      farmer.crops.map((crop, i) => (
+                        <li key={i}>{crop.cropName}</li>
+                      ))
+                    ) : (
+                      <p className="text-gray-600 mb-2">No crops available</p>
+                    )}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </>

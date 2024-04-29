@@ -262,8 +262,8 @@ const Dashboard = () => {
                           <th className="border-r border-black py-[1.2%]">
                             {farmerDetail
                               ? moment(farmerDetail?.createdAt).format(
-                                  "DD-MM-YYYY"
-                                )
+                                "DD-MM-YYYY"
+                              )
                               : "-"}
                           </th>
                         </tr>
@@ -287,8 +287,8 @@ const Dashboard = () => {
                           <td className="border-r border-black">
                             {farmerDetail
                               ? moment(farmerDetail?.updatedAt).format(
-                                  "DD-MM-YYYY"
-                                )
+                                "DD-MM-YYYY"
+                              )
                               : "-"}
                           </td>
                         </tr>
@@ -356,8 +356,8 @@ const Dashboard = () => {
                               <td className="border-r border-black">
                                 {cultivation?.dateOfSowing
                                   ? moment(cultivation?.dateOfSowing).format(
-                                      "DD-MM-YYYY"
-                                    )
+                                    "DD-MM-YYYY"
+                                  )
                                   : "-"}
                               </td>
                               <td className="border-r border-black">

@@ -1,5 +1,7 @@
+import { ClassNames } from "@emotion/react";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import './navbar.css'
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,7 +64,7 @@ const Navbar: React.FC = () => {
           { path: "/tech", name: "Our Technology" },
           { path: "/blog", name: "Blog" },
           { path: "/contact", name: "Contact Us" },
-          { path: "/announcement", name: "Annoucements📢" },
+          { path: "/announcement", name: "Annoucements📢", className: "blink" },
           { path: "/login", name: "Login" },
 
         ].map((link) => (
@@ -72,7 +74,7 @@ const Navbar: React.FC = () => {
             className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${location.pathname === link.path
               ? "border-b-2 border-green-500"
               : ""
-              } font-semibold`}
+              } font-semibold ${link.className}`}
           >
             {link.name}
           </Link>

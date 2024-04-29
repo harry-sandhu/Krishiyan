@@ -56,7 +56,8 @@ function decodeJwt(jwtToken) {
 //Register
 router.post("/register", async (req, res) => {
   console.log("inside register");
-  const { name, email, password, mobile } = req.body;
+  const { type, name, email, password, mobile } = req.body;
+  console.log("type :", type);
   try {
     const oldUser = await User.findOne({ email });
 
@@ -66,6 +67,7 @@ router.post("/register", async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await User.create({
+      type,
       name,
       email,
       password: hashedPassword,

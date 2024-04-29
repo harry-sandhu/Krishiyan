@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { log } from "console";
 import OTPVerification from "./OTPVerification";
 import Popup from "../../Components/layouts/PopUp";
-import './NewRegistration.css'
+import "./NewRegistration.css";
 
 const PlantationOptions = [
   {
@@ -310,19 +310,12 @@ const NewRegistration = () => {
       <h2 className="regheading">New Farmer Registration</h2>
       <section className="form-group">
         <div>
-          <label>
-            Name
-          </label>
-          <input
-            type="text"
-            onChange={onChangeName}
-          ></input>
+          <label>Name</label>
+          <input type="text" onChange={onChangeName}></input>
         </div>
         <div>
           <div>
-            <label>
-              Mobile Number
-            </label>
+            <label>Mobile Number</label>
             <input
               type="text"
               value={phoneNumber}
@@ -339,15 +332,11 @@ const NewRegistration = () => {
           </div>
         </div>
         <div className="addressbar">
-          <label>
-            Address
-          </label>
+          <label>Address</label>
           <div>
             <div>
               <label className="pincodelabel">
-                <input
-                  onChange={onChangeZip}
-                  placeholder="Pincode"></input>
+                <input onChange={onChangeZip} placeholder="Pincode"></input>
               </label>
             </div>
             <div>
@@ -365,19 +354,12 @@ const NewRegistration = () => {
         </div>
 
         <div>
-          <label>
-            Total Farm Area(Acre)
-          </label>
-          <input
-            type="number"
-            onChange={onChangeTotalLandArea}
-          ></input>
+          <label>Total Farm Area(Acre)</label>
+          <input type="number" onChange={onChangeTotalLandArea}></input>
         </div>
 
         <div className="dealerfarmer">
-          <label className="dealerlabel">
-            Dealer Farmer Relationship
-          </label>
+          <label className="dealerlabel">Dealer Farmer Relationship</label>
           <Autocomplete
             onChange={onChangeDealerFarmerRel}
             id="plantation-select"
@@ -397,9 +379,7 @@ const NewRegistration = () => {
           />
         </div>
         <div>
-          <label>
-            Type
-          </label>
+          <label>Type</label>
           <Autocomplete
             onChange={onChangePlantationType}
             id="plantation-select"
@@ -419,9 +399,7 @@ const NewRegistration = () => {
           />
         </div>
         <div>
-          <label>
-            Crops
-          </label>
+          <label>Crops</label>
           <Autocomplete
             multiple
             id="crops-select"
@@ -443,10 +421,7 @@ const NewRegistration = () => {
 
         <div>
           <div></div>
-          <button
-            onClick={onSubmitHandler}
-            type="submit"
-          >
+          <button onClick={onSubmitHandler} type="submit">
             Submit
           </button>
         </div>

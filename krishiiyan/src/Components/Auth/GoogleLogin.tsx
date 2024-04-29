@@ -12,12 +12,19 @@ const GoogleOauthLogin = () => {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    let type = data.get("type");
     let name = data.get("name");
     let email = data.get("email");
     let pass = data.get("password");
     let mobile = data.get("phone");
 
-    const [err, res] = await Api.dealerRegistration(name, email, pass, mobile);
+    const [err, res] = await Api.dealerRegistration(
+      type,
+      name,
+      email,
+      pass,
+      mobile
+    );
 
     if (err) {
       toast.error(err.data, {

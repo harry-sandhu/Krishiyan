@@ -58,6 +58,7 @@ import Fponational from "./Components/Fponational";
 import Fporegister from "./Components/Fporegister";
 import PageSelector from "./pages/crop_advisary/ferticalselector";
 import ShowData from "./Components/ShowData";
+import AccountSetting from "./Components/AccountSetting";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -290,6 +291,14 @@ function App() {
                 <SideNav menu={"help"} submenu={"expert"} />
                 {/* <Expert /> */}
                 <Premium />
+              </main>
+            }
+          />
+          <Route
+            path="/account-settings"
+            element={
+              <main className="h-screen w-screen flex justify-center items-center">
+                <AccountSetting />
               </main>
             }
           />

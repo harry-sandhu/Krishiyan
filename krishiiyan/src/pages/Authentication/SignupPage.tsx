@@ -30,6 +30,7 @@ const SignupPage = () => {
   const [message, setMessage] = useState("");
   const [checkemail, setCheckEmail] = useState(false);
   let Phone = 0;
+  let Type: string;
   const nameSuggestions = [
     { name: "FPO/FPC (Farmer Producer Organisation/Farmer Producer Company)" },
     { name: "PACS (Primary Agriculture Credit Society)" },
@@ -102,6 +103,7 @@ const SignupPage = () => {
   };
 
   const handleEmailChange = (event: any) => {
+    console.log("insisde cehck email");
     email1 = event.target.value;
     console.log("handle change email", email1);
     check1 = false;
@@ -110,6 +112,10 @@ const SignupPage = () => {
   const handleMobileChange = (event: any) => {
     Phone = event.target.value;
     console.log(Phone);
+  };
+  const handletypechange = (event: any, newValue: any) => {
+    Type = newValue.name;
+    console.log(Type);
   };
 
   const openPopup = () => {
@@ -127,9 +133,10 @@ const SignupPage = () => {
   };
   const handleOtpSubmit = async () => {
     console.log("email1 send otp", email1);
-    console.log(Phone);
+    console.log(email1);
 
     if (email1 != null && email1.trim() !== "" && checkemail) {
+      console.log("incide if");
       try {
         await validateEmail(email1);
 
@@ -169,8 +176,15 @@ const SignupPage = () => {
     let email = data.get("email");
     let pass = data.get("password");
     let mobile = data.get("phone");
+    let type = data.get("type");
     console.log(check);
-    const [err, res] = await Api.dealerRegistration(name, email, pass, mobile);
+    const [err, res] = await Api.dealerRegistration(
+      Type,
+      name,
+      email,
+      pass,
+      mobile
+    );
 
     if (err) {
       toast.error(err.data, {
@@ -211,16 +225,17 @@ const SignupPage = () => {
               className="p-2 mt-6 rounded-xl border"
               options={nameSuggestions}
               getOptionLabel={(option) => option.name}
+              onChange={handletypechange}
               renderInput={(params) => (
                 <TextField
                   {...params}
                   margin="normal"
                   required
                   fullWidth
-                  id="name"
+                  id="type"
                   label="Type of the Organization"
                   name="Name of the Organization"
-                  autoComplete="name"
+                  autoComplete="type"
                   autoFocus
                 />
               )}

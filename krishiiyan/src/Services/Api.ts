@@ -49,6 +49,7 @@ function normalizeServerError(serverResponse: any) {
 
 //Register
 export async function dealerRegistration(
+  type: any,
   name: any,
   email: any,
   password: any,
@@ -60,6 +61,7 @@ export async function dealerRegistration(
       method: "post",
       url: `${apiURL}/auth/register`,
       data: {
+        type: type,
         name: name,
         email: email,
         password: password,

@@ -12,6 +12,7 @@ import {
   RadioGroup,
   Radio,
   Autocomplete,
+  InputAdornment,
 } from "@mui/material";
 import fpoimg from "../assets/Images/FPOimg.png";
 import axios from "axios";
@@ -399,6 +400,8 @@ const Fporegister: React.FC = () => {
                 variant="outlined"
                 required
                 onChange={handleExperienceChange}
+                inputProps={{ min: 0 }}
+                type="number"
               />
             </Grid>
           </Grid>
@@ -444,6 +447,13 @@ const Fporegister: React.FC = () => {
                 variant="outlined"
                 required
                 onChange={handleContactNumberChange}
+                inputProps={{ min: 0 }}
+                type="number"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">+91</InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -464,6 +474,8 @@ const Fporegister: React.FC = () => {
                 variant="outlined"
                 required
                 onChange={handleActiveFarmerMembersChange}
+                inputProps={{ min: 0 }}
+                type="number"
               />
             </Grid>
 
@@ -488,6 +500,8 @@ const Fporegister: React.FC = () => {
                 label="Number of Villages Covered"
                 variant="outlined"
                 onChange={handleNumVillagesCoveredChange}
+                inputProps={{ min: 0 }}
+                type="number"
               />
             </Grid>
 
@@ -498,6 +512,8 @@ const Fporegister: React.FC = () => {
                 label="Number of Gram Panchayat and Blocks Covered"
                 variant="outlined"
                 onChange={handleNumGramPanchayatBlocksCoveredChange}
+                inputProps={{ min: 0 }}
+                type="number"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -518,6 +534,8 @@ const Fporegister: React.FC = () => {
                 variant="outlined"
                 required
                 onChange={handleOperationalDurationChange}
+                inputProps={{ min: 0 }}
+                type="number"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -527,6 +545,13 @@ const Fporegister: React.FC = () => {
                 label="Annual production output (in tonnes)"
                 variant="outlined"
                 onChange={handleAnnualProductionChange}
+                inputProps={{ min: 0 }}
+                type="number"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">tonnes</InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -536,7 +561,14 @@ const Fporegister: React.FC = () => {
                 label="Annual revenue generated (FY 2023-24 in INR)"
                 variant="outlined"
                 onChange={handleAnnualRevenueChange}
+                inputProps={{ min: 0 }}
+                type="number"
                 required
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">₹</InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -546,6 +578,13 @@ const Fporegister: React.FC = () => {
                 label="Percentage growth in production in Last Years"
                 variant="outlined"
                 onChange={handlePercentageGrowthProductionChange}
+                inputProps={{ min: 0 }}
+                type="number"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -555,6 +594,12 @@ const Fporegister: React.FC = () => {
                 label="Percentage growth in Revenue in Last Years"
                 variant="outlined"
                 onChange={handlePercentageGrowthRevenueChange}
+                inputProps={{ min: 0, type: "number" }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">%</InputAdornment>
+                  ),
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>

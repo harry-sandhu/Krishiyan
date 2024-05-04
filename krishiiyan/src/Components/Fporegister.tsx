@@ -62,6 +62,46 @@ const Fporegister: React.FC = () => {
   const [percentageGrowthProduction, setPercentageGrowthProduction] =
     useState("");
   const [percentageGrowthRevenue, setPercentageGrowthRevenue] = useState("");
+  const [registeredAs, setRegisteredAs] = useState("");
+  const [dateOfRegistration, setDateOfRegistration] = useState("");
+  const [facilitatingInstitutions, setFacilitatingInstitutions] = useState("");
+  const [numVillagesCovered, setNumVillagesCovered] = useState("");
+  const [numGramPanchayatBlocksCovered, setNumGramPanchayatBlocksCovered] =
+    useState("");
+  const [otherRegisteredAs, setOtherRegisteredAs] = useState("");
+
+  const handleRegisteredAsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setRegisteredAs(event.target.value);
+    if (event.target.value !== "5") {
+      setOtherRegisteredAs(""); // Clear the other input if not "Other"
+    }
+  };
+
+  const handleDateOfRegistrationChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setDateOfRegistration(event.target.value);
+  };
+
+  const handleFacilitatingInstitutionsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFacilitatingInstitutions(event.target.value);
+  };
+
+  const handleNumVillagesCoveredChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setNumVillagesCovered(event.target.value);
+  };
+
+  const handleNumGramPanchayatBlocksCoveredChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setNumGramPanchayatBlocksCovered(event.target.value);
+  };
 
   const handleFullNameChange = (event: {
     target: { value: React.SetStateAction<string> };
@@ -253,6 +293,12 @@ const Fporegister: React.FC = () => {
         contactNumber: contactNumber,
         emailAddress: emailAddress,
         activeFarmerMembers: activeFarmerMembers,
+        registeredAs: registeredAs,
+        dateOfRegistration: dateOfRegistration,
+        facilitatingInstitutions: facilitatingInstitutions,
+        numVillagesCovered: numVillagesCovered,
+        numGramPanchayatBlocksCovered: numGramPanchayatBlocksCovered,
+        otherRegisteredAs,
         primaryProducts: primaryProducts,
         operationalDuration: operationalDuration,
         annualProduction: annualProduction,
@@ -420,6 +466,40 @@ const Fporegister: React.FC = () => {
                 onChange={handleActiveFarmerMembersChange}
               />
             </Grid>
+
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                fullWidth
+                id="dateOfRegistration"
+                label="Date of Registration"
+                type="date"
+                variant="outlined"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onChange={handleDateOfRegistrationChange}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                fullWidth
+                id="numVillagesCovered"
+                label="Number of Villages Covered"
+                variant="outlined"
+                onChange={handleNumVillagesCoveredChange}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={4}>
+              <TextField
+                fullWidth
+                id="numGramPanchayatBlocksCovered"
+                label="Number of Gram Panchayat and Blocks Covered"
+                variant="outlined"
+                onChange={handleNumGramPanchayatBlocksCoveredChange}
+              />
+            </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <TextField
                 fullWidth
@@ -476,6 +556,77 @@ const Fporegister: React.FC = () => {
                 variant="outlined"
                 onChange={handlePercentageGrowthRevenueChange}
               />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Registered as</FormLabel>
+                <RadioGroup
+                  aria-label="registeredAs"
+                  name="registeredAs"
+                  value={registeredAs}
+                  onChange={handleRegisteredAsChange}
+                >
+                  <FormControlLabel
+                    value="1"
+                    control={<Radio />}
+                    label="Society"
+                  />
+                  <FormControlLabel
+                    value="2"
+                    control={<Radio />}
+                    label="Cooperative Society"
+                  />
+                  <FormControlLabel
+                    value="3"
+                    control={<Radio />}
+                    label="Trust"
+                  />
+                  <FormControlLabel
+                    value="4"
+                    control={<Radio />}
+                    label="Company"
+                  />
+                  <FormControlLabel
+                    value="5"
+                    control={<Radio />}
+                    label="Other"
+                  />
+                </RadioGroup>
+                {registeredAs === "5" && (
+                  <TextField
+                    fullWidth
+                    value={otherRegisteredAs}
+                    onChange={(event) =>
+                      setOtherRegisteredAs(event.target.value)
+                    }
+                    placeholder="Specify other"
+                  />
+                )}
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">
+                  Name of Facilitating Institutions
+                </FormLabel>
+                <RadioGroup
+                  aria-label="facilitatingInstitutions"
+                  name="facilitatingInstitutions"
+                  value={facilitatingInstitutions}
+                  onChange={handleFacilitatingInstitutionsChange}
+                >
+                  <FormControlLabel
+                    value="1"
+                    control={<Radio />}
+                    label="POPI"
+                  />
+                  <FormControlLabel
+                    value="2"
+                    control={<Radio />}
+                    label="CBBO"
+                  />
+                </RadioGroup>
+              </FormControl>
             </Grid>
           </Grid>
 

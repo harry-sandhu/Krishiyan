@@ -542,7 +542,7 @@ const Fporegister: React.FC = () => {
               <TextField
                 fullWidth
                 id="annualProduction"
-                label="Annual production output (in tonnes)"
+                label="Annual production output "
                 variant="outlined"
                 onChange={handleAnnualProductionChange}
                 inputProps={{ min: 0 }}

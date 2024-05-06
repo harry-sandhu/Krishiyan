@@ -13,6 +13,7 @@ const Navbar: React.FC = () => {
       <Link to="/">
         <img src="Images/logoname.png" alt="Logo" className="h-12 sm:h-16" />
       </Link>
+      <Translator />
       {/* Hamburger & Close Menu Icon */}
       <div className="sm:hidden">
         <button

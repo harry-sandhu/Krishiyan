@@ -70,6 +70,8 @@ const Fporegister: React.FC = () => {
   const [numGramPanchayatBlocksCovered, setNumGramPanchayatBlocksCovered] =
     useState("");
   const [otherRegisteredAs, setOtherRegisteredAs] = useState("");
+  const [otherFacilitatingInstitution, setOtherFacilitatingInstitution] =
+    useState("");
 
   const handleRegisteredAsChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -90,8 +92,12 @@ const Fporegister: React.FC = () => {
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFacilitatingInstitutions(event.target.value);
-  };
 
+    // Clear otherFacilitatingInstitution input if not POPI or CBBO
+    if (event.target.value !== "1" && event.target.value !== "2") {
+      setOtherFacilitatingInstitution("");
+    }
+  };
   const handleNumVillagesCoveredChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -146,10 +152,16 @@ const Fporegister: React.FC = () => {
     setContactNumber(event.target.value);
   };
 
-  const handleEmailAddressChange = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
-    setEmailAddress(event.target.value);
+  const handleEmailAddressChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const newEmail = event.target.value;
+    setEmailAddress(newEmail);
+
+    // Call the checkEmailExists function if the email is not empty
+    if (newEmail) {
+      checkEmailExists(newEmail);
+    }
   };
 
   const handleActiveFarmerMembersChange = (event: {
@@ -274,6 +286,26 @@ const Fporegister: React.FC = () => {
     setConferenceDetails(event.target.value);
   };
 
+  const checkEmailExists = async (email: string) => {
+    try {
+      const lowercaseEmail = email.toLowerCase();
+      const response = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/check-email`,
+        { email: lowercaseEmail }
+      );
+      if (response.data.exists) {
+        // Show error toast message
+        toast.error(
+          "Email already exists. Please use a different email address."
+        );
+
+        setEmailAddress("");
+      }
+    } catch (error) {
+      console.error("Error checking email:", error);
+    }
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevent default form submission behavior
 
@@ -300,6 +332,7 @@ const Fporegister: React.FC = () => {
         numVillagesCovered: numVillagesCovered,
         numGramPanchayatBlocksCovered: numGramPanchayatBlocksCovered,
         otherRegisteredAs,
+        otherFacilitatingInstitution: otherFacilitatingInstitution,
         primaryProducts: primaryProducts,
         operationalDuration: operationalDuration,
         annualProduction: annualProduction,
@@ -464,6 +497,7 @@ const Fporegister: React.FC = () => {
                 variant="outlined"
                 required
                 onChange={handleEmailAddressChange}
+                value={emailAddress}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
@@ -671,6 +705,17 @@ const Fporegister: React.FC = () => {
                     label="CBBO"
                   />
                 </RadioGroup>
+                {(facilitatingInstitutions === "1" ||
+                  facilitatingInstitutions === "2") && (
+                  <TextField
+                    fullWidth
+                    value={otherFacilitatingInstitution}
+                    onChange={(event) =>
+                      setOtherFacilitatingInstitution(event.target.value)
+                    }
+                    placeholder="Please specify name"
+                  />
+                )}
               </FormControl>
             </Grid>
           </Grid>

@@ -22,11 +22,10 @@ const Translator = () => {
     { code: "mni", name: "Manipuri" },
     { code: "ml", name: "Malayalam" },
     { code: "pa", name: "Punjabi" },
-    { code: "lus", name: "Lushai/Mizo" },
+
     { code: "ne", name: "Nepali" },
-    { code: "kac", name: "Konyak" },
+
     { code: "aom", name: "Ao" },
-    { code: "sey", name: "Sema" },
   ];
 
   // State to store the selected language
@@ -40,6 +39,8 @@ const Translator = () => {
     // Save the selected language in local storage
     localStorage.setItem("preferredLanguage", selectedLanguage);
     console.log(localStorage.getItem("preferredLanguage"));
+    // Reload the current page
+    window.location.reload();
   };
 
   // Function to initialize the language based on local storage or region

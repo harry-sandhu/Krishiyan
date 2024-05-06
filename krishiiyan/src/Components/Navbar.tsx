@@ -1,7 +1,8 @@
 import { ClassNames } from "@emotion/react";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import './navbar.css'
+import "./navbar.css";
+import Translator from "./Translator";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,6 @@ const Navbar: React.FC = () => {
       <Link to="/">
         <img src="Images/logoname.png" alt="Logo" className="h-12 sm:h-16" />
       </Link>
-
       {/* Hamburger & Close Menu Icon */}
       <div className="sm:hidden">
         <button
@@ -55,8 +55,9 @@ const Navbar: React.FC = () => {
 
       {/* Navigation links */}
       <div
-        className={`sm:flex space-x-0 sm:space-x-4 mt-4 sm:mt-0 ${isOpen ? "block" : "hidden"
-          } bg-white sm:bg-transparent p-4 sm:p-0 rounded shadow sm:shadow-none`}
+        className={`sm:flex space-x-0 sm:space-x-4 mt-4 sm:mt-0 ${
+          isOpen ? "block" : "hidden"
+        } bg-white sm:bg-transparent p-4 sm:p-0 rounded shadow sm:shadow-none`}
       >
         {[
           { path: "/who", name: "Who are we?" },
@@ -66,15 +67,15 @@ const Navbar: React.FC = () => {
           { path: "/contact", name: "Contact Us" },
           { path: "/announcement", name: "Annoucements📢", className: "blink" },
           { path: "/login", name: "Login" },
-
         ].map((link) => (
           <Link
             key={link.path}
             to={link.path}
-            className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${location.pathname === link.path
-              ? "border-b-2 border-green-500"
-              : ""
-              } font-semibold ${link.className}`}
+            className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${
+              location.pathname === link.path
+                ? "border-b-2 border-green-500"
+                : ""
+            } font-semibold ${link.className}`}
           >
             {link.name}
           </Link>

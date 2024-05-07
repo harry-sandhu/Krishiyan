@@ -2,30 +2,26 @@ import React, { useState, useEffect } from "react";
 
 const Translator = () => {
   const languages = [
-    { code: "en", name: "English" },
-    { code: "as", name: "Assamese" },
-    { code: "brx", name: "Bodo" },
-    { code: "hi", name: "Hindi" },
-    { code: "mai", name: "Maithili" },
-    { code: "mr", name: "Marathi" },
-    { code: "ks", name: "Khasi" },
-    { code: "grt", name: "Garo" },
-    { code: "ta", name: "Tamil" },
-    { code: "bn", name: "Bengali" },
-    { code: "gu", name: "Gujarati" },
-    { code: "ny", name: "Nissi/Dafla" },
-    { code: "adl", name: "Adi" },
-    { code: "te", name: "Telugu" },
-    { code: "or", name: "Odia" },
-    { code: "kn", name: "Kannada" },
-    { code: "kok", name: "Konkani" },
-    { code: "mni", name: "Manipuri" },
-    { code: "ml", name: "Malayalam" },
-    { code: "pa", name: "Punjabi" },
+    { code: "en", name: "English" }, // English
+    { code: "as", name: "অসমীয়া" }, // Assamese
+    { code: "brx", name: "बर' राय" }, // Bodo
+    { code: "hi", name: "हिन्दी" }, // Hindi
+    { code: "mai", name: "मैथिली" }, // Maithili
+    { code: "mr", name: "मराठी" }, // Marathi
 
-    { code: "ne", name: "Nepali" },
+    { code: "ta", name: "தமிழ்" }, // Tamil
+    { code: "bn", name: "বাংলা" }, // Bengali
+    { code: "gu", name: "ગુજરાતી" }, // Gujarati
 
-    { code: "aom", name: "Ao" },
+    { code: "te", name: "తెలుగు" }, // Telugu
+    { code: "or", name: "ଓଡ଼ିଆ" }, // Odia
+    { code: "kn", name: "ಕನ್ನಡ" }, // Kannada
+    { code: "kok", name: "कोंकणी" }, // Konkani
+    { code: "mni", name: "মৈথৈ" }, // Manipuri
+    { code: "ml", name: "മലയാളം" }, // Malayalam
+    { code: "pa", name: "ਪੰਜਾਬੀ" }, // Punjabi
+
+    { code: "ne", name: "नेपाली" }, // Nepali
   ];
 
   // State to store the selected language
@@ -67,7 +63,12 @@ const Translator = () => {
   return (
     <div>
       {/* Language selection dropdown */}
-      <label htmlFor="language-select">Language: </label>
+      <label
+        htmlFor="language-select"
+        className=" mb-2   text-green-400 dark:text-white text-lg font-semibold"
+      >
+        Language:{" "}
+      </label>
       <select
         id="language-select"
         value={language}

@@ -145,10 +145,9 @@ const fpoTranslations: FpoTranslations = {
       contactNumber: "Contact Number",
       emailAddress: "Email Address",
       activeFarmerMembers: "Number of Active Farmer Members",
-      dateOfRegistration: "Date of Registration",
-      numVillagesCovered: "Number of Villages Covered",
-      numGramPanchayatBlocksCovered:
-        "Number of Gram Panchayat and Blocks Covered",
+      dateOfRegistration: "FPO-Date of Registration",
+      numVillagesCovered: "Number of Villages Covered under FPO",
+      numGramPanchayatBlocksCovered: "NO. Gram panchayat & Blocks Under",
       primaryProducts: "Primary Products/Crops",
       operationalDuration: "Operational Duration (From YEAR)",
       annualProduction: "Annual Production Output (tonnes)",
@@ -156,7 +155,7 @@ const fpoTranslations: FpoTranslations = {
       percentageGrowthProduction:
         "Percentage Growth in Production in Last Years",
       percentageGrowthRevenue: "Percentage Growth in Revenue in Last Years",
-      registeredAs: "Registered As",
+      registeredAs: "FPO Registered As",
       otherRegisteredAs: "Specify Other",
       facilitatingInstitutions: "Name of Facilitating Institutions",
       specify: "please specify name",
@@ -270,16 +269,16 @@ const fpoTranslations: FpoTranslations = {
       contactNumber: "যোগাযোগ নম্বৰ",
       emailAddress: "ইমেইল ঠিকনা",
       activeFarmerMembers: "সকৰীয়া কৃষক সদস্যৰ সংখ্যা",
-      dateOfRegistration: "নিবন্ধনৰ তাৰিখ",
+      dateOfRegistration: "FPO-নিবন্ধনৰ তাৰিখ",
       numVillagesCovered: "কুৰা কৰা গাঁৱৰ সংখ্যা",
-      numGramPanchayatBlocksCovered: "কুৰা কৰা গ্ৰাম পঞ্চায়ত আৰু ব্লক",
+      numGramPanchayatBlocksCovered: "নহয়. গ্ৰাম পঞ্চায়ত আৰু ব্লকসমূহৰ অধীনত",
       primaryProducts: "প্ৰাথমিক উৎপাদন/ফসল",
       operationalDuration: "কৰ্যকাল (বছৰৰ পৰা)",
       annualProduction: "বার্ষিক উৎপাদন ফলাফল (টন)",
       annualRevenue: "বার্ষিক আয় (আর্থিক বছৰ ২০২৩-২৪ত)",
       percentageGrowthProduction: "পিছলিত বছৰৰ উৎপাদন বৃদ্ধিৰ শতাংশ",
       percentageGrowthRevenue: "পিছলিত বছৰৰ আয় বৃদ্ধিৰ শতাংশ",
-      registeredAs: "নিবন্ধিত",
+      registeredAs: "FPO নিবন্ধিত",
       otherRegisteredAs: "অন্যান্য নিবন্ধিত",
       facilitatingInstitutions: "সহায়ক প্ৰতিষ্ঠানৰ নাম",
 
@@ -389,15 +388,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ईमेल पता",
       activeFarmerMembers: "सक्रिय किसान सदस्यों की संख्या",
       dateOfRegistration: "पंजीकरण की तारीख",
-      numVillagesCovered: "कवर किए गए गांवों की संख्या",
-      numGramPanchayatBlocksCovered: "कवर किए गए ग्राम पंचायत और ब्लॉक",
+      numVillagesCovered: "एफपीओ के अंतर्गत शामिल गांवों की संख्या",
+      numGramPanchayatBlocksCovered:
+        " एफपीओ के अंतर्गत ग्राम पंचायत की संख्या एवं ब्लॉक",
       primaryProducts: "प्राथमिक उत्पाद/फसलें",
       operationalDuration: "कार्यकाल अवधि (वर्ष से)",
       annualProduction: "वार्षिक उत्पादन (टन)",
       annualRevenue: "वार्षिक आय (वित्तीय वर्ष 2023-24 में INR)",
       percentageGrowthProduction: "पिछले वर्षों में उत्पादन में प्रतिशत वृद्धि",
       percentageGrowthRevenue: "पिछले वर्षों में राजस्व में प्रतिशत वृद्धि",
-      registeredAs: "पंजीकृत",
+      registeredAs: "FPO पंजीकृत",
       otherRegisteredAs: "अन्य निर्दिष्ट करें",
       facilitatingInstitutions: "सुगम संस्थानों के नाम",
       specify: "कृपया नाम निर्दिष्ट करें",
@@ -509,15 +509,15 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ईमेल पता",
       activeFarmerMembers: "सक्रिय किसान सदस्य",
       dateOfRegistration: "पंजीकरण की तारीख",
-      numVillagesCovered: "कवर किए गए गांवों की संख्या",
-      numGramPanchayatBlocksCovered: "ग्राम पंचायत और ब्लॉक की संख्या",
+      numVillagesCovered: "FPO कवर किए गए गांवों की संख्या",
+      numGramPanchayatBlocksCovered: "FPO-ग्राम पंचायत और ब्लॉक की संख्या",
       primaryProducts: "प्राथमिक उत्पाद/फसलें",
       operationalDuration: "क्रियान्वयन की अवधि (वर्ष से)",
       annualProduction: "वार्षिक उत्पादन (टन)",
       annualRevenue: "वार्षिक राजस्व (वित्तीय वर्ष 2023-24 में INR)",
       percentageGrowthProduction: "पिछले वर्षों में उत्पादन में प्रतिशत वृद्धि",
       percentageGrowthRevenue: "पिछले वर्षों में राजस्व में प्रतिशत वृद्धि",
-      registeredAs: "पंजीकृत के रूप में",
+      registeredAs: "FPO पंजीकृत के रूप में",
       otherRegisteredAs: "अन्य निर्दिष्ट करें",
       facilitatingInstitutions: "सुगम संस्थाओं के नाम",
       specify: "कृपया निर्दिष्ट करें",
@@ -627,15 +627,15 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ఇమెయిల్ చిరునామా",
       activeFarmerMembers: "కార్యర్త మౌస్తులు",
       dateOfRegistration: "నిబంధన తేదీ",
-      numVillagesCovered: "కవర్ చేసిన గ్రామాల సంఖ్య",
-      numGramPanchayatBlocksCovered: "కవర్ చేసిన గ్రామ పంచాయతీ మరియు బ్లాక్‌లు",
+      numVillagesCovered: "FPO పరిధిలో ఉన్న గ్రామాల సంఖ్య",
+      numGramPanchayatBlocksCovered: "FPO కింద గ్రామ పంచాయతీ సంఖ్య & బ్లాక్‌లు",
       primaryProducts: "ప్రాథమిక ఉత్పత్తులు/పంటలు",
       operationalDuration: "కార్యాచరణ కాలం (ఏటల నుండి)",
       annualProduction: "వార్షిక ఉత్పత్తి (టన్నులు)",
       annualRevenue: "వార్షిక ఆదాయం (నిధుల సంవత్సరం 2023-24లో INR)",
       percentageGrowthProduction: "కొన్ని సంవత్సరాలలో ఉత్పత్తిలో శాతం వృద్ధి",
       percentageGrowthRevenue: "కొన్ని సంవత్సరాలలో ఆదాయంలో శాతం వృద్ధి",
-      registeredAs: "పనిదారి",
+      registeredAs: "FPO పనిదారి",
       otherRegisteredAs: "ఇతరంగా నమోదు చేయబడింది",
       facilitatingInstitutions: "సౌకర్యవంతమైన సంస్థల పేరు",
       specify: "దయచేసి పేరు తెలియజేయండి",
@@ -748,15 +748,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ईमेल पता",
       activeFarmerMembers: "सक्रिय किसान सदस्य",
       dateOfRegistration: "पंजीकरणक तिथि",
-      numVillagesCovered: "कवर किए गेल गांवक संख्या",
-      numGramPanchayatBlocksCovered: "ग्राम पंचायत आ ब्लॉकक संख्या",
+      numVillagesCovered: "एफपीओ कें तहत कवर कैल गेल गामक कें संख्या",
+      numGramPanchayatBlocksCovered:
+        "ग्राम पंचायत के नम्बर एवं ब्लॉक एफपीओ के तहत",
       primaryProducts: "प्राथमिक उत्पाद/फसलें",
       operationalDuration: "कार्यकाल अवधि (साल से)",
       annualProduction: "वार्षिक उत्पादन (टन)",
       annualRevenue: "वार्षिक राजस्व (वित्तीय साल 2023-24 में INR)",
       percentageGrowthProduction: "पिछले सालक उत्पादन में प्रतिशत वृद्धि",
       percentageGrowthRevenue: "पिछला सालक राजस्व में प्रतिशत वृद्धि",
-      registeredAs: "पंजीकृत क लेल",
+      registeredAs: "FPO पंजीकृत क लेल",
       otherRegisteredAs: "अन्य निर्दिष्ट करू",
       facilitatingInstitutions: "सुगम संस्थानक नाम",
       specify: "कृपया नाम निर्दिष्ट करू",
@@ -865,15 +866,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ईमेल पत्ता",
       activeFarmerMembers: "सक्रिय शेतकरी सदस्यांची संख्या",
       dateOfRegistration: "नोंदणीची तारीख",
-      numVillagesCovered: "आच्छादन केलेल्या गावांची संख्या",
-      numGramPanchayatBlocksCovered: "ग्राम पंचायत आणि ब्लॉक कव्हर केले",
+      numVillagesCovered: "FPO अंतर्गत समाविष्ट गावांची संख्या",
+      numGramPanchayatBlocksCovered:
+        "FPO अंतर्गत ग्रामपंचायतींची संख्या आणि ब्लॉक",
       primaryProducts: "मुख्य उत्पादने/पिके",
       operationalDuration: "कार्यक्षेत्र (वर्षापासून)",
       annualProduction: "वार्षिक उत्पादन (टन)",
       annualRevenue: "वार्षिक उत्पन्न (आर्थिक वर्ष 2023-24 मध्ये INR)",
       percentageGrowthProduction: "गेल्या वर्षांतील उत्पादनात वाढ प्रतिशत",
       percentageGrowthRevenue: "गेल्या वर्षांतील उत्पन्नात वाढ प्रतिशत",
-      registeredAs: "नोंदणीकृत",
+      registeredAs: "FPO नोंदणीकृत",
       otherRegisteredAs: "इतर निर्दिष्ट करा",
       facilitatingInstitutions: "सुविधा देणाऱ्या संस्थांची नावे",
       specify: "कृपया निर्दिष्ट करा",
@@ -986,9 +988,9 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "மின்னஞ்சல் முகவரி",
       activeFarmerMembers: "செயல்பாட்டிலுள்ள விவசாயி உறுப்பினர்களின் எண்ணிக்கை",
       dateOfRegistration: "பதிவு தேதி",
-      numVillagesCovered: "மூடப்பட்ட கிராமங்களின் எண்ணிக்கை",
+      numVillagesCovered: "FPO இன் கீழ் உள்ள கிராமங்களின் எண்ணிக்கை",
       numGramPanchayatBlocksCovered:
-        "மூடப்பட்ட கிராம பஞ்சாயத் மற்றும் தொகுதிகள்",
+        "கிராம பஞ்சாயத்தின் எண் & தொகுதிகள் FPO கீழ்",
       primaryProducts: "முதன்மை உற்பத்திகள்/தரைகள்",
       operationalDuration: "செயல்பாட்டு காலம் (வருடத்திலிருந்து)",
       annualProduction: "வருடாந்த உற்பத்தி (டன்)",
@@ -996,7 +998,7 @@ const fpoTranslations: FpoTranslations = {
       percentageGrowthProduction:
         "கடந்த ஆண்டுகளில் உற்பத்தியில் சதவீத வளர்ச்சி",
       percentageGrowthRevenue: "கடந்த ஆண்டுகளில் வருமானத்தில் சதவீத வளர்ச்சி",
-      registeredAs: "பதிவு செய்யப்பட்டதைப் போல",
+      registeredAs: "FPO பதிவு செய்யப்பட்டதைப் போல",
       otherRegisteredAs: "மற்றவைகளை குறிப்பிடவும்",
       facilitatingInstitutions: "திறம்படமாக்கும் நிறுவனங்களின் பெயர்",
       specify: "குறிப்பிடவும்",
@@ -1079,7 +1081,7 @@ const fpoTranslations: FpoTranslations = {
       "8. FPO எடுத்துள்ள புத்தாக்க நடைமுறைகள்/மேம்பாட்டு திட்டங்கள்",
     innovationsPlaceholder: "புத்தாக்கங்களின் மற்றும் முயற்சிகளின் விளக்கம்",
     partnershipsTitle:
-      "9. அரசு நிறுவனங்கள், এন்ஜிஓக்கள் அல்லது மற்றஉறுப்பினர்கள் ஆகியவற்றுடன் FPO கொண்டுள்ள ஒத்துழைப்புகளை அல்லது கூட்டுப் பங்குகொள்ளிகளின் பெயர்களைத் தெரிக",
+      "9. அரசு நிறுவனங்கள், NGO அல்லது மற்றஉறுப்பினர்கள் ஆகியவற்றுடன் FPO கொண்டுள்ள ஒத்துழைப்புகளை அல்லது கூட்டுப் பங்குகொள்ளிகளின் பெயர்களைத் தெரிக",
     partnershipsPlaceholder:
       "FPO கொண்டுள்ள ஒத்துழைப்புகளை அல்லது கூட்டுப் பங்குகொள்ளிகளின் விளக்கம்",
     successStoriesTitle:
@@ -1115,15 +1117,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ইমেল ঠিকানা",
       activeFarmerMembers: "সক্রিয় কৃষক সদস্য সংখ্যা",
       dateOfRegistration: "নিবন্ধনের তারিখ",
-      numVillagesCovered: "কভার করা গ্রামের সংখ্যা",
-      numGramPanchayatBlocksCovered: "গ্রাম পঞ্চায়েত এবং ব্লক কভার করা",
+      numVillagesCovered: "FPO-এর আওতায় গ্রামের সংখ্যা",
+      numGramPanchayatBlocksCovered:
+        "FPO-এর অধীনে গ্রাম পঞ্চায়েতের নম্বর ও ব্লক",
       primaryProducts: "প্রাথমিক পণ্য/ফসল",
       operationalDuration: "কার্যকাল (বছর থেকে)",
       annualProduction: "বার্ষিক উৎপাদন (টন)",
       annualRevenue: "বার্ষিক আয় (আর্থিক বছর ২০২৩-২৪-এ INR)",
       percentageGrowthProduction: "গত বছরের উৎপাদনে শতকরা বৃদ্ধির হার",
       percentageGrowthRevenue: "গত বছরের আয়ে শতকরা বৃদ্ধির হার",
-      registeredAs: "নিবন্ধিত হিসেবে",
+      registeredAs: "FPO নিবন্ধিত হিসেবে",
       otherRegisteredAs: "অন্যান্য নিবন্ধিত",
       facilitatingInstitutions: "সহায়ক প্রতিষ্ঠানের নাম",
       specify: "অনুগ্রহ করে নাম উল্লেখ করুন",
@@ -1234,15 +1237,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ઇમેલ સરનામું",
       activeFarmerMembers: "સક્રિય ખેડૂત સભ્યોની સંખ્યા",
       dateOfRegistration: "રજિસ્ટ્રેશન તારીખ",
-      numVillagesCovered: "આવૃત્તિ કરેલ ગામોની સંખ્યા",
-      numGramPanchayatBlocksCovered: "આવૃત્તિ કરેલ ગ્રામ પંચાયત અને બ્લોક",
+      numVillagesCovered: "FPO હેઠળ આવરી લેવાયેલા ગામોની સંખ્યા",
+      numGramPanchayatBlocksCovered:
+        "FPO હેઠળ ગ્રામ પંચાયતની સંખ્યા અને બ્લોક્સ",
       primaryProducts: "મૂળ ઉત્પાદન/પાક",
       operationalDuration: "કામ ચલાવવાની અવધિ (વર્ષથી)",
       annualProduction: "વાર્ષિક ઉત્પાદન (ટન)",
       annualRevenue: "વાર્ષિક આવક (આર્થિક વર્ષ 2023-24 માં INR)",
       percentageGrowthProduction: "ગયા વર્ષોમાં ઉત્પાદનમાં ટકા વૃદ્ધિ",
       percentageGrowthRevenue: "ગયા વર્ષોમાં આવકમાં ટકા વૃદ્ધિ",
-      registeredAs: "નોંધાયેલ છે",
+      registeredAs: "FPO નોંધાયેલ છે",
       otherRegisteredAs: "બીજું નોંધાયેલ",
       facilitatingInstitutions: "સુવિધા આપતી સંસ્થાઓના નામ",
       specify: "કૃપા કરીને નામ સ્પષ્ટ કરો",
@@ -1355,15 +1359,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ଇମେଲ ଠିକଣା",
       activeFarmerMembers: "ସକ୍ରିୟ ଚାଷୀ ସଦସ୍ୟ ସଂଖ୍ୟା",
       dateOfRegistration: "ନିବନ୍ଧନ ତାରିଖ",
-      numVillagesCovered: "କଭର୍ କରାଯାଇଥିବା ଗ୍ରାମ ସଂଖ୍ୟା",
-      numGramPanchayatBlocksCovered: "କଭର୍ କରାଯାଇଥିବା ଗ୍ରାମ ପଞ୍ଚାୟତ ଏବଂ ବ୍ଲକ୍",
+      numVillagesCovered: "FPO ଅଧୀନରେ ଆଚ୍ଛାଦିତ ଗ୍ରାମ ସଂଖ୍ୟା |",
+      numGramPanchayatBlocksCovered:
+        "FPO ଅଧୀନରେ ଗ୍ରାମ ପଞ୍ଚାୟତର ସଂଖ୍ୟା ଏବଂ ବ୍ଲକଗୁଡିକ |",
       primaryProducts: "ମୂଳ ଉତ୍ପାଦନ/ଖେତି",
       operationalDuration: "କାର୍ଯ୍ୟାବଧି (ବର୍ଷରୁ)",
       annualProduction: "ବାର୍ଷିକ ଉତ୍ପାଦନ (ଟନ)",
       annualRevenue: "ବାର୍ଷିକ ଆୟ (ଆର୍ଥିକ ବର୍ଷ 2023-24ରେ INR)",
       percentageGrowthProduction: "ଗତ ବର୍ଷରେ ଉତ୍ପାଦନରେ ପ୍ରତିଶତ ବୃଦ୍ଧି",
       percentageGrowthRevenue: "ଗତ ବର୍ଷରେ ଆୟରେ ପ୍ରତିଶତ ବୃଦ୍ଧି",
-      registeredAs: "ନିବନ୍ଧିତ ରୂପେଣ",
+      registeredAs: "FPO ନିବନ୍ଧିତ ରୂପେଣ",
       otherRegisteredAs: "ଅନ୍ୟ ନିବନ୍ଧିତ",
       facilitatingInstitutions: "ସୁବିଧାକାରୀ ସଂସ୍ଥାମାନଙ୍କ ନାମ",
       specify: "ନାମ ସ୍ପଷ୍ଟ କରନ୍ତୁ",
@@ -1475,9 +1480,9 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ಇಮೇಲ್ ವಿಳಾಸ",
       activeFarmerMembers: "ಸಕ್ರಿಯ ರೈತ ಸದಸ್ಯರ ಸಂಖ್ಯೆ",
       dateOfRegistration: "ನೋಂದಣಿಯ ದಿನಾಂಕ",
-      numVillagesCovered: "ಮೂಲವಾದ ಗ್ರಾಮಗಳ ಸಂಖ್ಯೆ",
+      numVillagesCovered: "FPO ಅಡಿಯಲ್ಲಿ ಆವರಿಸಿರುವ ಗ್ರಾಮಗಳ ಸಂಖ್ಯೆ",
       numGramPanchayatBlocksCovered:
-        "ಗ್ರಾಮ ಪಂಚಾಯತ್ ಮತ್ತು ಬ್ಲಾಕ್‌ಗಳನ್ನು ಒಳಗೊಂಡ ಸಂಖ್ಯೆ",
+        "FPO ಅಡಿಯಲ್ಲಿ ಗ್ರಾಮ ಪಂಚಾಯತ್‌ನ ಸಂಖ್ಯೆ ಮತ್ತು ಬ್ಲಾಕ್‌ಗಳು",
       primaryProducts: "ಮೂಲ ಉತ್ಪನ್ನಗಳು/ಬೆಳೆಗಳು",
       operationalDuration: "ಕಾರ್ಯಾಚರಣಾ ಅವಧಿ (ವರ್ಷದಿಂದ)",
       annualProduction: "ವಾರ್ಷಿಕ ಉತ್ಪಾದನೆ (ಟನ್‌ಗಳು)",
@@ -1485,7 +1490,7 @@ const fpoTranslations: FpoTranslations = {
       percentageGrowthProduction:
         "ಹಿಂದಿನ ವರ್ಷಗಳಲ್ಲಿ ಉತ್ಪಾದನೆಯಲ್ಲಿ ಶೇಕಡಾವಾರು ವೃದ್ಧಿ",
       percentageGrowthRevenue: "ಹಿಂದಿನ ವರ್ಷಗಳಲ್ಲಿ ಆದಾಯದಲ್ಲಿ ಶೇಕಡಾವಾರು ವೃದ್ಧಿ",
-      registeredAs: "ನೋಂದಾಯಿಸಲಾಗಿದೆ",
+      registeredAs: "FPO ನೋಂದಾಯಿಸಲಾಗಿದೆ",
       otherRegisteredAs: "ಇತರವುಗಳನ್ನು ಸೂಚಿಸಿ",
       facilitatingInstitutions: "ಸುಧಾರಣೆಗೆ ಸಹಾಯ ಮಾಡುವ ಸಂಸ್ಥೆಗಳ ಹೆಸರು",
       specify: "ದಯವಿಟ್ಟು ಹೆಸರು ತಿಳಿಸಿ",
@@ -1597,15 +1602,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ईमेल पत्ता",
       activeFarmerMembers: "सक्रिय शेतकरी सदस्यांची संख्या",
       dateOfRegistration: "नोंदणीची तारीख",
-      numVillagesCovered: "आच्छादन केलेल्या गावांची संख्या",
-      numGramPanchayatBlocksCovered: "आच्छादन केलेल्या ग्रामपंचायत आणि ब्लॉक",
+      numVillagesCovered: "FPO-आच्छादन केलेल्या गावांची संख्या",
+      numGramPanchayatBlocksCovered:
+        "FPO-आच्छादन केलेल्या ग्रामपंचायत आणि ब्लॉक",
       primaryProducts: "मुख्य उत्पादने/पिके",
       operationalDuration: "कार्यक्षेत्र (वर्षापासून)",
       annualProduction: "वार्षिक उत्पादन (टन)",
       annualRevenue: "वार्षिक उत्पन्न (आर्थिक वर्ष 2023-24 मध्ये INR)",
       percentageGrowthProduction: "गेल्या वर्षांतील उत्पादनात वाढ टक्केवारी",
       percentageGrowthRevenue: "गेल्या वर्षांतील उत्पन्नात वाढ टक्केवारी",
-      registeredAs: "नोंदणीकृत आहे",
+      registeredAs: "FPO नोंदणीकृत आहे",
       otherRegisteredAs: "इतर नोंदणीकृत",
       facilitatingInstitutions: "सुविधा पुरवणाऱ्या संस्थांची नावे",
       specify: "कृपया नावे स्पष्ट करा",
@@ -1717,15 +1723,15 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ଇମେଲ ଠିକାନା",
       activeFarmerMembers: "ସାଖାଲିକାରୀଙ୍କ ସଦସ୍ୟ ଆମସିଙ୍ଗ ଣୁଓହେଓ",
       dateOfRegistration: "ପ୍ରାପ୍ତ ଦିନ",
-      numVillagesCovered: "କଭର୍ କରିଇଛା କୋମା",
-      numGramPanchayatBlocksCovered: "କଭର୍ କରିଇଛା ଗ୍ରାମ ପଞ୍ଚାୟତ ଏବଂ ବ୍ଲକ୍ସ",
+      numVillagesCovered: "FPO-କଭର୍ କରିଇଛା କୋମା",
+      numGramPanchayatBlocksCovered: "FPO-କଭର୍ କରିଇଛା ଗ୍ରାମ ପଞ୍ଚାୟତ ଏବଂ ବ୍ଲକ୍ସ",
       primaryProducts: "ମୂଳାଧାର ଶିଲ୍ପ/ଖେତି",
       operationalDuration: "କାମ କାରିବା ସମୟ (ବର୍ଷରୁ)",
       annualProduction: "ବାର୍ଷିକ ଉତ୍ପାଦନ (ଟନ୍)",
       annualRevenue: "ବାର୍ଷିକ ଆୟ (ଆର୍ଥିକ ବର୍ଷ 2023-24ରେ INR)",
       percentageGrowthProduction: "ଗତ ବର୍ଷରେ ଉତ୍ପାଦନରେ ପ୍ରତିଶତ ବୃଦ୍ଧି",
       percentageGrowthRevenue: "ଗତ ବର୍ଷରେ ଆୟରେ ପ୍ରତିଶତ ବୃଦ୍ଧି",
-      registeredAs: "ନିବନ୍ଧିତ",
+      registeredAs: "FPO ନିବନ୍ଧିତ",
       otherRegisteredAs: "ଅନ୍ୟ ପ୍ରିଶ୍ଠାକାରଣ",
       facilitatingInstitutions: "ସାହାୟିକ ସଂସ୍ଥାମାନଙ୍କ ନାମ",
       specify: "ନାମ ସ୍ପଷ୍ଟ କରନ୍ତୁ",
@@ -1834,16 +1840,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ഈമെയിൽ വിലാസം",
       activeFarmerMembers: "സജീവ കൃഷികാർ അംഗങ്ങളുടെ എണ്ണം",
       dateOfRegistration: "രജിസ്ട്രേഷൻ തീയതി",
-      numVillagesCovered: "ആവരണം ചെയ്ത ഗ്രാമങ്ങളുടെ എണ്ണം",
+      numVillagesCovered: "FPO യുടെ കീഴിൽ വരുന്ന ഗ്രാമങ്ങളുടെ എണ്ണം",
       numGramPanchayatBlocksCovered:
-        "ആവരണം ചെയ്ത ഗ്രാംപഞ്ചായത് ബ്ളോകുകളുടെ എണ്ണം",
+        "FPO യുടെ കീഴിലുള്ള ഗ്രാമപഞ്ചായത്തിൻ്റെ നമ്പറും ബ്ലോക്കുകളും",
       primaryProducts: "പ്രാഥമിക ഉൽപന്നങ്ങൾ/പടികൾ",
       operationalDuration: "പ്രവണതയുടെ കാലയളവിൽ (വർഷം മുതൽ)",
       annualProduction: "വാർഷിക ഉൽപാദനം (ടണ്‍)",
       annualRevenue: "വാർഷിക വരുമാനം (ആർത്ഥിക വർഷം 2023-24 ൽ INR)",
       percentageGrowthProduction: "കഴിഞ്ഞ വർഷങ്ങളിൽ ഉൽപാദനത്തിൽ വർധന ശതമാനം",
       percentageGrowthRevenue: "കഴിഞ്ഞ വർഷങ്ങളിൽ വരുമാനത്തിൽ വർദ്ധന ശതമാനം",
-      registeredAs: "രജിസ്ട്രേഡ് ആയി",
+      registeredAs: "FPO രജിസ്ട്രേഡ് ആയി",
       otherRegisteredAs: "മറ്റുള്ളവ ആയി രജിസ്റ്റർ ചെയ്തു",
       facilitatingInstitutions: "സഹായിക്കുന്ന സ്ഥാപനങ്ങളുടെ പേരുകൾ",
       specify: "ദയവായി വ്യക്തമാക്കുക",
@@ -1959,16 +1965,15 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ਈਮੇਲ ਪਤਾ",
       activeFarmerMembers: "ਸਰਗਰਮ ਕਿਸਾਨ ਸਦਸਾਂ ਦੀ ਗਿਣਤੀ",
       dateOfRegistration: "ਨੋਧ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਤਾਰੀਕ",
-      numVillagesCovered: "ਹਿੱਸਾ ਲੈ ਰਹੇ ਗਾਂਵਾਂ ਦੀ ਗਿਣਤੀ",
-      numGramPanchayatBlocksCovered:
-        "ਕਵਰ ਕੀਤੇ ਗਏ ਗ੍ਰਾਮ ਪੰਚਾਇਤ ਅਤੇ ਬਲਾਕਾਂ ਦੀ ਗਿਣਤੀ",
+      numVillagesCovered: "FPO ਅਧੀਨ ਆਉਂਦੇ ਪਿੰਡਾਂ ਦੀ ਗਿਣਤੀ",
+      numGramPanchayatBlocksCovered: "FPO ਅਧੀਨ ਗ੍ਰਾਮ ਪੰਚਾਇਤ ਦੀ ਗਿਣਤੀ ਅਤੇ ਬਲਾਕ",
       primaryProducts: "ਮੁੱਖ ਉਤਪਾਦ/ਫਸਲਾਂ",
       operationalDuration: "ਕਾਰੀਗਰਤਾ ਦੀ ਮਿਆਦ (ਸਾਲ ਤੱਕ)",
       annualProduction: "ਸਲਾਨਾ ਉਤਪਾਦਨ ਆਊਟਪੁਟ (ਟਨ)",
       annualRevenue: "ਸਲਾਨਾ ਆਮਦਨ (ਆਰਥਿਕ ਸਾਲ 2023-24 ਵਿੱਚ INR)",
       percentageGrowthProduction: "ਪਿਛਲੇ ਸਾਲਾਂ ਵਿੱਚ ਉਤਪਾਦਨ ਵਿੱਚ ਪ੍ਰਤਿਸ਼ਤ ਵਾਧਾ",
       percentageGrowthRevenue: "ਪਿਛਲੇ ਸਾਲਾਂ ਵਿੱਚ ਆਮਦਨ ਵਿੱਚ ਪ੍ਰਤਿਸ਼ਤ ਵਾਧਾ",
-      registeredAs: "ਰਜਿਸਟ੍ਰੀਡ ਦੇ ਤੌਰ 'ਤੇ",
+      registeredAs: "FPO ਰਜਿਸਟ੍ਰੀਡ ਦੇ ਤੌਰ 'ਤੇ",
       otherRegisteredAs: "ਹੋਰ ਕਿਸੇ ਤਰ੍ਹਾਂ ਰਜਿਸਟ੍ਰੀਡ",
       facilitatingInstitutions: "ਸਹਾਇਕ ਸੰਗਠਨਾਂ ਦੇ ਨਾਂ",
       specify: "ਕ੍ਰਿਪਾ ਕਰਕੇ ਨਾਂ ਸਪਸ਼ਟ ਕਰੋ",
@@ -2081,16 +2086,16 @@ const fpoTranslations: FpoTranslations = {
       emailAddress: "ईमेल ठेगाना",
       activeFarmerMembers: "सक्रिय किसान सदस्यहरूको संख्या",
       dateOfRegistration: "दर्ता मिति",
-      numVillagesCovered: "आवरण गरिएका गाउँहरूको संख्या",
+      numVillagesCovered: "FPO अन्तर्गत समेटिएका गाउँहरूको सङ्ख्या",
       numGramPanchayatBlocksCovered:
-        "आवरण गरिएका ग्राम पंचायत र ब्लकहरूको संख्या",
+        "FPO अन्तर्गत ग्राम पंचायतको संख्या र ब्लकहरू",
       primaryProducts: "प्राथमिक उत्पाद/बालीहरू",
       operationalDuration: "सञ्चालन अवधि (वर्षदेखि)",
       annualProduction: "वार्षिक उत्पादन उत्पादन (टन)",
       annualRevenue: "वार्षिक राजस्व (आर्थिक वर्ष 2023-24 मा INR)",
       percentageGrowthProduction: "पछिल्लो वर्षहरूमा उत्पादनमा वृद्धि प्रतिशत",
       percentageGrowthRevenue: "पछिल्लो वर्षहरूमा राजस्वमा वृद्धि प्रतिशत",
-      registeredAs: "दर्ता गरिएका रूपमा",
+      registeredAs: "FPO दर्ता गरिएका रूपमा",
       otherRegisteredAs: "अन्य रूपमा दर्ता गरिएका",
       facilitatingInstitutions: "सुविधा प्रदान गर्ने संस्थाहरूको नाम",
       specify: "कृपया नाम निर्दिष्ट गर्नुहोस्",
@@ -2543,7 +2548,7 @@ const Fporegister: React.FC = () => {
         otherRegisteredAs,
         otherFacilitatingInstitution: otherFacilitatingInstitution,
         primaryProducts: primaryProducts,
-        operationalDuration: operationalDuration,
+        operationalDuration: "NOT NEEDED",
         annualProduction: annualProduction,
         annualRevenue: annualRevenue,
         percentageGrowthProduction: percentageGrowthProduction,
@@ -2773,18 +2778,7 @@ const Fporegister: React.FC = () => {
                 onChange={handlePrimaryProductsChange}
               />
             </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <TextField
-                fullWidth
-                id="operationalDuration"
-                label={fpoDetails.operationalDuration}
-                variant="outlined"
-                required
-                onChange={handleOperationalDurationChange}
-                inputProps={{ min: 0 }}
-                type="number"
-              />
-            </Grid>
+
             <Grid item xs={12} sm={6} md={4}>
               <TextField
                 fullWidth
@@ -2851,6 +2845,42 @@ const Fporegister: React.FC = () => {
                 }}
               />
             </Grid>
+
+            <Grid item xs={12} sm={6} md={4}>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">
+                  {fpoDetails.facilitatingInstitutions}
+                </FormLabel>
+                <RadioGroup
+                  aria-label="facilitatingInstitutions"
+                  name="facilitatingInstitutions"
+                  value={facilitatingInstitutions}
+                  onChange={handleFacilitatingInstitutionsChange}
+                >
+                  <FormControlLabel
+                    value="1"
+                    control={<Radio />}
+                    label="POPI"
+                  />
+                  <FormControlLabel
+                    value="2"
+                    control={<Radio />}
+                    label="CBBO"
+                  />
+                </RadioGroup>
+                {(facilitatingInstitutions === "1" ||
+                  facilitatingInstitutions === "2") && (
+                  <TextField
+                    fullWidth
+                    value={otherFacilitatingInstitution}
+                    onChange={(event) =>
+                      setOtherFacilitatingInstitution(event.target.value)
+                    }
+                    placeholder={fpoDetails.specify}
+                  />
+                )}
+              </FormControl>
+            </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">
@@ -2896,41 +2926,6 @@ const Fporegister: React.FC = () => {
                       setOtherRegisteredAs(event.target.value)
                     }
                     placeholder={fpoDetails.otherRegisteredAs}
-                  />
-                )}
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6} md={4}>
-              <FormControl component="fieldset">
-                <FormLabel component="legend">
-                  {fpoDetails.facilitatingInstitutions}
-                </FormLabel>
-                <RadioGroup
-                  aria-label="facilitatingInstitutions"
-                  name="facilitatingInstitutions"
-                  value={facilitatingInstitutions}
-                  onChange={handleFacilitatingInstitutionsChange}
-                >
-                  <FormControlLabel
-                    value="1"
-                    control={<Radio />}
-                    label="POPI"
-                  />
-                  <FormControlLabel
-                    value="2"
-                    control={<Radio />}
-                    label="CBBO"
-                  />
-                </RadioGroup>
-                {(facilitatingInstitutions === "1" ||
-                  facilitatingInstitutions === "2") && (
-                  <TextField
-                    fullWidth
-                    value={otherFacilitatingInstitution}
-                    onChange={(event) =>
-                      setOtherFacilitatingInstitution(event.target.value)
-                    }
-                    placeholder={fpoDetails.specify}
                   />
                 )}
               </FormControl>

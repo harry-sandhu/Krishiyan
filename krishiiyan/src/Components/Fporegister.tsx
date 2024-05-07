@@ -2555,13 +2555,13 @@ const Fporegister: React.FC = () => {
         percentageGrowthRevenue: percentageGrowthRevenue,
 
         // Distribution Channels
-        distributionChannels,
+        distributionChannels: selectedDistribution,
 
         // FPO Needs
-        selectedSupport: supportNeeded,
+        selectedSupport: selectedSupport,
 
         // Challenges Faced
-        selectedChallenges: challenges,
+        selectedChallenges: selectedChallenges,
 
         // Reasons for Attending Conference
         reasons,

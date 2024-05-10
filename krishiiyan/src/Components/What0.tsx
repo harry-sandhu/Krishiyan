@@ -2,7 +2,7 @@ import React from "react";
 import farmerimg from "../assets/Images/Farmer Empowerment.png";
 import digital from "../assets/Images/Digitalizing.png";
 import supplychain from "../assets/Images/supplychain.png";
-import market from "../assets/Images/Market.png";
+import market from "../assets/Images/market.png";
 import quality from "../assets/Images/Quality.png";
 import sustain from "../assets/Images/Sustainable.png";
 import "./What0.css";
@@ -22,12 +22,12 @@ function What0() {
     {
       title: "Supply Chain Optimization",
       para: "Improve efficiency, transparency, and traceability in supply chains through digital platforms, logistic solutions, and data analytics.",
-      icon: quality,
+      icon: supplychain,
     },
     {
       title: "Market Access",
       para: "Connect with buyers, industries, and markets to access lucrative opportunities and maximize returns on agricultural investments.",
-      icon: quality,
+      icon: market,
     },
     {
       title: "Quality Assurance",

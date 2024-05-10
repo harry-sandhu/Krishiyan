@@ -5,6 +5,7 @@ import CropLibrary from "../pages/crop_advisary/CropLibrary";
 import Button from "@mui/material/Button";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
+import { Avatar } from "@mui/material";
 
 type NestedDropdownProps = {
   menus: Array<{ title: string; submenus: string[] }>;
@@ -18,6 +19,8 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   const [selectedSubmenu, setSelectedSubmenu] = useState("");
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
 
   const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
@@ -133,7 +136,14 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   // }, [isOpen]);
 
   console.log(isOpen);
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
+  const navigateToAccountSettings = () => {
+    navigate("/account-settings");
+    setDropdownOpen(false);
+  };
 
   return (
     <div className="relative ">
@@ -175,8 +185,8 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
             </svg>
           )}
         </button>
-        <img src="Images/logoname.png" alt="Ellipse" className="w-[30%]" />
-        <Button
+        <img src="Images/logoname.png" alt="Ellipse" className="w-[35%]" />
+        {/* <Button
           variant="contained"
           onClick={logout}
           sx={{ backgroundColor: "#05AB2A" }}
@@ -187,8 +197,36 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
             width={30}
           // color="red"
           />
-        </Button>
+        </Button> */}
 
+        <div className="relative"> {/* Wrapper for avatar and dropdown */}
+          <Avatar
+            alt="Remy Sharp"
+            src="Images\farmer.jpeg"
+            sx={{ width: 56, height: 56 }}
+            onClick={toggleDropdown}
+          />
+          {dropdownOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md">
+              <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                <button
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem"
+                  onClick={navigateToAccountSettings}
+                >
+                  Account Settings
+                </button>
+                <button
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  role="menuitem"
+                  onClick={logout}
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
         {isOpen && (
           <div
             ref={(node) => (dropdownRef.current = node)}

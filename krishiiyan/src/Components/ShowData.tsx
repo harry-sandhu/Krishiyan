@@ -44,6 +44,7 @@ const ShowData: React.FC = () => {
   const [password, setPassword] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [data, setData] = useState<FpoRegistrationData[]>([]);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
   // Use environment variable or secure method for password
   const correctPassword = "WetAcre@2024";
@@ -58,14 +59,32 @@ const ShowData: React.FC = () => {
     }
   };
 
+  // const fetchData = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.REACT_APP_BACKEND_URL}/show-data`
+  //     );
+  //     if (response.ok) {
+  //       const data = await response.json();
+  //       setData(data);
+  //     } else {
+  //       console.error("Failed to fetch data:", response.statusText);
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred:", error);
+  //   }
+  // };
+
   const fetchData = async () => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BACKEND_URL}/show-data`
-      );
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/show-data`);
       if (response.ok) {
-        const data = await response.json();
+        const data: FpoRegistrationData[] = await response.json();
+        const csvContent = convertToCSV(data);
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
         setData(data);
+        setDownloadUrl(url);
       } else {
         console.error("Failed to fetch data:", response.statusText);
       }
@@ -73,6 +92,19 @@ const ShowData: React.FC = () => {
       console.error("An error occurred:", error);
     }
   };
+
+  function convertToCSV(data: FpoRegistrationData[]): string {
+    const replacer = (key: string, value: any) => value === null ? '' : value; // Adjust based on your needs
+    const header = Object.keys(data[0]).join(',');
+
+    let csv = `${header}\r\n`;
+
+    data.forEach(row => {
+      csv += Object.values(row).join(',') + '\r\n';
+    });
+
+    return csv;
+  }
 
   return (
     <div className="container mx-auto p-4">
@@ -98,6 +130,11 @@ const ShowData: React.FC = () => {
       ) : (
         <div>
           <h2 className="text-2xl font-bold mb-4">FPO Data:</h2>
+          {downloadUrl && (
+            <a href={downloadUrl} download className="bg-blue-500 text-white p-2 rounded mt-4">
+              Download Data
+            </a>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {data.map((item, index) => (
               <div key={index} className="bg-white shadow-md p-4 rounded-lg">
@@ -112,6 +149,7 @@ const ShowData: React.FC = () => {
               </div>
             ))}
           </div>
+
         </div>
       )}
     </div>

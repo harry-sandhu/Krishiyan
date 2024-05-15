@@ -102,6 +102,8 @@ export async function forgotPassword(email: any, NewPassword: any, otp: any) {
   }
 }
 
+///
+
 //Login
 export async function dealerLogin(email: any, password: any) {
   try {

@@ -1,21 +1,46 @@
 import React, { useState, useEffect } from "react";
-import { Input, Button, Checkbox, Textarea } from "@material-tailwind/react";
+import { Input, Button, Textarea } from "@material-tailwind/react";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Api from "../Services/Api";
 import Header from "./layouts/Header";
+import axios from "axios";
 
 const AccountSetting = () => {
+  const [Type, setType] = useState("");
   const [organizationName, setOrganizationName] = useState("");
   const [address, setAddress] = useState("");
-  const [organizationType, setOrganizationType] = useState("");
   const [primaryContactPerson, setPrimaryContactPerson] = useState("");
   const [primaryContactNumber, setPrimaryContactNumber] = useState("");
   const [numberOfFarmers, setNumberOfFarmers] = useState("");
   const [crops, setCrops] = useState([]);
   const [selectedCrops, setSelectedCrops] = useState([]);
+
+  const handletypechange = (event: any, newValue: any) => {
+    setType(newValue.name);
+    console.log(Type);
+  };
+
+  const nameSuggestions = [
+    { name: "FPO/FPC (Farmer Producer Organisation/Farmer Producer Company)" },
+    { name: "PACS (Primary Agriculture Credit Society)" },
+    { name: "Co-operatives" },
+    { name: "FIG (Farmer Interest Group)" },
+    { name: "Individual Proprietors" },
+    { name: "Agri Input Dealers" },
+    { name: "Others" },
+  ];
+
+  useEffect(() => {
+    const storedDealerEmail = localStorage.getItem("dealerMail");
+    if (storedDealerEmail) {
+      fetchDealerData(storedDealerEmail);
+    } else {
+      console.log("yput email is null", storedDealerEmail);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchCrops = async () => {
@@ -37,35 +62,73 @@ const AccountSetting = () => {
     fetchCrops();
   }, []);
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const fetchDealerData = async (email: any) => {
+    console.log("fetching dealer data");
+    try {
+      const storedDealerEmail = localStorage.getItem("dealerEmail");
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/get-dealer-by-email?email=${storedDealerEmail}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch dealer data");
+      }
+      console.log(response);
+      const dealerData = await response.json();
+      console.log(dealerData);
+      // Set default values in state based on dealerData
+      // For example:
+      setPrimaryContactNumber(dealerData.mobile);
+      setPrimaryContactPerson(dealerData.name);
+      setAddress(dealerData.address);
+      // Set other fields as needed
+    } catch (error) {
+      console.error("Error fetching dealer data:", error);
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const accountData = {
-      organizationName,
-      address,
-      organizationType,
-      primaryContactPerson,
-      primaryContactNumber,
-      numberOfFarmers,
-      crops: selectedCrops,
-    };
+    const storedDealerEmail = localStorage.getItem("dealerMail");
+    if (!storedDealerEmail) {
+      toast.error("Dealer email not found");
+      return;
+    }
 
     try {
-      const response = await fetch("/api/account", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(accountData),
-      });
+      console.log(
+        primaryContactPerson,
+        address,
+        Type,
+        primaryContactNumber,
+        numberOfFarmers,
+        selectedCrops,
+        organizationName
+      );
+      const response = await axios.put(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/update-dealer/${storedDealerEmail}`,
+        {
+          name: primaryContactPerson,
+          address: address,
+          type: Type,
+          primaryContactNumber: primaryContactNumber,
+          numberOfFarmers: numberOfFarmers,
+          crops: selectedCrops || [],
+          organizationName: organizationName,
+        }
+      );
 
-      if (response.ok) {
-        toast.success("Account created successfully");
-      } else {
-        toast.error("Failed to create account");
-      }
+      toast.success("Dealer information updated successfully");
+      console.log(response);
     } catch (error) {
-      console.error("Error submitting account data:", error);
-      toast.error("Error submitting account data");
+      console.error("Error updating dealer:", error);
+      toast.error("Failed to update dealer information");
     }
   };
 
@@ -98,14 +161,21 @@ const AccountSetting = () => {
         <div className="mb-4">
           <label htmlFor="organization-type">Organization Type</label>
           <Autocomplete
-            id="organization-type"
-            options={["Type 1", "Type 2", "Type 3"]} // Customize with your organization types
-            onChange={(event, newValue) => setOrganizationType(newValue || "")}
+            className="p-2 mt-6 rounded-xl border"
+            options={nameSuggestions}
+            getOptionLabel={(option) => option.name}
+            onChange={handletypechange}
             renderInput={(params) => (
               <TextField
                 {...params}
-                placeholder="Select organization type"
+                margin="normal"
                 required
+                fullWidth
+                id="type"
+                label="Type of the Organization"
+                name="Name of the Organization"
+                autoComplete="type"
+                autoFocus
               />
             )}
           />
@@ -151,9 +221,12 @@ const AccountSetting = () => {
             multiple
             id="crops"
             options={crops || ""}
-            onChange={(event, newValues) => setSelectedCrops(newValues)}
+            onChange={(event, newValues) => {
+              console.log("Selected Crops:", newValues); // Add this line to log selected crops
+              setSelectedCrops(newValues);
+            }}
             renderInput={(params) => (
-              <TextField {...params} placeholder="Select crops" required />
+              <TextField {...params} placeholder="Select crops" />
             )}
           />
         </div>

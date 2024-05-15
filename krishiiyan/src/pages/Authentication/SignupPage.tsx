@@ -195,6 +195,7 @@ const SignupPage = () => {
     if (res && check && check1) {
       localStorage.setItem("authToken", res?.data?.token);
       localStorage.setItem("dealerName", res?.data?.result?.name);
+      localStorage.setItem("dealerMail", res?.data?.result?.email);
       navigate("/");
       toast.success("Register Success !", {
         position: toast.POSITION.TOP_RIGHT,

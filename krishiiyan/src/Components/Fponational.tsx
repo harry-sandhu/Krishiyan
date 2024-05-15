@@ -48,7 +48,7 @@ function Fponational() {
         </div>
         <div className="flex flex-col md:flex-row justify-evenly gap-10 m-5">
           <div className="bg-blue-gray-50 flex-col items-start w-full md:w-30 p-5 rounded-lg text-xl text-left">
-            <h3>Date: 20-21 July, 2024 </h3>
+            <h3>Date: 24-25 August, 2024 </h3>
             <h3 className="inline-block">
               Venue: Urja Auditorium,Patna, Bihar
             </h3>

@@ -2,9 +2,11 @@ import React from "react";
 import { extractCodeFromDriveLink } from "../../../handleImageCode";
 
 const BasalStep = (props: any) => {
+  console.log("props", props.cropDetails.disease_link);
   if (Object.keys(props.cropDetails).length === 0) {
     return <>Loading...</>;
   }
+
   return (
     <>
       <div
@@ -32,6 +34,7 @@ const BasalStep = (props: any) => {
                   src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                     img
                   )}&sz=w1000`}
+                  //
                   style={{
                     marginTop: "20px",
                     width: "200px",
@@ -71,7 +74,13 @@ const BasalStep = (props: any) => {
                   <img
                     src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                       props?.cropDetails?.disease_link
-                    )}sz=w1000`}
+                    )}&sz=w1000`}
+                    //https://lh3.googleusercontent.com/d/1XENFETTsb9kKx3tBmioU9T1YtKuTiNGg=w1000?authuser=0
+                    //https://drive.google.com/thumbnail?id=1XENFETTsb9kKx3tBmioU9T1YtKuTiNGgsz=w1000
+                    //<img src="https://drive.google.com/thumbnail?id=1XENFETTsb9kKx3tBmioU9T1YtKuTiNGgsz=w1000" style="margin-top: 20px; width: 200px; height: 200px; object-fit: cover;">
+                    //src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
+                    // image
+                    // )}&sz=w1000`}
                     style={{
                       marginTop: "20px",
                       width: "200px",
@@ -109,7 +118,7 @@ const BasalStep = (props: any) => {
             <img
               src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                 props?.cropDetails?.pest_link
-              )}sz=w1000`}
+              )}&sz=w1000`}
               style={{
                 marginTop: "20px",
                 width: "200px",
@@ -128,7 +137,7 @@ const BasalStep = (props: any) => {
               <img
                 src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                   img
-                )}sz=w1000`}
+                )}&sz=w1000`}
                 style={{
                   marginTop: "20px",
                   width: "200px",
@@ -151,7 +160,7 @@ const BasalStep = (props: any) => {
               <img
                 src={`https://drive.google.com/thumbnail?id=${extractCodeFromDriveLink(
                   props?.cropDetails?.weed_link
-                )}sz=w1000`}
+                )}&sz=w1000`}
                 style={{
                   marginTop: "20px",
                   width: "200px",

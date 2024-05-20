@@ -11,8 +11,6 @@ type NestedDropdownProps = {
   menus: Array<{ title: string; submenus: string[] }>;
 };
 
-
-
 const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMenu, setSelectedMenu] = useState("");
@@ -20,7 +18,6 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   const navigate = useNavigate();
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
 
   const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
@@ -138,6 +135,13 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   console.log(isOpen);
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+    if (!dropdownOpen) {
+      localStorage.setItem("dropdownOpen", "true");
+      console.log("nested", localStorage.getItem("dropdownOpen"));
+    } else {
+      localStorage.setItem("dropdownOpen", "false");
+      console.log("nested", localStorage.getItem("dropdownOpen"));
+    }
   };
 
   const navigateToAccountSettings = () => {
@@ -147,7 +151,7 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
 
   return (
     <div className="relative ">
-      <div className="flex justify-between px-3 py-2">
+      <div className="flex justify-between px-3 py-2 z-50">
         <button
           onClick={handleButtonClick}
           className="p-2 focus:outline-none focus:bg-gray-300 rounded"
@@ -199,7 +203,9 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
           />
         </Button> */}
 
-        <div className="relative"> {/* Wrapper for avatar and dropdown */}
+        <div className="relative">
+          {" "}
+          {/* Wrapper for avatar and dropdown */}
           <Avatar
             alt="Remy Sharp"
             src="Images\farmer.jpeg"
@@ -208,7 +214,12 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
           />
           {dropdownOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-md">
-              <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+              <div
+                className="py-1"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
                 <button
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   role="menuitem"
@@ -239,10 +250,11 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
                   <li
                     key={index}
                     onClick={() => handleMenuClick(menu.title)}
-                    className={`cursor-pointer ${selectedMenu === menu.title
-                      ? "text-[#311a8f] mix-blend-hard-light  underline border-black"
-                      : "text-[#13490A]"
-                      } mt-3 font-bold`}
+                    className={`cursor-pointer ${
+                      selectedMenu === menu.title
+                        ? "text-[#311a8f] mix-blend-hard-light  underline border-black"
+                        : "text-[#13490A]"
+                    } mt-3 font-bold`}
                   >
                     {menu.title}
                   </li>
@@ -257,10 +269,11 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
                       <li
                         key={index}
                         onClick={() => handleSubmenuClick(submenu)}
-                        className={`cursor-pointer ${selectedSubmenu === submenu
-                          ? "text-[#526D4E]  mix-blend-hard-light"
-                          : "text-[#13490A]"
-                          } text-start`}
+                        className={`cursor-pointer ${
+                          selectedSubmenu === submenu
+                            ? "text-[#526D4E]  mix-blend-hard-light"
+                            : "text-[#13490A]"
+                        } text-start`}
                       >
                         {submenu}
                       </li>

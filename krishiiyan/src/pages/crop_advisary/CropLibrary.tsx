@@ -57,6 +57,33 @@ const CropLibrary = () => {
   const closePopup = () => {
     setIsPopupOpen(false);
   };
+  let mobileTopMargin;
+  // Function to update mobileTopMargin based on dropdownOpen value
+  function updateMobileTopMargin() {
+    var dropdownOpen = localStorage.getItem("dropdownOpen");
+    console.log("cropliberay", dropdownOpen);
+    if (dropdownOpen === "true") {
+      mobileTopMargin = 100;
+      // Set mobileTopMargin to 100 when dropdown is open
+      // Example: document.getElementById('yourElementId').style.marginTop = mobileTopMargin + 'px';
+    } else {
+      mobileTopMargin = 80; /* Another value when dropdown is closed */
+      // Set mobileTopMargin to another value when dropdown is closed
+      // Example: document.getElementById('yourElementId').style.marginTop = mobileTopMargin + 'px';
+    }
+    console.log(mobileTopMargin);
+  }
+
+  // Listen for changes to dropdownOpen
+  window.addEventListener("storage", function (event) {
+    if (event.key === "dropdownOpen") {
+      // Update mobileTopMargin when dropdownOpen changes
+      updateMobileTopMargin();
+    }
+  });
+
+  // Call updateMobileTopMargin initially to set the initial state
+  updateMobileTopMargin();
 
   const onClickGeneral = () => {
     setGeneral(true);
@@ -213,10 +240,12 @@ const CropLibrary = () => {
   return (
     <div>
       <Header title="Crop Advisory" subtitle="Crop Library" />
-      <section className="p-5 grid grid-cols-[30%_30%_30%_10%] ">
-        <div className="font-extrabold grid grid-cols-[50%_50%_50%] items-center  "></div>
+      <section className="p-5 grid grid-cols-[30%_30%_30%_10%] z-0 ">
+        <div className="font-extrabold grid grid-cols-[50%_50%_50%] items-center  z-0 "></div>
 
-        <div className="grid grid-cols-[35%_45%_15%_5%] mt-5 flex-row items-center w-full mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4">
+        <div
+          className={`grid grid-cols-[35%_45%_15%_5%] z-0 mt-5 flex-row items-center w-full mobile:top-[${mobileTopMargin}vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4`}
+        >
           <label className="text-[#13490A] font-roboto font-extrabold text-m flex justify-center">
             Select your Crop
           </label>

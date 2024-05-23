@@ -53,10 +53,11 @@ const LoginPage = () => {
     }
 
     if (res && check1) {
-      console.log(res);
+      //  console.log(res);
       localStorage.setItem("authToken", res?.data?.token);
       localStorage.setItem("dealerName", res?.data?.oldUser?.name);
       localStorage.setItem("dealermobile", res?.data?.oldUser?.mobile);
+      localStorage.setItem("dealerMail", res?.data?.oldUser?.email);
       navigate("/");
       toast.success("Login Success !", {
         position: toast.POSITION.TOP_RIGHT,

@@ -86,7 +86,11 @@ const AccountSetting = () => {
       // For example:
       setPrimaryContactNumber(dealerData.mobile);
       setPrimaryContactPerson(dealerData.name);
-      setAddress(dealerData.address);
+      setAddress(dealerData.fullAddress);
+      setOrganizationName(dealerData.organizationName);
+      setNumberOfFarmers(dealerData.numberOfFarmers);
+      setType(dealerData.type);
+      setSelectedCrops(dealerData.crops);
       // Set other fields as needed
     } catch (error) {
       console.error("Error fetching dealer data:", error);

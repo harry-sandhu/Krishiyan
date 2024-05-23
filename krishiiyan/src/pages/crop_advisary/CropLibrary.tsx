@@ -244,7 +244,7 @@ const CropLibrary = () => {
         <div className="font-extrabold grid grid-cols-[50%_50%_50%] items-center  z-0 "></div>
 
         <div
-          className={`grid grid-cols-[35%_45%_15%_5%] z-0 mt-5 flex-row items-center w-full mobile:top-[${mobileTopMargin}vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4`}
+          className={`grid grid-cols-[35%_45%_15%_5%] z-0 mt-5 flex-row items-center w-full mobile:top-[80vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4`}
         >
           <label className="text-[#13490A] font-roboto font-extrabold text-m flex justify-center">
             Select your Crop

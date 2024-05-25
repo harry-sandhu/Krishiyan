@@ -59,29 +59,17 @@ const ShowData: React.FC = () => {
     }
   };
 
-  // const fetchData = async () => {
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.REACT_APP_BACKEND_URL}/show-data`
-  //     );
-  //     if (response.ok) {
-  //       const data = await response.json();
-  //       setData(data);
-  //     } else {
-  //       console.error("Failed to fetch data:", response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occurred:", error);
-  //   }
-  // };
-
   const fetchData = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/show-data`);
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/show-data`
+      );
       if (response.ok) {
         const data: FpoRegistrationData[] = await response.json();
         const csvContent = convertToCSV(data);
-        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const blob = new Blob([csvContent], {
+          type: "text/csv;charset=utf-8;",
+        });
         const url = URL.createObjectURL(blob);
         setData(data);
         setDownloadUrl(url);
@@ -94,13 +82,13 @@ const ShowData: React.FC = () => {
   };
 
   function convertToCSV(data: FpoRegistrationData[]): string {
-    const replacer = (key: string, value: any) => value === null ? '' : value; // Adjust based on your needs
-    const header = Object.keys(data[0]).join(',');
+    const replacer = (key: string, value: any) => (value === null ? "" : value); // Adjust based on your needs
+    const header = Object.keys(data[0]).join(",");
 
     let csv = `${header}\r\n`;
 
-    data.forEach(row => {
-      csv += Object.values(row).join(',') + '\r\n';
+    data.forEach((row) => {
+      csv += Object.values(row).join(",") + "\r\n";
     });
 
     return csv;
@@ -131,25 +119,49 @@ const ShowData: React.FC = () => {
         <div>
           <h2 className="text-2xl font-bold mb-4">FPO Data:</h2>
           {downloadUrl && (
-            <a href={downloadUrl} download className="bg-blue-500 text-white p-2 rounded mt-4">
+            <a
+              href={downloadUrl}
+              download
+              className="bg-blue-500 text-white p-2 rounded mt-4"
+            >
               Download Data
             </a>
           )}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {data.map((item, index) => (
-              <div key={index} className="bg-white shadow-md p-4 rounded-lg">
-                <h3 className="text-xl font-semibold mb-2">{item.fpoName}</h3>
-                <ul className="space-y-1">
-                  {Object.entries(item).map(([key, value]) => (
-                    <li key={key}>
-                      <strong>{key}:</strong> {JSON.stringify(value)}
-                    </li>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white">
+              <thead>
+                <tr>
+                  {Object.keys(data[0] || {}).map((key) => (
+                    <th
+                      key={key}
+                      className="py-2 px-4 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                    >
+                      {key}
+                    </th>
                   ))}
-                </ul>
-              </div>
-            ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+                  <tr
+                    key={index}
+                    className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                  >
+                    {Object.values(item).map((value, i) => (
+                      <td
+                        key={i}
+                        className="py-2 px-4 border-b border-gray-200 text-sm leading-5 text-gray-900"
+                      >
+                        {typeof value === "object"
+                          ? JSON.stringify(value)
+                          : value}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
         </div>
       )}
     </div>

@@ -41,36 +41,37 @@ const SignupPage = () => {
     { name: "Others" },
   ];
 
-  let email1 = "";
+  const [email1, setEmail1] = useState("");
+
   const validateEmail = async (email: string) => {
     const validDomains = ["@gmail.com", "@krishiyan.com", "info@", "@"];
 
     for (const domain of validDomains) {
       if (email.includes(domain)) {
         check1 = true;
-        console.log("check 1 ", check1);
+        console.log("validate email ,check 1 ", check1);
         if (check1) {
-          console.log("check function entered");
+          console.log("validate email,check function entered");
           const response = await fetch(
             `${process.env.REACT_APP_BACKEND_URL}/farmers/check-farmer/${email}`
           );
 
           const data = await response.json();
-          console.log("function called", data);
+          console.log("validaye eamill,function called", data);
           if (data?.exists == false) {
             setCheckEmail(true);
-            console.log("check of data ", email);
+            console.log("validate eamil,check of data ", email);
           } else {
             setCheckEmail(false);
             setEmail("");
 
-            toast.error("User Already Exists! Enter new email", {
+            toast.error("vlaidate email,User Already Exists! Enter new email", {
               position: toast.POSITION.TOP_RIGHT,
             });
           }
         }
       }
-      console.log("check 1 ", check1);
+      console.log("validate email,check 1 ", check1);
     }
   };
 
@@ -104,10 +105,10 @@ const SignupPage = () => {
 
   const handleEmailChange = (event: any) => {
     console.log("insisde cehck email");
-    email1 = event.target.value;
-    console.log("handle change email", email1);
+    const emailValue = event.target.value;
+    setEmail1(emailValue);
     check1 = false;
-    validateEmail(email1);
+    validateEmail(emailValue);
   };
   const handleMobileChange = (event: any) => {
     Phone = event.target.value;
@@ -132,7 +133,7 @@ const SignupPage = () => {
     setOpen(false);
   };
   const handleOtpSubmit = async () => {
-    console.log("email1 send otp", email1);
+    console.log("handle email submit ,email1 send otp", email1);
     console.log(email1);
 
     if (email1 != null && email1.trim() !== "" && checkemail) {

@@ -44,7 +44,7 @@ const PlantationType = [
 ];
 
 const NewRegistration = () => {
-  const dealer_mobile = "0000000000";
+  const dealer_mobile = localStorage.getItem("dealermobile");
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState<any>();
@@ -211,7 +211,7 @@ const NewRegistration = () => {
       dealer_farmer_relation,
       plantation_type,
       dealer_mobile,
-      crops: selectedCropNames,
+      crops: selectedCrops,
     };
 
     try {

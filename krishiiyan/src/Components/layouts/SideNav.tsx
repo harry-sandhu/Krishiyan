@@ -92,10 +92,6 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
   };
   const menus = [
     {
-      title: "Pos",
-      submenus: ["Sale", "Inventory", "Reports", "Product", "Sales Statement"],
-    },
-    {
       title: "Crop Advisory",
       submenus: [
         "Crop Library",
@@ -115,14 +111,6 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
         // "support",
         "New Registration",
       ],
-    },
-    {
-      title: "Management",
-      submenus: ["Manage Accounting"],
-    },
-    {
-      title: "Help",
-      submenus: ["Problem", "Expert", "Guide"],
     },
   ];
 

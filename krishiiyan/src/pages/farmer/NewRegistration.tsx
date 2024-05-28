@@ -306,132 +306,134 @@ const NewRegistration = () => {
   };
   return (
     <div>
-      <Header title="Farmer" subtitle="New Registration" />
-      <h2 className="regheading">New Farmer Registration</h2>
-      <section className="form-group">
-        <div>
-          <label>Name</label>
-          <input type="text" onChange={onChangeName}></input>
-        </div>
-        <div>
+      <Header title="Farmer" subtitle="New Registration" />\
+      <div className=" mobile:top-[10vh] mobile:absolute mobile:left-[2vh] mobile:right-[2vh]  mobile:flex-col mobile:flex mobile:gap-y-[8vh]">
+        <h2 className="regheading">New Farmer Registration</h2>
+        <section className="form-group">
           <div>
-            <label>Mobile Number</label>
-            <input
-              type="text"
-              value={phoneNumber}
-              onChange={onChangePhone}
-            ></input>
+            <label>Name</label>
+            <input type="text" onChange={onChangeName}></input>
           </div>
-          <div className="whatsappdiv">
-            <Checkbox
-              checked={mobileIsWhatsapp}
-              onChange={onChangeIsWhatsapp}
-              inputProps={{ "aria-label": "controlled" }}
+          <div>
+            <div>
+              <label>Mobile Number</label>
+              <input
+                type="text"
+                value={phoneNumber}
+                onChange={onChangePhone}
+              ></input>
+            </div>
+            <div className="whatsappdiv">
+              <Checkbox
+                checked={mobileIsWhatsapp}
+                onChange={onChangeIsWhatsapp}
+                inputProps={{ "aria-label": "controlled" }}
+              />
+              <span style={{ fontWeight: "bolder" }}>Whatsapp</span>
+            </div>
+          </div>
+          <div className="addressbar">
+            <label>Address</label>
+            <div>
+              <div>
+                <label className="pincodelabel">
+                  <input onChange={onChangeZip} placeholder="Pincode"></input>
+                </label>
+              </div>
+              <div>
+                <Input label="State" value={state} disabled />{" "}
+                {loading ? <Loader /> : null}
+              </div>
+              <div>
+                <Input label="City" value={city} disabled />{" "}
+                {loading ? <Loader /> : null}
+              </div>
+              <div>
+                <Input label="Area" onChange={onChangeStreet} />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label>Total Farm Area(Acre)</label>
+            <input type="number" onChange={onChangeTotalLandArea}></input>
+          </div>
+
+          <div className="dealerfarmer">
+            <label className="dealerlabel">Dealer Farmer Relationship</label>
+            <Autocomplete
+              onChange={onChangeDealerFarmerRel}
+              id="plantation-select"
+              options={PlantationOption}
+              autoHighlight
+              getOptionLabel={(option) => option.label}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Choose Relationship"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password",
+                  }}
+                />
+              )}
             />
-            <span style={{ fontWeight: "bolder" }}>Whatsapp</span>
           </div>
-        </div>
-        <div className="addressbar">
-          <label>Address</label>
           <div>
-            <div>
-              <label className="pincodelabel">
-                <input onChange={onChangeZip} placeholder="Pincode"></input>
-              </label>
-            </div>
-            <div>
-              <Input label="State" value={state} disabled />{" "}
-              {loading ? <Loader /> : null}
-            </div>
-            <div>
-              <Input label="City" value={city} disabled />{" "}
-              {loading ? <Loader /> : null}
-            </div>
-            <div>
-              <Input label="Area" onChange={onChangeStreet} />
-            </div>
+            <label>Type</label>
+            <Autocomplete
+              onChange={onChangePlantationType}
+              id="plantation-select"
+              options={PlantationOptions}
+              autoHighlight
+              getOptionLabel={(option) => option.value}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Choose Type"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password",
+                  }}
+                />
+              )}
+            />
           </div>
-        </div>
+          <div>
+            <label>Crops</label>
+            <Autocomplete
+              multiple
+              id="crops-select"
+              options={crops || []}
+              getOptionLabel={(option) => option}
+              onChange={onChangeCrops}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Select Crops"
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password",
+                  }}
+                />
+              )}
+            />
+          </div>
 
-        <div>
-          <label>Total Farm Area(Acre)</label>
-          <input type="number" onChange={onChangeTotalLandArea}></input>
-        </div>
-
-        <div className="dealerfarmer">
-          <label className="dealerlabel">Dealer Farmer Relationship</label>
-          <Autocomplete
-            onChange={onChangeDealerFarmerRel}
-            id="plantation-select"
-            options={PlantationOption}
-            autoHighlight
-            getOptionLabel={(option) => option.label}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Choose Relationship"
-                inputProps={{
-                  ...params.inputProps,
-                  autoComplete: "new-password",
-                }}
-              />
-            )}
-          />
-        </div>
-        <div>
-          <label>Type</label>
-          <Autocomplete
-            onChange={onChangePlantationType}
-            id="plantation-select"
-            options={PlantationOptions}
-            autoHighlight
-            getOptionLabel={(option) => option.value}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Choose Type"
-                inputProps={{
-                  ...params.inputProps,
-                  autoComplete: "new-password",
-                }}
-              />
-            )}
-          />
-        </div>
-        <div>
-          <label>Crops</label>
-          <Autocomplete
-            multiple
-            id="crops-select"
-            options={crops || []}
-            getOptionLabel={(option) => option}
-            onChange={onChangeCrops}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Select Crops"
-                inputProps={{
-                  ...params.inputProps,
-                  autoComplete: "new-password",
-                }}
-              />
-            )}
-          />
-        </div>
-
-        <div>
-          <div></div>
-          <button onClick={onSubmitHandler} type="submit">
-            Submit
-          </button>
-        </div>
-      </section>
-      <OTPVerification
-        open={open}
-        handleClose={handleClose}
-        Phone={phoneNumber}
-      />
-      <Popup isOpen={isPopupOpen} onClose={closePopup} />
+          <div>
+            <div></div>
+            <button onClick={onSubmitHandler} type="submit">
+              Submit
+            </button>
+          </div>
+        </section>
+        <OTPVerification
+          open={open}
+          handleClose={handleClose}
+          Phone={phoneNumber}
+        />
+        <Popup isOpen={isPopupOpen} onClose={closePopup} />
+      </div>
     </div>
   );
 };

@@ -63,11 +63,11 @@ const CropLibrary = () => {
     var dropdownOpen = localStorage.getItem("dropdownOpen");
     console.log("cropliberay", dropdownOpen);
     if (dropdownOpen === "true") {
-      mobileTopMargin = 100;
+      mobileTopMargin = 17;
       // Set mobileTopMargin to 100 when dropdown is open
       // Example: document.getElementById('yourElementId').style.marginTop = mobileTopMargin + 'px';
     } else {
-      mobileTopMargin = 80; /* Another value when dropdown is closed */
+      mobileTopMargin = 17; /* Another value when dropdown is closed */
       // Set mobileTopMargin to another value when dropdown is closed
       // Example: document.getElementById('yourElementId').style.marginTop = mobileTopMargin + 'px';
     }
@@ -244,7 +244,7 @@ const CropLibrary = () => {
         <div className="font-extrabold grid grid-cols-[50%_50%_50%] items-center  z-0 "></div>
 
         <div
-          className={`grid grid-cols-[35%_45%_15%_5%] z-0 mt-5 flex-row items-center w-full mobile:top-[80vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4`}
+          className={`grid grid-cols-[35%_45%_15%_5%] z-0 mt-5 flex-row items-center w-full mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4`}
         >
           <label className="text-[#13490A] font-roboto font-extrabold text-m flex justify-center">
             Select your Crop

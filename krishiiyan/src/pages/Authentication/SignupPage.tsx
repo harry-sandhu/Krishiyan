@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 import OTPVerification from "../farmer/OTPVerification";
 
-let check = false;
+let check = true;
 let check1 = true;
 
 const SignupPage = () => {

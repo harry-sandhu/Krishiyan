@@ -28,7 +28,7 @@ const OTPVerification = (props: any) => {
       const response = await axios.post(
         `${process.env.REACT_APP_BACKEND_URL}/verify-otp`,
         {
-          phoneNumber,
+          phoneNumber: phoneNumber.toLowerCase(),
           otp,
         }
       );

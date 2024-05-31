@@ -67,10 +67,10 @@ const CropCalendar = () => {
   const getCropStages = async () => {
     const CropData = await fetch(
       process.env.REACT_APP_BACKEND_URL +
-      "/cropCalendar/stage/" +
-      localsName +
-      "/" +
-      dateOfSowing,
+        "/cropCalendar/stage/" +
+        localsName +
+        "/" +
+        dateOfSowing,
       {
         method: "GET",
         headers: {
@@ -84,7 +84,7 @@ const CropCalendar = () => {
   return (
     <div>
       <Header title="Crop Advisory" subtitle="Crop Calendar" />
-      <section className="p-[1%] mobile:pt-[40rem] mobile:absolute mobile:-left-16">
+      <section className="p-[1%]  mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4 mobile:items-center ">
         {/* <div style={{width:"100%",height:"105px",backgroundColor:"red"}}>
 
         </div> */}

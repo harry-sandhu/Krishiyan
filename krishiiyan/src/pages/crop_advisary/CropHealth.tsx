@@ -182,13 +182,10 @@ const CropHealth = () => {
   return (
     <div>
       <Header title="Crop Advisory" subtitle="Crop Health" />
-      <section className="p-[1%] grid gap-y-1 mt-5 mobile:pt-[8rem] mobile:absolute mobile:left-0">
+      <section className="p-[1%] grid gap-y-1 mt-5 mobile:pt-[8rem]  mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4 mobile:items-center">
         <div className="flex mobile:flex-col mobile:gap-y-4" style={{}}>
           {crops && (
-            <div
-              className="font-extrabold grid grid-cols-[50%_40%] items-center mobile:flex mobile:flex-col"
-              style={{ width: "550px" }}
-            >
+            <div className="font-extrabold grid w-[550px] grid-cols-[50%_40%] items-center mobile:flex mobile:flex-col mobile:w-[80%]">
               <label className="text-[#13490A] text-end mr-3">
                 Select your Crop
               </label>
@@ -216,10 +213,7 @@ const CropHealth = () => {
             className="font-extrabold ml-10 grid grid-cols-[20%_40%] items-center mobile:flex mobile:flex-col"
             style={{ width: "450px" }}
           >
-            <div
-              className="font-extrabold grid grid-cols-[50%_40%] items-center mobile:flex mobile:flex-col"
-              style={{ width: "550px" }}
-            >
+            <div className="font-extrabold w-[550px] grid grid-cols-[50%_40%] items-center mobile:flex mobile:flex-col mobile:w-[80%]">
               <label className="text-[#13490A] text-end mr-3">
                 Select the issue:
               </label>

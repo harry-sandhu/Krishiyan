@@ -151,7 +151,7 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
   return (
     <>
       <Header title="Crop Advisory" subtitle="Market" />
-      <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-5 w-full mt-12 py-5">
+      <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-5 w-full mt-12 py-5 mobile:pt-[8rem]  mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4 mobile:items-center">
         {/* State Dropdown */}
         <div className="py-3 mx-auto">
           <label className="text-[#13490A] font-extrabold text-sm mr-2 ">
@@ -242,8 +242,8 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
         </div>
 
         {/* Sort Dropdown */}
-        <div className="py-3 mx-auto">
-          <label className="text-[#13490A] font-extrabold text-sm mr-2 ">
+        <div className="py-3 mx-auto ">
+          <label className="text-[#13490A] font-extrabold text-sm mr-2 mobile:pt-[8rem]  ">
             Sort by
           </label>
           <select
@@ -259,7 +259,7 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
       </div>
       {/* Table view on large screen */}
       {data ? (
-        <div className="rounded-xl shadow hidden md:block">
+        <div className="rounded-xl shadow hidden md:block ">
           <table className="mx-auto w-11/12 mt-7 border-collapse rounded-xl">
             <thead className="bg-[#57d272] border-b-2 border-gray-200">
               <tr className="text-center ">
@@ -329,7 +329,7 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
       <Popup isOpen={isPopupOpen} onClose={closePopup} />
       {/* SM screen view */}
       {data ? (
-        <div className="grid grid-cols-1 gap-1 md:hidden">
+        <div className="grid grid-cols-1 gap-1 md:hidden mobile:top-[80vh] mobile:absolute mobile:left-[5%] mobile:right-[5%] mobile:flex-col mobile:flex mobile:gap-y-4 mobile:items-center">
           {data.length > 0 ? (
             data.map((record: any, index: any) => (
               <div className="rounded-xl h-48 w-full bg-[#F3FFF1] m-1 text-left p-3 shadow-[4px_4px_3px_rgba(0,0,0,0.25)]">

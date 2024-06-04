@@ -46,7 +46,7 @@ function SideNavHandler() {
       ) : (
         <div style={{ position: "sticky" }}>
           {" "}
-          <SideNav menu={"pos"} submenu={"sale"} />
+          <SideNav menu={"FRM"} submenu={"Dashboard"} />
         </div>
       )}
     </div>

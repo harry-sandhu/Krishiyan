@@ -137,8 +137,8 @@ const FarmersList: React.FC = () => {
     <>
       <div>
         <Header title="Farmer Relationship Management" subtitle="Dashboard" />
-        <div className="mobile:top-[10vh] mobile:absolute mobile:left-[2vh] mobile:right-[2vh]  mobile:flex-col mobile:flex mobile:gap-y-[8vh]">
-          <h1 className="text-4xl font-extrabold mb-4 text-green-700 mt-20 xl:mt-5 p-5 rounded-lg">
+        <div className="mobile:top-[6vh] mobile:absolute mobile:left-[2vh] mobile:right-[2vh]  mobile:flex-col mobile:flex mobile:gap-y-[8vh]">
+          <h1 className="text-4xl font-extrabold mb-1 text-green-700 mt-5 xl:mt-5 p-2 rounded-lg">
             Farmers Data
           </h1>
           <div className="ml-8">

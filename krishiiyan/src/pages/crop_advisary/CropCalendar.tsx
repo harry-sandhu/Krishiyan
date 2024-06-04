@@ -84,92 +84,96 @@ const CropCalendar = () => {
   return (
     <div>
       <Header title="Crop Advisory" subtitle="Crop Calendar" />
-      <section className="p-[1%]  mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4 mobile:items-center ">
-        {/* <div style={{width:"100%",height:"105px",backgroundColor:"red"}}>
+      <div className="mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:items-center mobile:flex mobile:gap-y-4 mobile:items-left mobile:w-[100%] mobile:no-scroll-left">
+        <section className="p-[1%] mobile:absolute mobile:left-0 mobile:w-[100%] mobile:items-center mobile:no-scroll-left ">
+          {/* <div style={{width:"100%",height:"105px",backgroundColor:"red"}}>
 
         </div> */}
 
-        <div
-          className="mobile:flex mobile:flex-col flex mobile:gap-y-4"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
           <div
-            className="font-extrabold grid grid-cols-[40%_40%] items-center mobile:flex mobile:flex-col"
-            style={{ width: "550px" }}
+            className="mobile:flex mobile:flex-col flex mobile:gap-y-4 mobile:items-center mobile:left-0"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+            }}
           >
-            <label className="text-[#13490A]">Select the Crop</label>
+            <div
+              className="font-extrabold grid grid-cols-[40%_40%]  mobile:items-center mobile:flex mobile:flex-col "
+              style={{ width: "550px" }}
+            >
+              <label className="text-[#13490A]">Select the Crop</label>
 
-            <Autocomplete
-              onChange={onChangePlantationType}
-              id="plantation-select"
-              className="mobile:w-[80vw]"
-              // sx={{ bgcolor: '#F3FFF1', boxShadow: '4px 4px 3px rgba(0,0,0,0.25)', borderRadius: '6px', textAlign: 'center', height: '2rem' }}
-              options={crops || []}
-              autoHighlight
-              getOptionLabel={(crops) => crops?.localName}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Crop Name"
-                  inputProps={{
-                    ...params.inputProps,
-                    autoComplete: "new-password",
-                  }}
-                />
-              )}
-            />
-          </div>
-          <div
-            className="font-extrabold grid grid-cols-[30%_20%] items-center mobile:flex mobile:flex-col"
-            style={{ width: "550px" }}
-          >
-            <label className="text-[#13490A] text-center">Date of Sowing</label>
-            <div className="md:w-2/3">
-              <input
-                className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-[10rem] py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                onChange={onChangedateOfSowing}
-                id="inline-password"
-                type="date"
-                placeholder=""
+              <Autocomplete
+                onChange={onChangePlantationType}
+                id="plantation-select"
+                className="mobile:w-[80vw]"
+                // sx={{ bgcolor: '#F3FFF1', boxShadow: '4px 4px 3px rgba(0,0,0,0.25)', borderRadius: '6px', textAlign: 'center', height: '2rem' }}
+                options={crops || []}
+                autoHighlight
+                getOptionLabel={(crops) => crops?.localName}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Crop Name"
+                    inputProps={{
+                      ...params.inputProps,
+                      autoComplete: "new-password",
+                    }}
+                  />
+                )}
               />
             </div>
+            <div
+              className="font-extrabold grid grid-cols-[30%_20%]  mobile:flex mobile:flex-col"
+              style={{ width: "550px" }}
+            >
+              <label className="text-[#13490A] text-center">
+                Date of Sowing
+              </label>
+              <div className="md:w-2/3">
+                <input
+                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-[10rem] py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  onChange={onChangedateOfSowing}
+                  id="inline-password"
+                  type="date"
+                  placeholder=""
+                />
+              </div>
+            </div>
+            <div style={{ marginRight: "300px", marginTop: "7px" }}>
+              {loading ? (
+                <button
+                  style={{ marginLeft: "2px" }}
+                  type="submit"
+                  disabled={loading}
+                  className="bg-[#05AB2A] text-[#F3FFF1] shadow-[0px_4px_3px_rgba(0,0,0,0.25)] py-1 w-full rounded mobile:left-[10%] text-sm font-thin"
+                >
+                  {/* <Loader /> */}
+                  Fetching Info...
+                </button>
+              ) : (
+                <button
+                  style={{ padding: "9px" }}
+                  type="submit"
+                  onClick={getCropStages}
+                  className="bg-[#05AB2A] text-[#F3FFF1] shadow-[0px_4px_3px_rgba(0,0,0,0.25)] py-1 w-[6vw] rounded text-sm font-thin mobile:w-max"
+                >
+                  ENTER
+                </button>
+              )}
+            </div>
           </div>
-          <div style={{ marginRight: "300px", marginTop: "7px" }}>
-            {loading ? (
-              <button
-                style={{ marginLeft: "2px" }}
-                type="submit"
-                disabled={loading}
-                className="bg-[#05AB2A] text-[#F3FFF1] shadow-[0px_4px_3px_rgba(0,0,0,0.25)] py-1 w-full rounded text-sm font-thin"
-              >
-                {/* <Loader /> */}
-                Fetching Info...
-              </button>
-            ) : (
-              <button
-                style={{ padding: "9px" }}
-                type="submit"
-                onClick={getCropStages}
-                className="bg-[#05AB2A] text-[#F3FFF1] shadow-[0px_4px_3px_rgba(0,0,0,0.25)] py-1 w-[6vw] rounded text-sm font-thin mobile:w-max"
-              >
-                ENTER
-              </button>
+
+          <div className="my-10">
+            {cropDetails && (
+              <HorizontalNonLinearStepper
+                cropDetails={cropDetails}
+                date={dateOfSowing}
+              />
             )}
           </div>
-        </div>
-
-        <div className="my-10">
-          {cropDetails && (
-            <HorizontalNonLinearStepper
-              cropDetails={cropDetails}
-              date={dateOfSowing}
-            />
-          )}
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 };

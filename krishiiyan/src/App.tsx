@@ -52,7 +52,7 @@ import Contact from "./pages/Contact";
 import What from "./pages/What";
 import Login from "./pages/Login";
 import NewRegestrationAdmin from "./pages/crop_advisory_admin/NewRegestrationAdmin";
-import NewRegistrationAdmin from "./pages/farmer/NewRegistrationAdmin";
+import DashBoardNew from "./pages/farmer/DashBoardNew";
 import Announcement from "./pages/Announcement";
 import Fponational from "./Components/Fponational";
 import Fporegister from "./Components/Fporegister";
@@ -95,7 +95,7 @@ function App() {
                 <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                   <SideNavHandler />
                   {/*<Sale />*/}
-                  <Sale />
+                  <DashBoardNew />
                 </main>
               </>
             }
@@ -126,7 +126,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"report"} />
                 {/* <Report /> */}
-                <NewRegestrationAdmin />
+                <Premium />
               </main>
             }
           />
@@ -136,7 +136,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"pos"} submenu={"purchase"} />
                 {/* <Purchase /> */}
-                <NewRegistrationAdmin />
+                <Premium />
               </main>
             }
           />
@@ -211,7 +211,7 @@ function App() {
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"dashboard"} />
                 {/* <Dashboard /> */}
-                <NewRegistrationAdmin />
+                <DashBoardNew />
               </main>
             }
           />

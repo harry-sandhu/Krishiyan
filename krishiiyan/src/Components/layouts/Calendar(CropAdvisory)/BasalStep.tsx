@@ -8,15 +8,18 @@ const BasalStep = (props: any) => {
   }
 
   return (
-    <>
+    <div
+      className="mobile:absolute  mobile:flex-col mobile:flex mobile:gap-y-4  mobile:left-[5%] mobile:right-[5%]
+    mobile:w-[90%] "
+    >
       <div
-        className="text-[#13490A] font-extrabold mt-4 "
+        className="text-[#13490A] font-extrabold mt-4 mobile:w-[100%] "
         style={{
           display: "flex",
           textAlign: "left",
         }}
       >
-        <div>
+        <div className="mobile:w-[100%]">
           <br />
           {props?.cropDetails?.date}
           <br />
@@ -54,7 +57,7 @@ const BasalStep = (props: any) => {
           {/* <p>NutrientContains: </p>
           <br /> */}
           <div
-            className="text-[#13490A] font-extrabold mt-4 "
+            className="text-[#13490A] font-extrabold mt-4 mobile:w-[100%]"
             style={{
               display: "flex",
               textAlign: "left",
@@ -102,7 +105,7 @@ const BasalStep = (props: any) => {
 
           <br />
           <div
-            className="text-[#13490A] font-extrabold mt-4 "
+            className="text-[#13490A] font-extrabold mt-4 mobile:w-[100%]"
             style={{
               display: "flex",
               textAlign: "left",
@@ -237,7 +240,7 @@ const BasalStep = (props: any) => {
           <figcaption>Zinc Deficiency</figcaption>
         </figure>
       </div> */}
-    </>
+    </div>
   );
 };
 

@@ -26,8 +26,8 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
 
   const handleSubmenuClick = (submenu: string) => {
     const routes: { [key: string]: string } = {
-      "Crop Calendar": "/crop_calendar",
       "Crop Health": "/crop_health",
+      "Crop Calender": "/crop_calendar",
       "Crop Library": "/crop_library",
       FertiCal: "/fertical",
       "Mandi Prices": "/mandi_prices",
@@ -49,6 +49,7 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
     };
 
     const route = routes[submenu];
+    console.log(`Submenu: ${submenu}, Route: ${route}`); // Debugging output
     if (route) {
       navigate(route);
     } else {
@@ -91,8 +92,8 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   };
 
   return (
-    <div className="relative">
-      <div className="flex justify-between px-3 py-2 z-50">
+    <div className="relative mobile:w-[100%]">
+      <div className="flex justify-between px-3 py-2 z-50 ">
         <button
           onClick={handleButtonClick}
           className="p-2 focus:outline-none focus:bg-gray-300 rounded"

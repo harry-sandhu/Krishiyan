@@ -307,7 +307,7 @@ const NewRegistration = () => {
   return (
     <div>
       <Header title="Farmer" subtitle="New Registration" />\
-      <div className=" mobile:top-[10vh] mobile:absolute mobile:left-[2vh] mobile:right-[2vh]  mobile:flex-col mobile:flex mobile:gap-y-[8vh]">
+      <div className=" mobile:top-[6vh] mobile:absolute mobile:left-[2vh] mobile:right-[2vh]  mobile:flex-col mobile:flex mobile:gap-y-[8vh]">
         <h2 className="regheading">New Farmer Registration</h2>
         <section className="form-group">
           <div>

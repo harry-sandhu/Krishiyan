@@ -92,7 +92,7 @@ const NestedDropdown: React.FC<NestedDropdownProps> = ({ menus }) => {
   };
 
   return (
-    <div className="relative mobile:w-[100%]">
+    <div className="absolute mobile:w-[100%] visible md:invisible z-50 bg-[#C6EDC0]">
       <div className="flex justify-between px-3 py-2 z-50 ">
         <button
           onClick={handleButtonClick}

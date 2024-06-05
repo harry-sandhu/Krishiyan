@@ -151,7 +151,7 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
   return (
     <>
       <Header title="Crop Advisory" subtitle="Market" />
-      <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-5 w-full mt-12 py-5 mobile:pt-[8rem]  mobile:top-[17vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4 mobile:items-center">
+      <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-5 w-full mt-12 py-5 mobile:pt-[2rem]  mobile:top-[2vh] mobile:absolute mobile:left-0 mobile:flex-col mobile:flex mobile:gap-y-4 mobile:items-center">
         {/* State Dropdown */}
         <div className="py-3 mx-auto">
           <label className="text-[#13490A] font-extrabold text-sm mr-2 ">
@@ -231,7 +231,7 @@ const MandiPricesComponent: React.FC<MandiPricesProps> = () => {
         <div className="py-3 mx-auto">
           <button
             onClick={fetchData}
-            className="bg-[#05AB2A] text-[#F3FFF1] shadow-[0px_4px_3px_rgba(0,0,0,0.25)] rounded text-sm font-thin"
+            className="bg-[#05AB2A] text-[#F3FFF1] shadow-[0px_4px_3px_rgba(0,0,0,0.25)] rounded text-sm font-thin px-6 py-2"
           >
             {isLoading ? (
               <CircularProgress size={20} style={{ color: "white" }} />

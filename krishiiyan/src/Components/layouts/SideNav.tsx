@@ -116,9 +116,6 @@ const SideNav = ({ menu, submenu }: { menu: string; submenu: string }) => {
 
   return (
     <div>
-      <div className="visible md:invisible z-50 bg-[#C6EDC0] justify-end w-[100vw]">
-        <NestedDropdown menus={menus} />
-      </div>
       <div
         className="flex flex-row lg:flex-row mobile:w-[50vw] mobile:h-max hidden lg:flex z-0"
         style={{

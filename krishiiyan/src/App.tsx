@@ -59,11 +59,35 @@ import Fporegister from "./Components/Fporegister";
 import PageSelector from "./pages/crop_advisary/ferticalselector";
 import ShowData from "./Components/ShowData";
 import AccountSetting from "./Components/AccountSetting";
+import NestedDropdown from "./Components/NestedDropdown";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
   return auth ? <Outlet /> : <Navigate to="/home" />;
 };
+const menus = [
+  {
+    title: "Crop Advisory",
+    submenus: [
+      "Crop Library",
+      "Crop Calender",
+      "Crop Health",
+      "FertiCal",
+      "Mandi Prices",
+    ],
+  },
+  {
+    title: "FRM",
+    submenus: [
+      "Dashboard",
+      // "Purchase",
+      // "Cultivation",
+      // "Credit",
+      // "support",
+      "New Registration",
+    ],
+  },
+];
 
 function App() {
   return (
@@ -94,6 +118,8 @@ function App() {
               <>
                 <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                   <SideNavHandler />
+                  <NestedDropdown menus={menus} />
+
                   {/*<Sale />*/}
                   <DashBoardNew />
                 </main>
@@ -155,6 +181,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"crop_library"} />
+                <NestedDropdown menus={menus} />
                 {<CropLibraryHandler />}
               </main>
             }
@@ -173,6 +200,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"crop_calendar"} />
+                <NestedDropdown menus={menus} />
                 <CropCalenderHandler />
               </main>
             }
@@ -182,6 +210,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"crop_health"} />
+                <NestedDropdown menus={menus} />
                 <CropHealthHandler />
               </main>
             }
@@ -191,6 +220,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"fertical"} />
+                <NestedDropdown menus={menus} />
                 {/* <FertiCal /> */}
                 <PageSelector />
               </main>
@@ -201,6 +231,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"crop_advisory"} submenu={"mandi_prices"} />
+                <NestedDropdown menus={menus} />
                 <MandiPricesHandler />
               </main>
             }
@@ -210,6 +241,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"dashboard"} />
+                <NestedDropdown menus={menus} />
                 {/* <Dashboard /> */}
                 <DashBoardNew />
               </main>
@@ -220,6 +252,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"farm_purchase"} />
+
                 {/* <FPurchase /> */}
                 <NewRegestrationAdmin />
               </main>
@@ -260,6 +293,7 @@ function App() {
             element={
               <main className="h-screen w-screen grid grid-cols-[18%_82%]">
                 <SideNav menu={"frm"} submenu={"new_registration"} />
+                <NestedDropdown menus={menus} />
                 <NewRegistrationHandler />
               </main>
             }

@@ -2203,6 +2203,28 @@ const Fporegister: React.FC = () => {
   // Set initial state of currentLanguage
   const [currentLanguage, setCurrentLanguage] = useState(getInitialLanguage());
 
+  const [numParticipants, setNumParticipants] = useState(1);
+  const [participants, setParticipants] = useState([
+    { name: "", contact: "", email: "" },
+  ]);
+
+  const handleNumParticipantsChange = (e: { target: { value: string } }) => {
+    const value = parseInt(e.target.value);
+    setNumParticipants(value);
+    setParticipants(Array(value).fill({ name: "", contact: "", email: "" }));
+  };
+
+  const handleParticipantChange = (
+    index: number,
+    field: string,
+    value: string
+  ) => {
+    const newParticipants = participants.map((participant, i) =>
+      i === index ? { ...participant, [field]: value } : participant
+    );
+    setParticipants(newParticipants);
+  };
+
   // Destructure the translations object using the current language
   // Make sure to adjust the import path for `fpoTranslations` if needed
   const {
@@ -2929,6 +2951,102 @@ const Fporegister: React.FC = () => {
                   />
                 )}
               </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <h2 className="text-2xl font-bold mb-6">
+                Participant Information
+              </h2>
+              <div className="mb-4">
+                <label
+                  htmlFor="numParticipants"
+                  className="block text-gray-700"
+                >
+                  Number of Participants
+                </label>
+                <select
+                  id="numParticipants"
+                  value={numParticipants}
+                  onChange={handleNumParticipantsChange}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                >
+                  {[...Array(6)].map((_, i) => (
+                    <option key={i + 1} value={i + 1}>
+                      {i + 1}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              {participants.map((participant, index) => (
+                <div key={index} className="mb-4">
+                  <h3 className="text-xl font-bold mb-2">
+                    Participant {index + 1}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div>
+                      <label
+                        htmlFor={`name-${index}`}
+                        className="block text-gray-700"
+                      >
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id={`name-${index}`}
+                        value={participant.name}
+                        onChange={(e) =>
+                          handleParticipantChange(index, "name", e.target.value)
+                        }
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor={`contact-${index}`}
+                        className="block text-gray-700"
+                      >
+                        Contact Number
+                      </label>
+                      <input
+                        type="text"
+                        id={`contact-${index}`}
+                        value={participant.contact}
+                        onChange={(e) =>
+                          handleParticipantChange(
+                            index,
+                            "contact",
+                            e.target.value
+                          )
+                        }
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label
+                        htmlFor={`email-${index}`}
+                        className="block text-gray-700"
+                      >
+                        Designation
+                      </label>
+                      <input
+                        type="email"
+                        id={`email-${index}`}
+                        value={participant.email}
+                        onChange={(e) =>
+                          handleParticipantChange(
+                            index,
+                            "email",
+                            e.target.value
+                          )
+                        }
+                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </Grid>
           </Grid>
 

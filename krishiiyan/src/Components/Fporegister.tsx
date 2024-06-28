@@ -2598,6 +2598,8 @@ const Fporegister: React.FC = () => {
         partnerships,
         successStories,
         additionalInfo,
+        // participent Information
+        participants,
       };
 
       // Make HTTP POST request to store form data

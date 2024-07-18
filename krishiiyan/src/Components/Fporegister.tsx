@@ -2533,9 +2533,6 @@ const Fporegister: React.FC = () => {
       );
       if (response.data.exists) {
         // Show error toast message
-        toast.error(error1);
-
-        setEmailAddress("");
       }
     } catch (error) {
       console.error("Error checking email:", error);

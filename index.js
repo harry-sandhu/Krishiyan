@@ -1,5 +1,5 @@
 const sendSMS = require("./routes/sendsms");
-
+const sendWhatsappSMS = require("./routes/sendWhatappSMS.js");
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
@@ -39,7 +39,9 @@ app.use("/api/check-admin", tokenAuth, adminAuthorizer); // for frontend check
 app.use("/api/check-superAdmin", tokenAuth, superAdminAuthorizer); // for frontend check
 
 //Routes
-
+app.use("/api", require("./routes/proField.js"));
+app.use("/api", require("./routes/proSensor.js"));
+app.use("/api", require("./routes/proUser.js"));
 // app.use("/api/farmer", require("./routes/farmer")); //Farmer Api
 app.use("/api/crop", require("./routes/crop")); //Crop Api
 app.use("/api/cropCalendar", require("./routes/cropCalendar")); //Crop Api
@@ -65,6 +67,20 @@ app.use("/api", require("./routes/Weather.js"));
 app.use("/api", require("./routes/MandiPrices.js"));
 app.use("/api", require("./routes/DataModel.js"));
 
+//App routes
+app.use("/api", require("./routes/fpoRoutes"));
+app.use("/api/appFarmer", require("./routes/appFarmerRoutes.js"));
+app.use("/api", require("./routes/appEditaddress.js"));
+app.use("/api", require("./routes/appEditProfile.js"));
+app.use("/api", require("./routes/appBankDetails.js"));
+app.use("/api", require("./routes/appOtherDetails.js"));
+app.use("/api", require("./routes/appEnqiry.js"));
+app.use("/api", require("./routes/appMandi.js"));
+app.use("/api", require("./routes/appCropRoutes.js"));
+app.use("/api", require("./routes/appVerifyDetails.js"));
+app.use("/api", require("./routes/appNews.js"));
+app.use("/api", require("./routes/appInsightData.js"));
+app.use("/api/whatsapp", require("./routes/sendWhatappSMS.js"));
 app.get("/api/ping", (req, res) => {
   res.send("pong");
 });
@@ -84,6 +100,8 @@ app.post("/api/sendsms", async (req, res) => {
       .json({ message: "Error sending SMS", error: error.message }); // Respond with an error message and details
   }
 });
+
+// Route for sending WhatsApp SMS
 
 //verify otp
 app.post("/api/verify-otp", async (req, res) => {

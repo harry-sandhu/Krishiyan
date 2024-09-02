@@ -176,8 +176,8 @@ const CropLibrary = () => {
     }
     if (res) {
       setCrops(res?.data);
+      console.log(res?.data, "crop anme");
     }
-    // console.log(res?.data?.data,"crops....");
   };
 
   const getcropName = async (localName: any, scientficCrop: any) => {

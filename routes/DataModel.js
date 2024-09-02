@@ -6,7 +6,6 @@ const FpoRegistration = require("../models/DataModel");
 router.post("/store-data", async (req, res) => {
   try {
     const newRegistration = new FpoRegistration(req.body);
-    console.log(newRegistration);
     await newRegistration.save();
     res.status(201).json({ message: "FPO registration successful!" });
   } catch (error) {

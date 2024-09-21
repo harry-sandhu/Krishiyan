@@ -52,6 +52,7 @@ const Who3 = () => {
         </div>
       </section >
 
+
       <section className="flex flex-col-reverse md:flex-row items-center justify-between p-10 bg-green-100 space-y-10 md:space-y-0">
         <div className="w-full md:w-1/2 mt-6 md:mt-0">
           <img
@@ -73,6 +74,7 @@ const Who3 = () => {
           </button>
         </div>
       </section>
+
     </>
   );
 };

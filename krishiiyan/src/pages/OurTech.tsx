@@ -8,6 +8,10 @@ import TechCard3 from "../Components/TechCard3";
 import Footer from "../Components/Footer";
 import Preloader from "../Components/Preloader";
 import TechCard4 from "../Components/TechCard4";
+import FlowChart from "../Components/FlowChart";
+import AppImage from "../Components/AppImage";
+import OurServices from "../Components/OurServices";
+import Playstore from "../Components/Playstore";
 
 const OurTech = () => {
   return (
@@ -15,12 +19,15 @@ const OurTech = () => {
       <Preloader />
       <Navbar />
       <TechBanner />
-
-      <TechCard2 />
+      <FlowChart />
+      {/* <TechCard2 /> */}
       {/* <TechCard4 /> */}
-      <TechCard3 />
-      <TechCard1 />
+      {/* <TechCard3 /> */}
+      {/* <TechCard1 /> */}
       <TechCard />
+      <OurServices />
+      <AppImage />
+      <Playstore />
       <Footer />
     </>
   );

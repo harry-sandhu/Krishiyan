@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import * as Api from "../../Services/Api";
 
+
 let check1 = true;
 
 const SignupPage = () => {
@@ -212,7 +213,7 @@ const SignupPage = () => {
             className="flex flex-col gap-4"
           >
             <Autocomplete
-              className="p-2 mt-6 rounded-xl border"
+              className="p- mt- rounded-xl border"
               options={nameSuggestions}
               getOptionLabel={(option) => option.name}
               onChange={handletypechange}
@@ -231,7 +232,7 @@ const SignupPage = () => {
               )}
             />
             <TextField
-              className="p-2 rounded-xl border"
+              className="p- rounded-xl border"
               type="text"
               margin="normal"
               required
@@ -243,7 +244,7 @@ const SignupPage = () => {
               autoFocus
             />
             <TextField
-              className="p-2 rounded-xl border"
+              className="p- rounded-xl border"
               type="tel"
               margin="normal"
               required
@@ -255,7 +256,7 @@ const SignupPage = () => {
               onChange={handleMobileChange}
             />
             <TextField
-              className="p-2 rounded-xl border"
+              className="p- rounded-xl border"
               type="email"
               margin="normal"
               fullWidth
@@ -273,7 +274,7 @@ const SignupPage = () => {
               }}
             />
             <TextField
-              className="p-2 rounded-xl border"
+              className="rounded-xl border"
               type="password"
               margin="normal"
               required
@@ -294,6 +295,8 @@ const SignupPage = () => {
             >
               Sign Up
             </Button>
+            <p className="text-black">By continuing, you agree to KrishiYan's <Link onClick={() => navigate("/terms")} className="hover:underline cursor-pointer text-black">Terms & Conditions</Link>. Read our <Link onClick={() => navigate("/privacy")} className="hover:underline cursor-pointer text-black"
+            >Privacy Policy.</Link></p>
 
             <Grid container>
               <Grid item>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import lanimg from '../assets/Images/language.png';
 
 const Translator = () => {
   const languages = [
@@ -63,12 +64,13 @@ const Translator = () => {
   return (
     <div>
       {/* Language selection dropdown */}
-      <label
+      {/* <label
         htmlFor="language-select"
         className=" mb-2   text-green-400 dark:text-white text-lg font-semibold"
-      >
-        Language:{" "}
-      </label>
+      > */}
+      <img src={lanimg} className="w-8 h-8 inline m-2" />
+      {/* Language:{" "} */}
+      {/* </label> */}
       <select
         id="language-select"
         value={language}

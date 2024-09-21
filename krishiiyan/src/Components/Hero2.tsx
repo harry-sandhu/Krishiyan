@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MdCheckCircle, MdArrowForward } from "react-icons/md";
 import LearnMoreButton from "./LearnMoreButton";
+import ScrollToTopArrow from "./ScrollToTopArrow";
 
 const Hero2 = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,6 +34,7 @@ const Hero2 = () => {
       className={`flex flex-col md:flex-row items-center justify-between p-4 md:p-10 bg-[#d8ffd885] ${isVisible ? "fade-in" : ""
         }`}
     >
+      <ScrollToTopArrow />
       <div className="mb-4 md:mb-0 w-full md:w-[47%]">
         <img
           src="Images/home-3.png"
@@ -40,8 +42,6 @@ const Hero2 = () => {
           className="w-full h-full object-cover rounded-tr-[2rem]"
         />
       </div>
-
-
 
       <div className="w-full md:w-1/2 text-center md:text-left mx-auto">
         <div>

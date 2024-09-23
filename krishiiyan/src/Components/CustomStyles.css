@@ -1,0 +1,63 @@
+.arrow-left::before,
+.arrow-right::after {
+    content: '';
+    position: absolute;
+    width: 25px; /* Adjust arrow size */
+    height: 25px; /* Adjust arrow size */
+    background-color: #3FC041; /* Match line color */
+}
+
+.arrow-left::before {
+    clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+    left: -24px; /* Adjust based on arrow size */
+    top:-8px;
+}
+
+.arrow-right::after {
+    clip-path: polygon(0% 0%, 0% 100%, 100% 50%);
+    right: -24px;
+    top: -8px; /* Adjust based on arrow size */
+}
+
+.whitebg::before{
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    height: 4px;
+    width: 88%;
+    background-color: rgb(253, 253, 253);
+}
+.whitebg1::before{
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: 0;
+    height: 4px;
+    width: 9.5%;
+    background-color: rgb(253, 253, 253);
+}
+.whitebg{
+    margin-bottom: -4px;
+}
+.cntdot::before{
+    content: "";
+    position: absolute;
+    bottom: 2px;
+   left: 38%;
+   z-index: -1;
+   background-color: rgb(76,175,80);
+   width: 5px;
+   height: 50px;
+}
+
+.cntdot1::before{
+    content: "";
+    position: absolute;
+    bottom: 2px;
+   left: 38%;
+   z-index: -1;
+   background-color: rgb(76,175,80);
+   width: 5px;
+   height: 65px;
+}

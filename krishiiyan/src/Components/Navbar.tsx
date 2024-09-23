@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   return (
-    <nav className="container-fluid sticky top-0 bg-white p-4 sm:p-6 flex justify-between items-center transition-all duration-500 z-50 shadow-md">
+    <nav className="container-fluid sticky top-0 bg-white p-4 sm:p-6 flex justify-between items-center transition-all duration-500 xl:h-20 z-50 shadow-md">
       <Link to="/">
         <img src="Images/logoname.png" alt="Logo" className="h-12 sm:h-16" />
       </Link>
@@ -56,27 +56,25 @@ const Navbar: React.FC = () => {
 
       {/* Navigation links */}
       <div
-        className={`sm:flex space-x-0 sm:space-x-4 mt-4 sm:mt-0 ${
-          isOpen ? "block" : "hidden"
-        } bg-white sm:bg-transparent p-4 sm:p-0 rounded shadow sm:shadow-none`}
+        className={`sm:flex space-x-0 sm:space-x-4 mt-4 sm:mt-0 ${isOpen ? "block" : "hidden"
+          } bg-white sm:bg-transparent p-4 sm:p-0 rounded shadow sm:shadow-none`}
       >
         {[
-          { path: "/who", name: "Who are we?" },
-          { path: "/what", name: "What we do?" },
+          { path: "/who", name: "Home" },
           { path: "/tech", name: "Our Technology" },
+          { path: "/what", name: "Team" },
           { path: "/blog", name: "Blog" },
           { path: "/contact", name: "Contact Us" },
-          { path: "/announcement", name: "Annoucements📢", className: "blink" },
-          { path: "/login", name: "Login" },
+          // { path: "/announcement", name: "Annoucements📢", className: "blink" },
+          { path: "/login", name: "🔐 LOGIN", className: "border-2 bg-green-700 text-white rounded-lg tracking-widest" },
         ].map((link) => (
           <Link
             key={link.path}
             to={link.path}
-            className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${
-              location.pathname === link.path
-                ? "border-b-2 border-green-500"
-                : ""
-            } font-semibold ${link.className}`}
+            className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${location.pathname === link.path
+              ? "border-b-2 border-green-500"
+              : ""
+              } font-semibold ${link.className}`}
           >
             {link.name}
           </Link>

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import OurTech from "../pages/OurTech";
+import ScrollToTopArrow from "./ScrollToTopArrow";
+import Terms from "../pages/Terms";
+
 
 interface Translations {
   [key: string]: {
@@ -22,6 +25,8 @@ interface Translations {
     call2: string;
     ourLocation: string;
     copyright: string;
+    privacy: string;
+    terms: string;
   };
 }
 
@@ -39,11 +44,13 @@ const translations: Translations = {
     contactUs: "Contact Us",
     getInTouch: "Get in Touch",
     address:
-      "WetAcre Sustainable Solutions LLP, CrAdLE, Village Bhat, Gandhinagar, Gujarat, 382428 - India",
+      "WetAcre Sustainable Solutions Private Limited, CrAdLE, Village Bhat, Gandhinagar, Gujarat, 382428 - India",
     call1: "Call : +91 70667 44494",
-    call2: "Call : +91 80558 50995",
+    call2: "Call : +91 89030 85981",
     ourLocation: "Our Location",
-    copyright: `© ${new Date().getFullYear()} WetAcre Sustainable Solutions LLP. All rights reserved`,
+    copyright: `© ${new Date().getFullYear()} WetAcre Sustainable Solutions Private Limited. All rights reserved`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //assame
   as: {
@@ -64,6 +71,8 @@ const translations: Translations = {
     call2: "ফোন কৰক: +91 80558 50995",
     ourLocation: "আমাৰ অৱস্থান",
     copyright: `© ${new Date().getFullYear()} WetAcre স্থিতিশীল সমাধান LLP. সকলো অধিকার সংৰক্ষিত`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   brx: {
     // Bodo
@@ -84,6 +93,8 @@ const translations: Translations = {
     call2: "कॉल : +91 80558 50995",
     ourLocation: "हमार स्थान",
     copyright: `© ${new Date().getFullYear()} WetAcre सस्टेनेबल सलूशन्स LLP. सर्वाधिकार सुरक्षित`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //hindi
   hi: {
@@ -104,6 +115,8 @@ const translations: Translations = {
     call2: "कॉल करें: +91 80558 50995",
     ourLocation: "हमारा स्थान",
     copyright: `© ${new Date().getFullYear()} WetAcre सतत समाधान LLP. सर्वाधिकार सुरक्षित`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //  Maithili
   mai: {
@@ -124,6 +137,8 @@ const translations: Translations = {
     call2: "कॉल करू : +91 80558 50995",
     ourLocation: "हमरो स्थान",
     copyright: `© ${new Date().getFullYear()} WetAcre सस्टेनेबल सलूशन LLP. सर्वाधिकार सुरक्षित`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //marathi
   mr: {
@@ -144,6 +159,8 @@ const translations: Translations = {
     call2: "कॉल : +91 80558 50995",
     ourLocation: "आमचे स्थान",
     copyright: `© ${new Date().getFullYear()} WetAcre शाश्वत उपाय LLP. सर्वाधिकार राखीव`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
 
   //tamil
@@ -165,6 +182,8 @@ const translations: Translations = {
     call2: "அழைக்கவும் : +91 80558 50995",
     ourLocation: "எங்கள் இடம்",
     copyright: `© ${new Date().getFullYear()} WetAcre நிலைத்தன்மையான தீர்வுகள் LLP. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டன.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //bengali
   bn: {
@@ -185,6 +204,8 @@ const translations: Translations = {
     call2: "কল করুন : +91 80558 50995",
     ourLocation: "আমাদের অবস্থান",
     copyright: `© ${new Date().getFullYear()} WetAcre স্থিতিশীল সমাধান LLP. সর্বস্বত্ব সংরক্ষিত.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //gujarati
   gu: {
@@ -205,6 +226,8 @@ const translations: Translations = {
     call2: "કૉલ કરો : +91 80558 50995",
     ourLocation: "અમારી જગ્યા",
     copyright: `© ${new Date().getFullYear()} WetAcre ટકાઉ ઉકેલો LLP. બધા હક અન�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?�?`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
 
   //telgu
@@ -226,7 +249,10 @@ const translations: Translations = {
     call2: "కాల్ చేయండి : +91 80558 50995",
     ourLocation: "మా స్థానం",
     copyright: `© ${new Date().getFullYear()} WetAcre స్థిరత పరిష్కారం LLP. అన్ని హక్కులు రక్షించబడ్డాయి.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
+
   //odia
   or: {
     logoAlt: "କମ୍ପାନୀ ଲୋଗୋ",
@@ -246,6 +272,8 @@ const translations: Translations = {
     call2: "କଲ କରନ୍ତୁ : +91 80558 50995",
     ourLocation: "ଆମର ଅବସ୍ଥାନ",
     copyright: `© ${new Date().getFullYear()} WetAcre ନିଶ୍ଚିତ ସମାଧାନ LLP. ସବୁ ଅଧିକାର ସୁରକ୍ଷିତ।`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //kannada
   kn: {
@@ -266,6 +294,8 @@ const translations: Translations = {
     call2: "ಕಾಲ್: +91 80558 50995",
     ourLocation: "ನಮ್ಮ ಸ್ಥಳ",
     copyright: `© ${new Date().getFullYear()} WetAcre ಸಸ್ಯನಿರ್ವಹಣಾ ಪರಿಹಾರಗಳು LLP. ಎಲ್ಲಾ ಹಕ್ಕುಗಳನ್ನು ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //konkai
   kok: {
@@ -286,6 +316,8 @@ const translations: Translations = {
     call2: "कॉल : +91 80558 50995",
     ourLocation: "आमचे स्थान",
     copyright: `© ${new Date().getFullYear()} WetAcre शाश्वत सोल्यूशन्स LLP. सर्वाधिकार राखीव.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //manipuri
   mni: {
@@ -306,6 +338,8 @@ const translations: Translations = {
     call2: "ফোন কৰক : +91 80558 50995",
     ourLocation: "আমাৰ অৱস্থান",
     copyright: `© ${new Date().getFullYear()} WetAcre স্থিতিশীল সমাধান LLP. সকলো অধিকাৰ সংৰক্ষিত`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //malayaalam
   ml: {
@@ -325,7 +359,10 @@ const translations: Translations = {
     call1: "അവകാശിക്കൂ : +91 70667 44494",
     call2: "അവകാശിക്കൂ : +91 80558 50995",
     ourLocation: "ഞങ്ങളുടെ സ്ഥാനം",
-    copyright: `© ${new Date().getFullYear()} WetAcre നിരന്തര പരിഹാരങ്ങൾ LLP. എല്ലാ അവകാശങ്ങളും സംരക്ഷിച്ചിരിക്കുന്നു.`,
+    copyright: `© ${new Date().getFullYear()} WetAcre നിരന്തര പരിഹാരങ്ങൾ LLP. എല്ലാ 
+    അവകാശങ്ങളും സംരക്ഷിച്ചിരിക്കുന്നു.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
   //punjabi
   pa: {
@@ -346,6 +383,8 @@ const translations: Translations = {
     call2: "ਕਾਲ ਕਰੋ: +91 80558 50995",
     ourLocation: "ਸਾਡੇ ਸਥਾਨ",
     copyright: `© ${new Date().getFullYear()} WetAcre ਮਿਟੀਰੀ ਹੱਲ LLP. ਸਾਰੇ ਅਧਿਕਾਰ ਸੁਰੱਖਿਅਤ ਹਨ.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
 
   //nepali
@@ -367,6 +406,8 @@ const translations: Translations = {
     call2: "कॉल गर्नुहोस् : +91 80558 50995",
     ourLocation: "हाम्रो स्थान",
     copyright: `© ${new Date().getFullYear()} WetAcre दिगो समाधान LLP. सबै अधिकार सुरक्षित.`,
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions"
   },
 };
 
@@ -397,6 +438,8 @@ const Footer = () => {
     call2,
     ourLocation,
     copyright,
+    privacy,
+    terms
   } = translations[currentLanguage];
 
   return (
@@ -504,9 +547,18 @@ const Footer = () => {
         </div>
       </div>
 
+      <ScrollToTopArrow />
       {/* Copyright */}
       <hr className="my-8" />
       <div className="text-center">{copyright}</div>
+      {/* <div className="text-center">{privacy}</div> */}
+      <Link to="/privacy" className="hover:underline">
+        {privacy}
+      </Link>
+      <span>  |  </span>
+      <Link to="/terms" className="hover:underline">
+        {terms}
+      </Link>
     </footer>
   );
 };

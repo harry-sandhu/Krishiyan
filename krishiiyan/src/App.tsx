@@ -60,6 +60,9 @@ import PageSelector from "./pages/crop_advisary/ferticalselector";
 import ShowData from "./Components/ShowData";
 import AccountSetting from "./Components/AccountSetting";
 import NestedDropdown from "./Components/NestedDropdown";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -110,6 +113,9 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/Password-reset" element={<ForgotPasswordLink />} />
         <Route path="/showFPOData" element={<ShowData />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+
         {/* <Route path="/login" element={<LoginPage />} /> */}
         <Route path="/" element={<AuthGuard />}>
           <Route
@@ -346,6 +352,7 @@ function App() {
               </main>
             }
           />
+
         </Route>
       </Routes>
     </div>

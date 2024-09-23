@@ -44,6 +44,7 @@
     "react-live-clock-date-fns": "^1.0.0",
     "react-loader-spinner": "^5.3.4",
     "react-papaparse": "^4.1.0",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.9.0",
     "react-scripts": "^5.0.1",
     "react-select": "^5.8.0",

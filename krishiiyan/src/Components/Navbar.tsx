@@ -1,87 +1,127 @@
-import { ClassNames } from "@emotion/react";
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import "./navbar.css";
-import Translator from "./Translator";
+import React, { useState } from 'react';
+import Translator from './Translator';
 
-const Navbar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+function Navbar() {
+  const [activeLink, setActiveLink] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleLinkClick = (e: any, Link: any) => {
+    setActiveLink(Link);
+    setMenuOpen(false); // Close menu on link click
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
 
   return (
-    <nav className="container-fluid sticky top-0 bg-white p-4 sm:p-6 flex justify-between items-center transition-all duration-500 xl:h-20 z-50 shadow-md">
-      <Link to="/">
+
+    <>    <div className="container-fluid sticky top-0 bg-white p-4 sm:p-6 flex justify-between items-center transition-all duration-500 xl:h-20 z-50 shadow-md">
+      {/* Logo */}
+      <div>
         <img src="Images/logoname.png" alt="Logo" className="h-12 sm:h-16" />
-      </Link>
-      <Translator />
-      {/* Hamburger & Close Menu Icon */}
-      <div className="sm:hidden">
+      </div>
+
+      {/* Desktop View Navigation */}
+      <div className="hidden lg:flex">
+        <ul className="flex justify-between space-x-10 font-semibold">
+          <li className={activeLink === '#home0' ? 'border-b-4 rounded-lg p-2 border-[#3fc041] text-[#3fc041]' : ''}>
+            <a href="#home0" onClick={(e) => handleLinkClick(e, '#home0')} className="py-2 hover:text-[#3fc041]">
+              Home
+            </a>
+          </li>
+          <li className={activeLink === '#about' ? 'border-b-4 rounded-lg p-2 border-[#3fc041] text-[#3fc041]' : ''}>
+            <a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="py-2 hover:text-[#3fc041]">
+              About
+            </a>
+          </li>
+          <li className={activeLink === '#tech' ? 'border-b-4 rounded-lg p-2 border-[#3fc041] text-[#3fc041]' : ''}>
+            <a href="#tech" onClick={(e) => handleLinkClick(e, '#tech')} className="py-2 hover:text-[#3fc041]">
+              Our Technology
+            </a>
+          </li>
+          <li className={activeLink === '#team' ? 'border-b-4 rounded-lg p-2 border-[#3fc041] text-[#3fc041]' : ''}>
+            <a href="#team" onClick={(e) => handleLinkClick(e, '#team')} className="py-2 hover:text-[#3fc041]">
+              Team
+            </a>
+          </li>
+          <li className={activeLink === '#blog' ? 'border-b-4 rounded-lg p-2 border-[#3fc041] text-[#3fc041]' : ''}>
+            <a href="#blog" onClick={(e) => handleLinkClick(e, '#blog')} className="py-2 hover:text-[#3fc041]">
+              Blog
+            </a>
+          </li>
+          <li className={activeLink === '#contact' ? 'border-b-4 rounded-lg p-2 border-[#3fc041] text-[#3fc041]' : ''}>
+            <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="py-2 hover:text-[#3fc041]">
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      {/* Hamburger Menu for Mobile View */}
+      <div className="lg:hidden ">
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="p-2 focus:outline-none focus:bg-gray-300 rounded"
+          className="text-white text-3xl focus:outline-none rounded-full w-14"
+          onClick={toggleMenu}
         >
-          {isOpen ? (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M6 18L18 6M6 6l12 12"
-              ></path>
-            </svg>
-          ) : (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16m-7 6h7"
-              ></path>
-            </svg>
-          )}
+          {menuOpen ? '✖' : '☰'}
         </button>
       </div>
 
-      {/* Navigation links */}
+      {/* Dropdown Menu */}
       <div
-        className={`sm:flex space-x-0 sm:space-x-4 mt-4 sm:mt-0 ${isOpen ? "block" : "hidden"
-          } bg-white sm:bg-transparent p-4 sm:p-0 rounded shadow sm:shadow-none`}
+        className={`absolute top-20 right-0 bg-white w-2/4 shadow-lg rounded-lg z-50 transform transition-transform duration-300 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'
+          }`}
       >
-        {[
-          { path: "/who", name: "Home" },
-          { path: "/tech", name: "Our Technology" },
-          { path: "/what", name: "Team" },
-          { path: "/blog", name: "Blog" },
-          { path: "/contact", name: "Contact Us" },
-          // { path: "/announcement", name: "Annoucements📢", className: "blink" },
-          { path: "/login", name: "🔐 LOGIN", className: "border-2 bg-green-700 text-white rounded-lg tracking-widest" },
-        ].map((link) => (
-          <Link
-            key={link.path}
-            to={link.path}
-            className={`block sm:inline-block text-[#333333] hover:text-gray-300 px-2 sm:px-4 py-1 ${location.pathname === link.path
-              ? "border-b-2 border-green-500"
-              : ""
-              } font-semibold ${link.className}`}
-          >
-            {link.name}
-          </Link>
-        ))}
+        <ul className="flex flex-col space-y-4 p-4 w-4/5 text-left text-[#3fc041]">
+          <li className={activeLink === '#home0' ? 'border-b-2 pb-2 border-[#3fc041] w-1/2' : ''}>
+            <a href="#home0" onClick={(e) => handleLinkClick(e, '#home0')} className="hover:text-[#3fc041]">
+              Home
+            </a>
+          </li>
+          <li className={activeLink === '#about' ? 'border-b-2 border-[#3fc041] pb-2 w-1/2' : ''}>
+            <a href="#about" onClick={(e) => handleLinkClick(e, '#about')} className="hover:text-[#3fc041]">
+              About
+            </a>
+          </li>
+          <li className={activeLink === '#tech' ? 'border-b-2 border-[#3fc041] pb-2 w-1/2' : ''}>
+            <a href="#tech" onClick={(e) => handleLinkClick(e, '#tech')} className="hover:text-[#3fc041]">
+              Our Technology
+            </a>
+          </li>
+          <li className={activeLink === '#team' ? 'border-b-2 border-[#3fc041] pb-2 w-1/2' : ''}>
+            <a href="#team" onClick={(e) => handleLinkClick(e, '#team')} className="hover:text-[#3fc041]">
+              Team
+            </a>
+          </li>
+          <li className={activeLink === '#blog' ? 'border-b-2 border-[#3fc041] pb-2 w-1/2' : ''}>
+            <a href="#blog" onClick={(e) => handleLinkClick(e, '#blog')} className="hover:text-[#3fc041]">
+              Blog
+            </a>
+          </li>
+          <li className={activeLink === '#contact' ? 'border-b-2 border-[#3fc041] pb-2 w-1/2' : ''}>
+            <a href="#contact" onClick={(e) => handleLinkClick(e, '#contact')} className="hover:text-[#3fc041]">
+              Contact Us
+            </a>
+          </li>
+        </ul>
       </div>
-    </nav>
+
+      {/* Login and Translator */}
+      <div className="hidden lg:flex items-center space-x-4">
+        <button className="bg-[#3FC041] text-white rounded-md tracking-widest px-4 py-2">
+          <a href="/login">Log In</a>
+        </button>
+        <Translator />
+      </div>
+      <div className="flex lg:hidden absolute left-2/3 transform -translate-x-1/2">
+        <button className="bg-[#3FC041] text-white rounded-md tracking-widest px-4 py-2 mx-auto">
+          <a href="/login">Log In</a>
+        </button>
+      </div>
+    </div>
+    </>
   );
-};
+}
 
 export default Navbar;

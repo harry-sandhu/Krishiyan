@@ -1,7 +1,7 @@
 import "./App.css";
 import SideNav from "./Components/layouts/SideNav";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
   Navigate,
@@ -45,24 +45,18 @@ import Premium from "./pages/crop_advisary/premium";
 import MandiPricesHandler from "./adminUserHandlers/MandiPricesHandler";
 import MandiPricesAdmin from "./pages/crop_advisory_admin/mandiPricesAdmin";
 import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import OurTech from "./pages/OurTech";
-import Who from "./pages/Who";
-import Contact from "./pages/Contact";
-import What from "./pages/What";
 import Login from "./pages/Login";
 import NewRegestrationAdmin from "./pages/crop_advisory_admin/NewRegestrationAdmin";
 import DashBoardNew from "./pages/farmer/DashBoardNew";
-import Announcement from "./pages/Announcement";
-import Fponational from "./Components/Fponational";
-import Fporegister from "./Components/Fporegister";
 import PageSelector from "./pages/crop_advisary/ferticalselector";
 import ShowData from "./Components/ShowData";
 import AccountSetting from "./Components/AccountSetting";
 import NestedDropdown from "./Components/NestedDropdown";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
-
+import CardCarousel from "./pages/CardCarousel";
+import Home1 from "./pages/Home1";
+import Mission_vision from "./pages/Mission_vision";
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -95,20 +89,11 @@ const menus = [
 function App() {
   return (
     <div className="App font-roboto box-border m-0 p-0">
+      {/* <BrowserRouter> */}
       <Routes>
-        <Route path="/announcement" element={<Announcement />} />
-        <Route path="/FPOnational" element={<Fponational />} />
-        <Route path="/fporegister" element={<Fporegister />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/tech" element={<OurTech />} />
-        <Route path="/who" element={<Who />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/what" element={<What />} />
-        <Route path="/announcement" element={<Announcement />} />
+        <Route path="/Home" element={<Home />} />
+
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/FPOnational" element={<Fponational />} />
-        <Route path="/fporegister" element={<Fporegister />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/Password-reset" element={<ForgotPasswordLink />} />
@@ -352,9 +337,9 @@ function App() {
               </main>
             }
           />
-
         </Route>
       </Routes>
+      {/* </BrowserRouter > */}
     </div>
   );
 }

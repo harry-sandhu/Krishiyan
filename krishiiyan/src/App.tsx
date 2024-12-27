@@ -57,6 +57,8 @@ import Terms from "./pages/Terms";
 import CardCarousel from "./pages/CardCarousel";
 import Home1 from "./pages/Home1";
 import Mission_vision from "./pages/Mission_vision";
+import TopNav from "./MainMenu/TopNav";
+
 
 const AuthGuard = () => {
   const auth = localStorage.getItem("authToken");
@@ -91,8 +93,7 @@ function App() {
     <div className="App font-roboto box-border m-0 p-0">
       {/* <BrowserRouter> */}
       <Routes>
-        <Route path="/Home" element={<Home />} />
-
+        <Route path="/home" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -100,6 +101,7 @@ function App() {
         <Route path="/showFPOData" element={<ShowData />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/top" element={<TopNav />} />
 
         {/* <Route path="/login" element={<LoginPage />} /> */}
         <Route path="/" element={<AuthGuard />}>
@@ -337,6 +339,7 @@ function App() {
               </main>
             }
           />
+
         </Route>
       </Routes>
       {/* </BrowserRouter > */}

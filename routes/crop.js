@@ -42,7 +42,6 @@ router.post("/role-admin/add", async (req, res) => {
         crop: crop,
       });
     } else {
-      
       csv = csv.data;
       for (let i = 1; i < csv.length; i++) {
         let cropModel = {};
@@ -56,7 +55,9 @@ router.post("/role-admin/add", async (req, res) => {
             cropModel = await Crop.findOne({
               localName: { $regex: lName, $options: "i" },
             });
-            if (!cropModel) {cropModel = new Crop({ localName: lName });}
+            if (!cropModel) {
+              cropModel = new Crop({ localName: lName });
+            }
             continue;
           } else if (j == 1) {
             sName = csv[i][j];
@@ -375,7 +376,7 @@ router.post("/irrigation/role-admin/add", async (req, res) => {
             cropModel = await Crop.findOne({
               localName: { $regex: lName, $options: "i" },
             });
-          } else  {
+          } else {
             irrigationTechnique[csv[0][j].trim()] = csv[i][j];
           }
         }
@@ -794,9 +795,9 @@ router.post("/protection/role-admin/disease/add", async (req, res, next) => {
 
 router.post("/protection/role-admin/weedManage/add", async (req, res, next) => {
   let {
-    localName, //of the crop
+    localName,
     category,
-    weed, //name of the weed
+    weed,
     scientificName = "",
     image = "",
     solutions = "",
@@ -909,6 +910,7 @@ router.post(
       }
     } catch (err) {
       res.status(500).json({ msg: err.message });
+      console.log(err);
     }
   }
 );

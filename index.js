@@ -21,8 +21,8 @@ const Crop = require("./models/crop");
 const Variety = require("./models/varities");
 const varities = require("./models/varities");
 //BodyParser
-app.use(express.json({ extended: true }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "50mb", extended: true }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 //CORS
 app.use(cors());
